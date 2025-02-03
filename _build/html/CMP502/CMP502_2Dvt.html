@@ -1,0 +1,737 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Coordinate Transformations in 2D &#8212; CMP502-505 Mathematics with Python</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Coordinate Transformations in 3D" href="CMP502_3Dvt1.html" />
+    <link rel="prev" title="Introduction to Python" href="../CMP502-505_pythonintro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/Abertay_Uni_Black.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CMP502-505 Mathematics with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502-505_pythonintro.html">
+   Python Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CMP502
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. 2D Viewing Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_3Dvt1.html">
+   2. 3D Viewing Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_3Dvt2.html">
+   3. More 3D Viewing Transforms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_proj1.html">
+   4. Orthographic Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_proj2.html">
+   5. Perspective Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_complexnos.html">
+   6. Complex Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_quats.html">
+   7. Quaternions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CMP505
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../outro.html">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/CMP502/CMP502_2Dvt.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Abertay-University-SDI/CMP502-505_Maths"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Abertay-University-SDI/CMP502-505_Maths/issues/new?title=Issue%20on%20page%20%2FCMP502/CMP502_2Dvt.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Abertay-University-SDI/CMP502-505_Maths/main?urlpath=lab/tree/CMP502/CMP502_2Dvt.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Abertay-University-SDI/CMP502-505_Maths/blob/main/CMP502/CMP502_2Dvt.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#homogenous-coordinates">
+   1.1. Homogenous coordinates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rotation">
+   1.2. Rotation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scaling">
+   1.3. Scaling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#translation">
+   1.4. Translation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rotation-and-scaling-at-the-origin">
+   1.5. Rotation and scaling at the origin
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#over-to-you">
+   1.6. Over to You
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Coordinate Transformations in 2D</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#homogenous-coordinates">
+   1.1. Homogenous coordinates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rotation">
+   1.2. Rotation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scaling">
+   1.3. Scaling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#translation">
+   1.4. Translation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rotation-and-scaling-at-the-origin">
+   1.5. Rotation and scaling at the origin
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#over-to-you">
+   1.6. Over to You
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="coordinate-transformations-in-2d">
+<h1><span class="section-number">1. </span>Coordinate Transformations in 2D<a class="headerlink" href="#coordinate-transformations-in-2d" title="Permalink to this headline">¶</a></h1>
+<p>In lectures, we were introduced to the idea that graphics programming uses matrices to transform objects seen in a window to be correctly displayed in a viewport on the screen.</p>
+<p>In code, efficiency is important. A <em>composite</em> transformation matrix can apply all the steps needed at the same time, reducing the number of operations. The composite transformation matrix is formed by multiplying the required steps (translation, rotation, scaling) and their matrices together. Due to our particular application and graphics pipeline, we use specific forms of matrices and post-multiply window coordinates to achieve the correct transformations. We were also introduced to the concept of homogenous coordinates for specific positions, in order to correctly apply the transformations.</p>
+<p>In this notebook, we will put these calculations into practice, by performing the transformations practiced in class on specific objects and observing the effects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will begin by creating an object that we need to transform.
+One of the simplest objects to manipulate is a square: it will also easily allow us to explore the results of the transformations and compare with the original size and shape.</p>
+<p>To create a square, we can create an array of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>-coordinates which are the vertices of this square. In order to draw lines between each array element and the next, we will append the array with the first value: this means that Python will just join every element of the array automatically when plotted:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">y_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">])</span>
+<span class="n">lx</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span><span class="n">x_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">#drawing the line between the last and first coord</span>
+<span class="n">ly</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_vals</span><span class="p">,</span><span class="n">y_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lx</span><span class="p">,</span> <span class="n">ly</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP502_2Dvt_3_0.png" src="../_images/CMP502_2Dvt_3_0.png" />
+</div>
+</div>
+<div class="section" id="homogenous-coordinates">
+<h2><span class="section-number">1.1. </span>Homogenous coordinates<a class="headerlink" href="#homogenous-coordinates" title="Permalink to this headline">¶</a></h2>
+<p>Our first task will be to organise the coordinates so that we can perform transformations. Our points are currently listed in two arrays, with the first containing the <span class="math notranslate nohighlight">\(x\)</span>-coordinates, and the second containing <span class="math notranslate nohighlight">\(y\)</span>-coords.</p>
+<p>Typically when we work with coordinates and vectors or matrices, we need to have each <em>column</em> list a different dimension. We also need to extend each (2D) set of points to contain an extra dimension, a concept taught in the lectures as “homogenous coordinates’’.</p>
+<p>Since we have an array each for <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we’ll first create a third array containing our extra homogenous coordinates. Then we’ll stack our arrays on top of each other, to make a matrix which contains each coordinate dimension as a new row. Finally, we’ll use the transpose command to switch rows and columns, so that we have our coordinate matrix formatted as we saw in lectures:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newrow</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">hp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">p</span><span class="p">,</span> <span class="n">newrow</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hp</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 0 1]
+ [0 5 1]
+ [5 5 1]
+ [5 0 1]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that each of the vertices of the object are listed as we saw in the lectures, with set of coordinates each inhabiting its own row.</p>
+</div>
+<div class="section" id="rotation">
+<h2><span class="section-number">1.2. </span>Rotation<a class="headerlink" href="#rotation" title="Permalink to this headline">¶</a></h2>
+<p>In cases where rotation is needed, in the lectures we learned about the 2D rotation matrix, which takes the form seen in class (and in MAT102):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R_{\theta_{z,{\underline{k}}}}=
+	\begin{pmatrix}
+	\cos(\theta_z) &amp; \sin(\theta_z) &amp; 0  \\
+	-\sin(\theta_z) &amp; \cos(\theta_z) &amp; 0  \\
+	0 &amp; 0 &amp; 1
+	\end{pmatrix}.
+\end{split}\]</div>
+<p>In this experiment, lets rotate by our square anticlockwise by <span class="math notranslate nohighlight">\(60^o\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">R_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)),</span> <span class="mi">0</span><span class="p">],</span> 
+                     <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)),</span> <span class="mi">0</span><span class="p">],</span> 
+                     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have to remember to PRE-MULTIPLY (due to the standard graphics pipeline approach). You may encounter different ways to apply transformation matrices in other web resources and textbooks, but they may use different pipelines or codes.</p>
+<p>We take our matrix of coordinates (where each column is a different coordinate, i.e. using the transpose as shown above), and post-multiply our transformation matrix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rp</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">*</span><span class="n">R_theta</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To plot this along side the original positions, we have to undo (or repeat) our transpose operation. To join the square up for plotting, we append the first coordinate to our arrays as the new last coordinate. We can now display the result of our rotation (in green), alongside the original unrotated square (black) in a plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newrp</span> <span class="o">=</span> <span class="n">rp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">x_vals2</span> <span class="o">=</span> <span class="p">[</span><span class="n">newrp</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]]</span>
+<span class="n">y_vals2</span> <span class="o">=</span> <span class="p">[</span><span class="n">newrp</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]]</span>
+<span class="n">rlx</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_vals2</span><span class="p">,</span><span class="n">x_vals2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">rly</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_vals2</span><span class="p">,</span><span class="n">y_vals2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rlx</span><span class="p">,</span> <span class="n">rly</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lx</span><span class="p">,</span> <span class="n">ly</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP502_2Dvt_14_0.png" src="../_images/CMP502_2Dvt_14_0.png" />
+</div>
+</div>
+<p>Note that the object has rotated <em>anti-clockwise</em>. If you require a clockwise rotation, the angle must be negative. Python can still handle negative angles. When it handles negative angles, it is really modifying the rotation matrix as you have learned in class:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R_{-\theta_{z,{\underline{k}}}}=
+	\begin{pmatrix}
+	\cos(\theta_z) &amp; -\sin(\theta_z) &amp; 0  \\
+	\sin(\theta_z) &amp; \cos(\theta_z) &amp; 0  \\
+	0 &amp; 0 &amp; 1
+	\end{pmatrix}.
+\end{split}\]</div>
+</div>
+<div class="section" id="scaling">
+<h2><span class="section-number">1.3. </span>Scaling<a class="headerlink" href="#scaling" title="Permalink to this headline">¶</a></h2>
+<p>We learned in lectures to take the matrix of positions, and scale by the scaling matrix. In 2D, the scaling matrix looks like:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+S_{S_x,~S_y}=
+\begin{pmatrix}
+	S_x &amp; 0 &amp; 0 \\
+	0 &amp; S_y &amp; 0 \\
+	0 &amp; 0 &amp; 1
+	\end{pmatrix}
+\end{split}\]</div>
+<p>We’ll stretch the object twice in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(2.5\times\)</span> in <span class="math notranslate nohighlight">\(y\)</span>, which fixes <span class="math notranslate nohighlight">\(S_x\)</span> and <span class="math notranslate nohighlight">\(S_y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+S_{S_x,~S_y}=
+\begin{pmatrix}
+	2 &amp; 0 &amp; 0 \\
+	0 &amp; 2.5 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+	\end{pmatrix}.
+\end{split}\]</div>
+<p>This can be easily implemented in Python as a matrix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll take our coordinates (in homogenous form), and multiply by this scaling matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">*</span><span class="n">Sxy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For plotting purposes, we’ll undo our operations from earlier (Python makes it easier to plot things if fed a certain structure): we’ll use the transpose command again to leave <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinates in the first and second rows. Then we’ll be able to plot the result and overlay the original square once more.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newp</span> <span class="o">=</span> <span class="n">sp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">x_vals1</span> <span class="o">=</span> <span class="p">[</span><span class="n">newp</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]]</span>
+<span class="n">y_vals1</span> <span class="o">=</span> <span class="p">[</span><span class="n">newp</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]]</span>
+<span class="n">slx</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_vals1</span><span class="p">,</span><span class="n">x_vals1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sly</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_vals1</span><span class="p">,</span><span class="n">y_vals1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lets now plot the results, showing the scaled square in red and original square in black:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">slx</span><span class="p">,</span> <span class="n">sly</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lx</span><span class="p">,</span> <span class="n">ly</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP502_2Dvt_24_0.png" src="../_images/CMP502_2Dvt_24_0.png" />
+</div>
+</div>
+<p>You can see that the object has been doubled in size in <span class="math notranslate nohighlight">\(x\)</span>, while it is <span class="math notranslate nohighlight">\(2.5\times\)</span> bigger in <span class="math notranslate nohighlight">\(y\)</span>. Note also that the positions whose coordinate elements equal zero are <em>unaffected</em> by the scaling: they remain at zero!</p>
+</div>
+<div class="section" id="translation">
+<h2><span class="section-number">1.4. </span>Translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h2>
+<p>The final common operation we’ll deal with is a translation. In the lectures, translating an object by an amount <span class="math notranslate nohighlight">\(x_A\)</span> in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y_A\)</span> in <span class="math notranslate nohighlight">\(y\)</span> is achieved using the following matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+T_{\underline{v}}=
+	\begin{pmatrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	x_{A} &amp; y_{A} &amp; 1
+	\end{pmatrix}
+\end{split}\]</div>
+<p>Note that all other operations (rotation and scaling) for 2D positions can in principle be contained in a <span class="math notranslate nohighlight">\(2\times2\)</span> matrix; a translation requires one more row and column than the number of dimensions we are working with. Hence to translate a 2D position, we require a <span class="math notranslate nohighlight">\(3\times3\)</span> matrix. This is also why we need homogenous coordinates, so that we can couple translation with other transformations, filling in the missing dimensions as needed.</p>
+<p>In this demo, we’ll translate by <span class="math notranslate nohighlight">\(10\)</span> in <span class="math notranslate nohighlight">\(x\)</span> (<span class="math notranslate nohighlight">\(x_A=10\)</span>) and <span class="math notranslate nohighlight">\(8\)</span> in <span class="math notranslate nohighlight">\(y\)</span> (<span class="math notranslate nohighlight">\(y_A=8\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+                <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once again we post-multiply our (transposed stacked arrays of) coordinates by this matrix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tp</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">*</span><span class="n">Tv</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plotting the image will show how the original object has been translated in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> (with translated image in turqoise):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newtp</span> <span class="o">=</span> <span class="n">Tp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">x_vals3</span> <span class="o">=</span> <span class="p">[</span><span class="n">newtp</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]]</span>
+<span class="n">y_vals3</span> <span class="o">=</span> <span class="p">[</span><span class="n">newtp</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]]</span>
+<span class="n">tlx</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_vals3</span><span class="p">,</span><span class="n">x_vals3</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">tly</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_vals3</span><span class="p">,</span><span class="n">y_vals3</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tlx</span><span class="p">,</span> <span class="n">tly</span><span class="p">,</span> <span class="s1">&#39;co&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lx</span><span class="p">,</span> <span class="n">ly</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP502_2Dvt_32_0.png" src="../_images/CMP502_2Dvt_32_0.png" />
+</div>
+</div>
+<p>As expected, the object has been translated by the expected amount in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
+</div>
+<div class="section" id="rotation-and-scaling-at-the-origin">
+<h2><span class="section-number">1.5. </span>Rotation and scaling at the origin<a class="headerlink" href="#rotation-and-scaling-at-the-origin" title="Permalink to this headline">¶</a></h2>
+<p>One thing mentioned in the lectures is that rotation and scaling must occur at the origin. Let’s examine this more, with Python handling the mathematical operations.
+We’ve already seen what happens when we rotate an object whose bottom left corner is already at the origin. <strong>What happens if we rotate an object without first moving it to the origin?</strong></p>
+<p>To explore this, we’ll combine the rotation and translation operations we saw earlier, <em>but</em> explore what happens if we apply the transformations in two different orders: (i) translate then rotate; (ii) rotate then translate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TRp</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">*</span><span class="n">Tv</span><span class="o">*</span><span class="n">R_theta</span>
+<span class="n">TpR</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">*</span><span class="n">R_theta</span><span class="o">*</span><span class="n">Tv</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the lectures we saw that the order of these operations is <strong>not</strong> interchangeable. Will our test also confirm this?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newtrp</span> <span class="o">=</span> <span class="n">TRp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">x_vals4</span> <span class="o">=</span> <span class="p">[</span><span class="n">newtrp</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]]</span>
+<span class="n">y_vals4</span> <span class="o">=</span> <span class="p">[</span><span class="n">newtrp</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]]</span>
+<span class="n">trlx</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_vals4</span><span class="p">,</span><span class="n">x_vals4</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">trly</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_vals4</span><span class="p">,</span><span class="n">y_vals4</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">newtpr</span> <span class="o">=</span> <span class="n">TpR</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">x_vals5</span> <span class="o">=</span> <span class="p">[</span><span class="n">newtpr</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]]</span>
+<span class="n">y_vals5</span> <span class="o">=</span> <span class="p">[</span><span class="n">newtpr</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]]</span>
+<span class="n">rtlx</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_vals5</span><span class="p">,</span><span class="n">x_vals5</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">rtly</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_vals5</span><span class="p">,</span><span class="n">y_vals5</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trlx</span><span class="p">,</span> <span class="n">trly</span><span class="p">,</span> <span class="s1">&#39;mo&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rtlx</span><span class="p">,</span> <span class="n">rtly</span><span class="p">,</span> <span class="s1">&#39;yo&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lx</span><span class="p">,</span> <span class="n">ly</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP502_2Dvt_38_0.png" src="../_images/CMP502_2Dvt_38_0.png" />
+</div>
+</div>
+<p>In the above example, the specific operations are the same: the only thing that has changed is the <strong>order of operation</strong>.</p>
+<ul class="simple">
+<li><p>With the magenta square, the translation acts first. This means the rotation also rotates the space in between the object and the origin.</p></li>
+<li><p>With the yellow square, the object is rotated first, at the origin. The rotated object is then translated. Note that the coordinate which was originally at the origin lies at <span class="math notranslate nohighlight">\((10,8)\)</span>: the rotation didnt affect this location, so it’s new position effectively only shows evidence of translation.</p></li>
+</ul>
+<p><strong>The order of operations in transformations is crucial.</strong></p>
+<p>If a rotation or scaling operation is required, make sure that the object is moved to the origin first, then rotated, then scaled, then moved back to the required location. This is much easier than rotating the whole system, then attempting to find where the object has moved to! This is known as the <strong>standard sequence</strong> of matrix transformations.</p>
+</div>
+<div class="section" id="over-to-you">
+<h2><span class="section-number">1.6. </span>Over to You<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
+<p>These are very simple examples, designed to show off the mathematics you have been taught in class on specific objects. Once you are confident in the mathematical steps, we can use numerical codes like Python to perform the calculations for us.</p>
+<p>The other powerful aspect of these tools is that you can create <strong>a single</strong> matrix which contains all the information about several transformations. You can then apply this single matrix to any number of coordinates that must be transformed. You don’t need to perform each step to each set of coordinates, and you can store the transformation in case you need to transform even more coordinates later, without resconstructing the matrices again.</p>
+<p>Try implementing some of the transformations required by the tutorial calculations, and see if you can visually confirm your findings using Python.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./CMP502"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../CMP502-505_pythonintro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to Python</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="CMP502_3Dvt1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Coordinate Transformations in 3D</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By James Threlfall<br/>
+    
+        &copy; Copyright 2025.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

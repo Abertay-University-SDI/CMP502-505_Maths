@@ -1,0 +1,798 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6. Complex Numbers &#8212; CMP502-505 Mathematics with Python</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Quaternions (and rotations!)" href="CMP502_quats.html" />
+    <link rel="prev" title="5. Projection 2" href="CMP502_proj2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/Abertay_Uni_Black.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CMP502-505 Mathematics with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502-505_pythonintro.html">
+   Python Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CMP502
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_2Dvt.html">
+   1. 2D Viewing Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_3Dvt1.html">
+   2. 3D Viewing Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_3Dvt2.html">
+   3. More 3D Viewing Transforms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_proj1.html">
+   4. Orthographic Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_proj2.html">
+   5. Perspective Projection
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. Complex Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP502_quats.html">
+   7. Quaternions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CMP505
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../outro.html">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/CMP502/CMP502_complexnos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Abertay-University-SDI/CMP502-505_Maths"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Abertay-University-SDI/CMP502-505_Maths/issues/new?title=Issue%20on%20page%20%2FCMP502/CMP502_complexnos.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Abertay-University-SDI/CMP502-505_Maths/main?urlpath=lab/tree/CMP502/CMP502_complexnos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Abertay-University-SDI/CMP502-505_Maths/blob/main/CMP502/CMP502_complexnos.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   6.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-arithmetic-operations">
+   6.2. Basic arithmetic operations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#complex-number-division">
+   6.3. Complex number division
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualising-complex-numbers">
+   6.4. Visualising complex numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cmath">
+   6.5. Cmath
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rotations-with-complex-numbers">
+   6.6. Rotations with Complex Numbers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lecture-example-rotate-a-position-using-complex-numbers">
+     6.6.1. Lecture example: rotate a position using complex numbers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#over-to-you">
+   6.7. Over to you!
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Complex Numbers</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   6.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-arithmetic-operations">
+   6.2. Basic arithmetic operations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#complex-number-division">
+   6.3. Complex number division
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualising-complex-numbers">
+   6.4. Visualising complex numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cmath">
+   6.5. Cmath
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rotations-with-complex-numbers">
+   6.6. Rotations with Complex Numbers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lecture-example-rotate-a-position-using-complex-numbers">
+     6.6.1. Lecture example: rotate a position using complex numbers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#over-to-you">
+   6.7. Over to you!
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="complex-numbers">
+<h1><span class="section-number">6. </span>Complex Numbers<a class="headerlink" href="#complex-numbers" title="Permalink to this headline">¶</a></h1>
+<p>Complex numbers are a rare example of more abstract mathematical ideas than can be useful practically. They are useful in a number of different mathematical fields and so have very wide implications on a number of branches of mathematics. However, in the field of computer graphics they have interesting properties which will allow us to describe rotations in a new and somewhat unexpected way. In order to perform rotations, we must understand the basic properties of complex numbers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">FancyArrowPatch</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="introduction">
+<h2><span class="section-number">6.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>As seen in the lectures, complex numbers comprise of a real part and an imaginary part, with the letter “i” indicating which is which. In general a complex number is denoted as</p>
+<div class="math notranslate nohighlight">
+\[
+z = A+iB,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is the real part, <span class="math notranslate nohighlight">\(B\)</span> is the imaginary part and <span class="math notranslate nohighlight">\(i=\sqrt{-1}\)</span>.</p>
+<p>To represent complex numbers in Python, there are two approaches. Python will interpret a number as complex if we append the second value in a sum with the letter j (j is a more common letter in engineering to represent the square-root of -1; i is used, for example, to represent electric current in physics equations):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="n">j</span>
+<span class="n">z2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="n">j</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="basic-arithmetic-operations">
+<h2><span class="section-number">6.2. </span>Basic arithmetic operations<a class="headerlink" href="#basic-arithmetic-operations" title="Permalink to this headline">¶</a></h2>
+<p>When we add or subtract complex numbers, we must add or subtract the real parts and imaginary components separately:</p>
+<div class="math notranslate nohighlight">
+\[
+(A+iB)+(C+iD)=(A+C)+i(B+D).
+\]</div>
+<p>Python understands this too:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;z1+z2=&quot;</span><span class="p">,</span><span class="n">z1</span><span class="o">+</span><span class="n">z2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;z1-z2=&quot;</span><span class="p">,</span><span class="n">z1</span><span class="o">-</span><span class="n">z2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z1+z2= (-1+0j)
+z1-z2= (3+4j)
+</pre></div>
+</div>
+</div>
+</div>
+<p>When we multiply complex numbers, we create a product of four terms:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+(A+iB)⋅(C+iD)&amp;=A \cdot C+iB\cdot C+A\cdot iD+iB\cdot iD, \\
+&amp;=AC+i(BC+AD)+i^2BD=(AC-BD)+i(BC+AD).
+\end{align}
+\end{split}\]</div>
+<p>The result is also a complex number, with the real part given as the addition of two of the pairs, and the complex part given by adding the remaining two.</p>
+<p>The key thing here is knowing how to treat <span class="math notranslate nohighlight">\(i\)</span>. We need to remember that when two imaginary numbers multiply, we need to take account of <span class="math notranslate nohighlight">\(i^2={\sqrt{-1}}^2=-1\)</span>. Python also knows that this is the case.</p>
+<p>For example:
+$<span class="math notranslate nohighlight">\(
+\begin{align}
+(1+2i)⋅(-2-2i)&amp;=1 \cdot -2+2i\cdot -2+1\cdot -2i+2i\cdot -2i. \\
+&amp;=-2+i(-4-2)-4i^2=(-2+4)-6i=2-6i
+\end{align}
+\)</span>$</p>
+<p>Let’s check using Python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;z1*z2=&quot;</span><span class="p">,</span><span class="n">z1</span><span class="o">*</span><span class="n">z2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z1*z2= (2-6j)
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we want to do some more advanced things with complex numbers in Python, we should use the “complex” datatype. This tells Python that we are serious about complex numbers and allows us access to more useful mathematical operations related to complex numbers. One example is the ability to immediately tell us what the conjugate of any given complex number is.</p>
+<p>From the lectures, we learned that the conjugate of a complex number, <span class="math notranslate nohighlight">\(\bar{z}\)</span>, has an imaginary component of opposite sign:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+z=A+iB,\\
+\bar{z}=A-iB.
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z3</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;z3= &quot;</span><span class="p">,</span><span class="n">z3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;conj(z3)=&quot;</span><span class="p">,</span><span class="n">z3</span><span class="o">.</span><span class="n">conjugate</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z3=  (3+1j)
+conj(z3)= (3-1j)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember too that any complex number multiplied by it’s conjugate must entirely be real (the two imaginary products cancel, while the <span class="math notranslate nohighlight">\(i^2\)</span> term becomes real).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;z3*conj(z3) = &quot;</span><span class="p">,</span><span class="n">z3</span><span class="o">*</span><span class="n">z3</span><span class="o">.</span><span class="n">conjugate</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z3*conj(z3) =  (10+0j)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="complex-number-division">
+<h2><span class="section-number">6.3. </span>Complex number division<a class="headerlink" href="#complex-number-division" title="Permalink to this headline">¶</a></h2>
+<p>The complex conjugate is really useful for dividing complex numbers. We can eliminate the presence of a complex term in the denominator by multiplying it by it’s conjugate; to balance this, we also multiply the numerator by the complex conjugate of the denominator.</p>
+<p>In the lectures we saw how this worked for a general complex number division:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{a+ib}{c+id}=\frac{(a+ib)(c-id)}{(c+id)(c-id)}=\frac{ac+i(bd)-i(ad)-i^2(bd)}{c^2+i(dc)-i(cd)-i^2(d^2)}=\frac{(ac+bd)+i(bc-ad)}{c^2+d^2}
+\]</div>
+<p>noting that in this example the conjugate of <span class="math notranslate nohighlight">\(z=c-id\)</span> is <span class="math notranslate nohighlight">\(\bar{z}=c+id\)</span>.</p>
+<p>We can confirm this approach by having Python carry out a complex division using the division operator, then carrying out the same calculation using the steps seen in lectures:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;z2/z3=&quot;</span><span class="p">,</span><span class="n">z2</span><span class="o">/</span><span class="n">z3</span><span class="p">)</span>
+<span class="n">numerator</span> <span class="o">=</span> <span class="n">z2</span><span class="o">*</span><span class="n">z3</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
+<span class="n">denominator</span> <span class="o">=</span> <span class="n">z3</span><span class="o">*</span><span class="n">z3</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ans=&quot;</span><span class="p">,</span> <span class="n">numerator</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">denominator</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">numerator</span><span class="o">/</span><span class="n">denominator</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z2/z3= (-0.7999999999999999-0.4j)
+ans= (-8-4j) / (10+0j) = (-0.8-0.4j)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualising-complex-numbers">
+<h2><span class="section-number">6.4. </span>Visualising complex numbers<a class="headerlink" href="#visualising-complex-numbers" title="Permalink to this headline">¶</a></h2>
+<p>One way to visualise complex numbers is to use the Argand diagram. In this diagram we plot the real component of the complex number as the <span class="math notranslate nohighlight">\(x\)</span>-coordinate, and the imaginary component as the <span class="math notranslate nohighlight">\(y\)</span>-coordinate.</p>
+<p>To show this, we’ll define a function called “argand”. The argument of this function is a complex number. Our function will return the location of this complex number on the Argand diagram, highlighting the <span class="math notranslate nohighlight">\(x\)</span>- and <span class="math notranslate nohighlight">\(y\)</span>-components:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">argand</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Function to create an argand diagram for a complex number a.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span><span class="p">],</span><span class="s1">&#39;ro-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="o">+</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span><span class="o">+</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="o">+</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span><span class="o">+</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">limit</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span> <span class="c1"># set limits for axis</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="o">-</span><span class="n">limit</span><span class="p">,</span><span class="n">limit</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="o">-</span><span class="n">limit</span><span class="p">,</span><span class="n">limit</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Imaginary&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Real&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lets see what happens if we test this with one of our earlier complex numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">argand</span><span class="p">([</span><span class="n">z3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP502_complexnos_17_0.png" src="../_images/CMP502_complexnos_17_0.png" />
+</div>
+</div>
+<p>You can see from the plot that the complex number <span class="math notranslate nohighlight">\(3+1j\)</span> is represented by travelling <span class="math notranslate nohighlight">\(3\)</span> along in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(1\)</span> up in <span class="math notranslate nohighlight">\(y\)</span>. This form of complex number is sometimes known as “Cartesian form”. One can alternatively express complex numbers in polar form, or “modulus and argument” form. For a complex number <span class="math notranslate nohighlight">\(z=A+iB\)</span>:</p>
+<ul class="simple">
+<li><p>The modulus of a complex number is the size of the line linking the Cartesian position and the origin, and is calculated as <span class="math notranslate nohighlight">\(|z|=\sqrt{A^2+B^2}\)</span>.</p></li>
+<li><p>The argument of a complex number is the angle subtended between the line linking the complex number and the origin, and the positive real axis.</p></li>
+</ul>
+<p>The argument, <span class="math notranslate nohighlight">\(\theta\)</span>, is calculated according to</p>
+<div class="math notranslate nohighlight">
+\[
+\theta=\tan^{-1}{\left(\frac{|B|}{|A|}\right)},
+\]</div>
+<p>when located in the positive <span class="math notranslate nohighlight">\(x\)</span> and positive <span class="math notranslate nohighlight">\(y\)</span> part of the diagram. If either <span class="math notranslate nohighlight">\(B\)</span> or <span class="math notranslate nohighlight">\(A\)</span> is positive one must add/subtract in order to form the argument of the complex number relative to the positive real axis.</p>
+<p>Most of the angle calculation methods baked into Python already take account of this, using the <em>atan2</em> function, or the <em>angle</em> command from numpy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">argz3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">z3</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">z3</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">argz3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">z3</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="nb">complex</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.43494882292201
+18.43494882292201
+116.56505117707799
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>atan2</em> is a fairly common function in several computer languages: you can find more information about it through e.g. Google and other search engines. The numpy command <em>angle</em> can handle complex datatypes as input, which can save use some effort compared to <em>atan2</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cmath">
+<h2><span class="section-number">6.5. </span>Cmath<a class="headerlink" href="#cmath" title="Permalink to this headline">¶</a></h2>
+<p>Python has an explicit package solely for manipulating complex numbers, called <em>cmath</em>. It goes far beyond our needs (complex numbers are an entire interesting branch of mathematics with wide-ranging implications and applications). Some of the more basic functions can be useful however: <em>cmath</em> can quickly and directly convert to/from polar form, for example using the <em>polar</em> command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import cmath for complex number operations</span>
+<span class="kn">import</span> <span class="nn">cmath</span>
+
+<span class="c1">#find the polar coordinates of complex number</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cmath</span><span class="o">.</span><span class="n">polar</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="n">j</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cmath</span><span class="o">.</span><span class="n">polar</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">5</span><span class="n">j</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.605551275463989, 0.982793723247329)
+(5.0990195135927845, 1.373400766945016)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="rotations-with-complex-numbers">
+<h2><span class="section-number">6.6. </span>Rotations with Complex Numbers<a class="headerlink" href="#rotations-with-complex-numbers" title="Permalink to this headline">¶</a></h2>
+<p>We now have a relatively clear idea of some of the most useful properties of complex numbers. We will need these concepts to understand longer forms of complex numbers called “Quaternions”, which are commonly used to rotate objects in 3D space.</p>
+<p>As a sneak peak of what we might expect from quaternions, we can also use complex numbers to rotate objects in 2D. The content of this section is strictly for information, and will not be examined upon. In the lectures we illustrated this idea with an example:</p>
+<div class="section" id="lecture-example-rotate-a-position-using-complex-numbers">
+<h3><span class="section-number">6.6.1. </span>Lecture example: rotate a position using complex numbers<a class="headerlink" href="#lecture-example-rotate-a-position-using-complex-numbers" title="Permalink to this headline">¶</a></h3>
+<p><strong>Rotate the coordinates <span class="math notranslate nohighlight">\((1,5)\)</span> by <span class="math notranslate nohighlight">\(60^o\)</span> counterclockwise about the origin using complex numbers.</strong></p>
+<p>Our first step is to express the coordinate as a complex number:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zp</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">5.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we must also express the rotation as a complex number. The modulus of the complex number must be one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">zr</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)),</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To carry out the rotation, we multiply both complex numbers together, with the rotation acting to the left of coordinate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">zr</span><span class="o">*</span><span class="n">zp</span>
+<span class="n">imstr</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">+</span><span class="si">{:.2f}</span><span class="s2">j&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">image</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imstr</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3.83+3.37j
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">R_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)),</span> <span class="mi">0</span><span class="p">],</span> 
+                     <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)),</span> <span class="mi">0</span><span class="p">],</span> 
+                     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span> 
+<span class="n">rp</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">*</span><span class="n">R_theta</span>
+<span class="n">rmstr</span><span class="o">=</span><span class="s2">&quot;(</span><span class="si">{:.2f}</span><span class="s2">,</span><span class="si">{:.2f}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">rp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;achieved with matrix transforms: &quot;</span><span class="p">,</span> <span class="n">rmstr</span><span class="p">)</span>
+<span class="n">lstr</span><span class="o">=</span><span class="s2">&quot;(</span><span class="si">{:.2f}</span><span class="s2">,</span><span class="si">{:.2f}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="mf">5.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="mf">5.</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;lectures stated im= &quot;</span><span class="p">,</span> <span class="n">lstr</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>achieved with matrix transforms:  (-3.83,3.37)
+lectures stated im=  (-3.83,3.37)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">zp</span><span class="o">.</span><span class="n">real</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">zp</span><span class="o">.</span><span class="n">imag</span><span class="p">],</span><span class="s1">&#39;bo-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+<span class="n">zpstr</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">+</span><span class="si">{:.2f}</span><span class="s2">j&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zp</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">zp</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">zp</span><span class="o">.</span><span class="n">real</span><span class="o">+</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">zp</span><span class="o">.</span><span class="n">imag</span><span class="o">+</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">zpstr</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">zp</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">zp</span><span class="o">.</span><span class="n">real</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">zp</span><span class="o">.</span><span class="n">imag</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">zp</span><span class="o">.</span><span class="n">real</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">image</span><span class="o">.</span><span class="n">real</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">image</span><span class="o">.</span><span class="n">imag</span><span class="p">],</span><span class="s1">&#39;ro-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+<span class="n">imstring</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">+</span><span class="si">{:.2f}</span><span class="s2">j&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">image</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">real</span><span class="o">+</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">imag</span><span class="o">+</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">imstr</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">image</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">image</span><span class="o">.</span><span class="n">real</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">image</span><span class="o">.</span><span class="n">imag</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">image</span><span class="o">.</span><span class="n">real</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+<span class="n">limit</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">image</span><span class="p">)))</span> <span class="c1"># set limits for axis</span>
+<span class="n">style</span><span class="o">=</span><span class="s2">&quot;Simple,tail_width=0.5,head_width=4,head_length=8&quot;</span>
+<span class="n">kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+<span class="n">a1</span> <span class="o">=</span> <span class="n">FancyArrowPatch</span><span class="p">((</span><span class="mf">0.5</span><span class="o">*</span><span class="n">zp</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">zp</span><span class="o">.</span><span class="n">imag</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">imag</span><span class="p">),</span><span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=0.3&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xmin</span><span class="o">=-</span><span class="n">limit</span><span class="p">,</span><span class="n">xmax</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=-</span><span class="n">limit</span><span class="p">,</span><span class="n">ymax</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+<span class="n">angstring</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">$^o$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.2</span><span class="o">*</span><span class="p">(</span><span class="n">zp</span><span class="o">.</span><span class="n">real</span><span class="o">+</span><span class="n">image</span><span class="o">.</span><span class="n">real</span><span class="p">),</span> <span class="mf">0.2</span><span class="o">*</span><span class="p">(</span><span class="n">zp</span><span class="o">.</span><span class="n">imag</span><span class="o">+</span><span class="n">image</span><span class="o">.</span><span class="n">imag</span><span class="p">),</span><span class="n">angstring</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Imaginary&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Real&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP502_complexnos_32_0.png" src="../_images/CMP502_complexnos_32_0.png" />
+</div>
+</div>
+<p>Thus we have confirmed the process: converting a 2D position to a complex number and multiplying it by a complex number representing the rotation achieves the <em>same</em> image location as carrying out a 2D graphics transformation!</p>
+<p>To achieve the same result in three dimensions, we have to use quaternions (as we will see shortly!)..</p>
+</div>
+</div>
+<div class="section" id="over-to-you">
+<h2><span class="section-number">6.7. </span>Over to you!<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
+<p>These examples are one way that we can use Python to illustrate some of our methods taught in lectures.</p>
+<p>Can you confirm some of the tutorial question solutions using Python? Can you plot these on the Argand diagram, or evaluate them in polar form? Can you pick a different position and perform a rotation to satisfy yourself that complex numbers and graphics transformations can achieve identical results..?</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./CMP502"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="CMP502_proj2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Projection 2</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="CMP502_quats.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Quaternions (and rotations!)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By James Threlfall<br/>
+    
+        &copy; Copyright 2025.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

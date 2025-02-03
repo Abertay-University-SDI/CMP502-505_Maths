@@ -1,0 +1,44 @@
+# Table of contents
+# JT2025: CMP502-505 Workbook (Abertay University)
+
+format: jb-book
+root: intro
+parts:
+- numbered: false
+  chapters:
+  - file: CMP502-505_pythonintro.ipynb
+    title: Python Introduction
+- caption: CMP502
+  numbered: true
+  chapters:
+  - file: CMP502/CMP502_2Dvt.ipynb
+    title: 2D Viewing Transformations
+  - file: CMP502/CMP502_3Dvt1.ipynb
+    title: 3D Viewing Transformations
+  - file: CMP502/CMP502_3Dvt2.ipynb
+    title: More 3D Viewing Transforms
+  - file: CMP502/CMP502_proj1.ipynb
+    title: Orthographic Projection
+  - file: CMP502/CMP502_proj2.ipynb
+    title: Perspective Projection
+  - file: CMP502/CMP502_complexnos.ipynb
+    title: Complex Numbers
+  - file: CMP502/CMP502_quats.ipynb
+    title: Quaternions
+- caption: CMP505
+  numbered: true
+  chapters:
+  - file: CMP505/CMP505_partialderivs.ipynb
+    title: Partial Derivatives
+  - file: CMP505/CMP505_curvsurf.ipynb
+    title: Curves and Surfaces
+  - file: CMP505/CMP505_rays1.ipynb
+    title: Rays Introduction
+  - file: CMP505/CMP505_rays2.ipynb
+    title: Rays 2D Boxes
+  - file: CMP505/CMP505_rays3.ipynb
+    title: Rays 3D Plane Segments
+  numbered: false
+  chapters:
+  - file: outro.md
+    title: Summary
