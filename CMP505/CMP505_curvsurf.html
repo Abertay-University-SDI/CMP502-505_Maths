@@ -1,0 +1,760 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curves and Surfaces &#8212; CMP502-505 Mathematics with Python</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/Abertay_Uni_Black.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CMP502-505 Mathematics with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502-505_pythonintro.html">
+   Python Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CMP502
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_2Dvt.html">
+   1. 2D Viewing Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_3Dvt1.html">
+   2. 3D Viewing Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_3Dvt2.html">
+   3. More 3D Viewing Transforms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_proj1.html">
+   4. Orthographic Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_proj2.html">
+   5. Perspective Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_complexnos.html">
+   6. Complex Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_quats.html">
+   7. Quaternions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CMP505
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../outro.html">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/CMP505/CMP505_curvsurf.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Abertay-University-SDI/CMP502-505_Maths"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Abertay-University-SDI/CMP502-505_Maths/issues/new?title=Issue%20on%20page%20%2FCMP505/CMP505_curvsurf.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Abertay-University-SDI/CMP502-505_Maths/main?urlpath=lab/tree/CMP505/CMP505_curvsurf.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Abertay-University-SDI/CMP502-505_Maths/blob/main/CMP505/CMP505_curvsurf.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameterisation">
+   Parameterisation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-parameterising-a-circle">
+     Example: parameterising a circle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-tangent-and-normal-to-circle">
+     Example: tangent and normal to circle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-tangent-to-a-parabola">
+     Example: tangent to a parabola?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#d-objects">
+   3D objects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-parabolic-bowl">
+   Example: Parabolic bowl
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#over-to-you">
+   Over to you
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Curves and Surfaces</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameterisation">
+   Parameterisation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-parameterising-a-circle">
+     Example: parameterising a circle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-tangent-and-normal-to-circle">
+     Example: tangent and normal to circle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-tangent-to-a-parabola">
+     Example: tangent to a parabola?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#d-objects">
+   3D objects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-parabolic-bowl">
+   Example: Parabolic bowl
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#over-to-you">
+   Over to you
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="curves-and-surfaces">
+<h1>Curves and Surfaces<a class="headerlink" href="#curves-and-surfaces" title="Permalink to this headline">¶</a></h1>
+<p>Games programming typically includes many objects of various types in game environments.</p>
+<p>In this workbook, we will examine how to construct different types of curves and surfaces using mathematical expressions. We will use the ideas of parameterisation to calculate tangents to curves in 2D and tangent planes and normals to surfaces in 3D.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Libraries</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">FancyArrowPatch</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span><span class="p">,</span> <span class="n">proj3d</span>
+<span class="kn">from</span> <span class="nn">sympy.utilities.lambdify</span> <span class="kn">import</span> <span class="n">lambdify</span><span class="p">,</span> <span class="n">implemented_function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#we&#39;ll need to draw arrows for the 3D bit:</span>
+<span class="k">class</span> <span class="nc">Arrow3D</span><span class="p">(</span><span class="n">FancyArrowPatch</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_verts3d</span> <span class="o">=</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span>
+
+    <span class="k">def</span> <span class="nf">do_3d_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">xs3d</span><span class="p">,</span> <span class="n">ys3d</span><span class="p">,</span> <span class="n">zs3d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verts3d</span>
+        <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span> <span class="o">=</span> <span class="n">proj3d</span><span class="o">.</span><span class="n">proj_transform</span><span class="p">(</span><span class="n">xs3d</span><span class="p">,</span> <span class="n">ys3d</span><span class="p">,</span> <span class="n">zs3d</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_positions</span><span class="p">((</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">]),(</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">ys</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="parameterisation">
+<h2>Parameterisation<a class="headerlink" href="#parameterisation" title="Permalink to this headline">¶</a></h2>
+<p>Parameterisation is a tool that we can use to simplify the expression of many curves and surfaces.</p>
+<p>Mapping curves in 2D requires us to store two positions in Cartesian space: <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>However, curves are continuous: often the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> positions are related, and are functions of one single parameter. By working with parameters, and knowing that we can convert these back to real space, we can often reduce the complexity of the problem.</p>
+<p>Computationally, this is equivalent to using a single function to generate a range of positions on a curve, rather than storing two (possibly large) arrays of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> positions.</p>
+<p>Parameterisation has another advantage: tangents to curves (in 2D) and tangent planes and normals (in 3D) can be easily calculated using the parameterised form of the curve or surface.</p>
+<div class="section" id="example-parameterising-a-circle">
+<h3>Example: parameterising a circle<a class="headerlink" href="#example-parameterising-a-circle" title="Permalink to this headline">¶</a></h3>
+<p>Let’s say we want to plot the circle <span class="math notranslate nohighlight">\(x^2+y^2=4\)</span>.
+We need to create, store and plot every pair of positions <span class="math notranslate nohighlight">\((x,y)\)</span> which satisfy this equation.
+This will create two arrays of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> values as seen below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">F</span><span class="p">,[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">#contour where x^2+y^2-4=0</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP505_curvsurf_5_0.png" src="../_images/CMP505_curvsurf_5_0.png" />
+</div>
+</div>
+<p>This approach is computationally inefficient.</p>
+<p>We know from experience that the equation of the circle seen above is satisfied by expressions</p>
+<div class="math notranslate nohighlight">
+\[
+x = 2\cos{(t)},~~~ y = 2\sin{(t)}.
+\]</div>
+<p>Each coordinate, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, is controlled by a function of a single parameter, which we will call <span class="math notranslate nohighlight">\(t\)</span>; in this example, this physically is equivalent to an angle. By expressing our coordinates in this way, we have reduced the problem: we now only need to know a range of parameter values, and the functions to relate the parameter back to real space. Computationally, we no longer need to store two position arrays, but now can work out the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> values based on a single array of angles:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">F</span><span class="p">,[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">#contour where x^2+y^2-4=0</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;parameterised eqn.&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP505_curvsurf_7_0.png" src="../_images/CMP505_curvsurf_7_0.png" />
+</div>
+</div>
+<p>In the above plot, we have overlaid the parameterised versions of the curve onto a contour of the original equation, and they are identical.</p>
+</div>
+<div class="section" id="example-tangent-and-normal-to-circle">
+<h3>Example: tangent and normal to circle<a class="headerlink" href="#example-tangent-and-normal-to-circle" title="Permalink to this headline">¶</a></h3>
+<p>What is even neater is that this parameterisation allows us to also calculate a tangent to the circle at any given position. From this we can also easily calculate the normal to the curve at any point.</p>
+<p>The tangent vector at a given point depends on the rate of change of the position vector with respect to the parameter. The normal takes the slope of the tangent and inverts it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span>  <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span> <span class="c1">#parameter</span>
+<span class="n">r</span>  <span class="o">=</span> <span class="p">[</span> <span class="mi">2</span><span class="o">*</span><span class="n">sym</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span>     <span class="mi">2</span><span class="o">*</span><span class="n">sym</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span> <span class="c1">#position r(t)</span>
+<span class="n">dr</span> <span class="o">=</span> <span class="p">[</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">t</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">t</span><span class="p">)</span> <span class="p">]</span> <span class="c1">#tangent, dr/dt</span>
+<span class="c1"># tangent location in parameter space (degrees)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="c1">#turn rx and ry into functions to plot them</span>
+<span class="n">xf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">yf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#specify parameter range</span>
+<span class="n">tvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="c1"># calculate x and y arrays of positions based on t</span>
+<span class="n">xvals</span> <span class="o">=</span> <span class="n">xf</span><span class="p">(</span><span class="n">tvals</span><span class="p">)</span>
+<span class="n">yvals</span> <span class="o">=</span> <span class="n">yf</span><span class="p">(</span><span class="n">tvals</span><span class="p">)</span>
+<span class="c1">#plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span><span class="n">yvals</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;r(t)&#39;</span><span class="p">)</span>
+<span class="c1"># location where tangent calculated</span>
+<span class="n">xp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">t</span><span class="p">:</span><span class="n">t1</span><span class="p">}))</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">t</span><span class="p">:</span><span class="n">t1</span><span class="p">}))</span>
+<span class="c1"># to draw tangent line, need gradient</span>
+<span class="c1"># gradient can be infinite if dx=0</span>
+<span class="k">if</span> <span class="n">dr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">t</span><span class="p">:</span><span class="n">t1</span><span class="p">})</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;avoiding divide by zero&#39;</span><span class="p">)</span>
+    <span class="n">slp</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">slp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">t</span><span class="p">:</span><span class="n">t1</span><span class="p">})</span><span class="o">/</span><span class="n">dr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">t</span><span class="p">:</span><span class="n">t1</span><span class="p">}))</span>
+<span class="c1">#ax.plot(xp,yp,&#39;ro&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axline</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">],</span><span class="n">slope</span><span class="o">=</span><span class="n">slp</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dr/dt&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axline</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">],</span><span class="n">slope</span><span class="o">=-</span><span class="mi">1</span><span class="o">/</span><span class="n">slp</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="s1">&#39;ko&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;r(t=t1)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP505_curvsurf_10_0.png" src="../_images/CMP505_curvsurf_10_0.png" />
+</div>
+</div>
+<p>In the above example, the tangent is calculated by differentiating the position (stored in Python as a 2-element list) with respect to the parameter ‘’t’’. We should be able to do this differentiation stage by hand. Because Python carries out the differentiation, and symbolic computation doesn’t marry up well with the plotting functions in Python, this plotting routine looks longer than perhaps it needs to be.</p>
+<p><strong>Challenge: re-run this example for a different value of t1, to see how if the code successfully calculates the tangent and normal (confirm visually)</strong></p>
+<p>The advantage here is that Python can do this for <strong>any</strong> parameterised curve.
+Let’s prove this by making up a parameterised curve and attempting to evaluate the tangent to the curve at a specific point:</p>
+</div>
+<div class="section" id="example-tangent-to-a-parabola">
+<h3>Example: tangent to a parabola?<a class="headerlink" href="#example-tangent-to-a-parabola" title="Permalink to this headline">¶</a></h3>
+<p><strong>Determine the tangent vector and normal vector for the curve <span class="math notranslate nohighlight">\(\vec{\mathbf{r}} = (1-u){\vec{\mathbf{i}}}+2u^2{\vec{\mathbf{j}}}\)</span> at the point <span class="math notranslate nohighlight">\(u=1\)</span>.</strong></p>
+<p>(note this example is inspired by Tutorial Q1(i) on Curves and Surfaces: Q1(i) is actually a straight line and hence its tangent is a bit boring to pick as an example - feel free to modify this example as you see fit, if you want to check the answer of Q1(i) for yourself!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span>  <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span> <span class="c1">#parameter</span>
+<span class="n">r</span>  <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">,</span>     <span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">]</span> <span class="c1">#position r(t)</span>
+<span class="n">dr</span> <span class="o">=</span> <span class="p">[</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">u</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">u</span><span class="p">)</span> <span class="p">]</span> <span class="c1">#tangent, dr/dt</span>
+<span class="c1"># tangent location in parameter space (degrees)</span>
+<span class="n">u1</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1">#turn rx and ry into functions to plot them</span>
+<span class="n">xf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">yf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#specify parameter range</span>
+<span class="n">uvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="c1"># calculate x and y arrays of positions based on t</span>
+<span class="n">xvals</span> <span class="o">=</span> <span class="n">xf</span><span class="p">(</span><span class="n">uvals</span><span class="p">)</span>
+<span class="n">yvals</span> <span class="o">=</span> <span class="n">yf</span><span class="p">(</span><span class="n">uvals</span><span class="p">)</span>
+<span class="c1">#plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span><span class="n">yvals</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;r(u)&#39;</span><span class="p">)</span>
+<span class="c1"># location where tangent calculated</span>
+<span class="n">xp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">u1</span><span class="p">}))</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">u1</span><span class="p">}))</span>
+<span class="c1"># to draw tangent line, need gradient</span>
+<span class="c1"># gradient can be infinite if dx=0</span>
+<span class="k">if</span> <span class="n">dr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">u1</span><span class="p">})</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;avoiding divide by zero&#39;</span><span class="p">)</span>
+    <span class="n">slp</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">slp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">u1</span><span class="p">})</span><span class="o">/</span><span class="n">dr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">u1</span><span class="p">}))</span>
+<span class="c1">#ax.plot(xp,yp,&#39;ro&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axline</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">],</span><span class="n">slope</span><span class="o">=</span><span class="n">slp</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dr/du&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axline</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">],</span><span class="n">slope</span><span class="o">=-</span><span class="mi">1</span><span class="o">/</span><span class="n">slp</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="s1">&#39;ko&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;r(u=u1)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP505_curvsurf_13_0.png" src="../_images/CMP505_curvsurf_13_0.png" />
+</div>
+</div>
+<p>Seen above, the function is a parabola in <span class="math notranslate nohighlight">\(y\)</span>, but the derivative of the function always produces the tangent curve which just grazes the curve at the required position.</p>
+</div>
+</div>
+<div class="section" id="d-objects">
+<h2>3D objects<a class="headerlink" href="#d-objects" title="Permalink to this headline">¶</a></h2>
+<p>In 2D, we have seen that a parameterised curve (which has a position vector as a function of a single parameter) can yield an expression which describes the tangent to the curve (by ordinary differentiation of the function with respect to the parameter).</p>
+<p>In 3D, surfaces are commonly described as a function of two parameters (commonly described using the letters <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>), and have the form:</p>
+<div class="math notranslate nohighlight">
+\[
+{\vec{\mathbf{S}}}(u,v)=x(u,v){\vec{\mathbf{i}}}+y(u,v){\vec{\mathbf{j}}}+z(u,v){\vec{\mathbf{k}}}
+\]</div>
+<p>In the lectures we saw that two tangent vectors are created, by partially differentiating the surface expression with respect to each parameter:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+{\vec{\mathbf{t}}}_u = \frac{\partial{\vec{\mathbf{S}}}}{\partial u}=\frac{\partial x}{\partial u}{\vec{\mathbf{i}}}+\frac{\partial y}{\partial u}{\vec{\mathbf{j}}}+\frac{\partial z}{\partial u}{\vec{\mathbf{k}}},\\
+{\vec{\mathbf{t}}}_v = \frac{\partial{\vec{\mathbf{S}}}}{\partial v}=\frac{\partial x}{\partial v}{\vec{\mathbf{i}}}+\frac{\partial y}{\partial v}{\vec{\mathbf{j}}}+\frac{\partial z}{\partial v}{\vec{\mathbf{k}}}.
+\end{split}\]</div>
+<p><strong>For a refresher on calculation of partial derivatives, please view the <a class="reference external" href="https://abertay-university-sdi.github.io/MAT201_Python/methods/MAT201M_PartialDerivs.html">partial derivatives workbook</a>.</strong></p>
+<p>The tangent vectors <span class="math notranslate nohighlight">\({\vec{\mathbf{t}}}_u\)</span> and <span class="math notranslate nohighlight">\({\vec{\mathbf{t}}}_v\)</span> together define an entire plane:</p>
+<p><img alt="Picture" src="https://github.com/Abertay-University-SDI/MAT201_Python/blob/main/methods/Tangent_plane.jpg?raw=1" /></p>
+<p>We know that 3D planes all have the same form of equation:</p>
+<div class="math notranslate nohighlight">
+\[
+ax+by+cz=d.
+\]</div>
+<p>We also know that a plane with this equation has a normal <span class="math notranslate nohighlight">\(\vec{\mathbf{n}} = a{\vec{\mathbf{i}}}+b{\vec{\mathbf{j}}}+c{\vec{\mathbf{k}}}\)</span>, which means if we can calculate the normal vector to the surface, we can use the point where the tangent meets the surface to identify the tangent plane equation.</p>
+<p>We saw in the lectures that the normal to the surface is calculated using the vector (cross) product of the tangent vectors, to create a vector perpendicular to both tangent vectors.</p>
+<p>To calculate the equation for a tangent plane at a specific point on any 3D object, we have to:</p>
+<ol class="simple">
+<li><p>Calculate the tangent vectors <span class="math notranslate nohighlight">\({\vec{\mathbf{t}}}_u\)</span> and <span class="math notranslate nohighlight">\({\vec{\mathbf{t}}}_v\)</span>.</p></li>
+<li><p>Evaluate the cross product of these to produce a normal to the surface at a specific point <span class="math notranslate nohighlight">\(u=u_1,v=v_1\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\vec{\mathbf{n}} = {\vec{\mathbf{t}}}_u \times {\vec{\mathbf{t}}}_v = a{\vec{\mathbf{i}}}+b{\vec{\mathbf{j}}}+c{\vec{\mathbf{k}}}.
+\]</div>
+<ol class="simple">
+<li><p>The values of <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> can immediately be entered into the tangent plane equation <span class="math notranslate nohighlight">\(ax+by+cz=d\)</span>.</p></li>
+<li><p>Substitute the parameter values <span class="math notranslate nohighlight">\((u_1,v_1)\)</span> into the expression which describes the surface <span class="math notranslate nohighlight">\({\vec{\mathbf{S}}}(u,v)\)</span>, and determine <span class="math notranslate nohighlight">\(x(u_1,v_1)\)</span>, <span class="math notranslate nohighlight">\(y(u_1,v_1)\)</span> and <span class="math notranslate nohighlight">\(z(u_1,v_1)\)</span>.</p></li>
+<li><p>Use these values to determine d:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+d = ax(u_1,v_1)+by(u_1,v_1)+cz(u_1,v_1).
+\]</div>
+</div>
+<div class="section" id="example-parabolic-bowl">
+<h2>Example: Parabolic bowl<a class="headerlink" href="#example-parabolic-bowl" title="Permalink to this headline">¶</a></h2>
+<p>We will use the example from the lectures of the parabolic bowl, whose surface is governed by the equation:</p>
+<div class="math notranslate nohighlight">
+\[
+{\vec{\mathbf{S}}}(r,\theta)=r\cos{\theta}{\vec{\mathbf{i}}}+r\sin{\theta}{\vec{\mathbf{j}}}+r^2{\vec{\mathbf{k}}}.
+\]</div>
+<p>For this example we will plot the normal and create a tangent plane for this equation at a position <span class="math notranslate nohighlight">\(r=2\)</span> and <span class="math notranslate nohighlight">\(\theta=0\)</span>.</p>
+<p>We will have python calculate the partial derivatives, the cross product and plot the surface, the normal and the tangent plane:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define symbols and 3D parametric functions</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">theta</span>  <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;theta&#39;</span><span class="p">)</span> <span class="c1">#parameters</span>
+<span class="n">s</span>  <span class="o">=</span> <span class="p">[</span> <span class="n">r</span><span class="o">*</span><span class="n">sym</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">r</span><span class="o">*</span><span class="n">sym</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="p">]</span> <span class="c1">#position r(t)</span>
+<span class="n">dsdr</span> <span class="o">=</span> <span class="p">[</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">r</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">r</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">r</span><span class="p">)</span> <span class="p">]</span> <span class="c1">#tangent, ds/dr</span>
+<span class="n">dsdtheta</span> <span class="o">=</span> <span class="p">[</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">theta</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">theta</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">theta</span><span class="p">)</span> <span class="p">]</span> <span class="c1">#tangent, ds/dtheta</span>
+
+<span class="n">v1</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">dsdr</span><span class="p">)</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">dsdtheta</span><span class="p">)</span>
+<span class="n">cp</span> <span class="o">=</span> <span class="n">v1</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
+
+<span class="c1"># tangent location in parameter space (degrees)</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">theta1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="c1">#turn rx and ry into functions to plot them</span>
+<span class="n">xf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">r</span><span class="p">,</span><span class="n">theta</span><span class="p">],</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">yf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">r</span><span class="p">,</span><span class="n">theta</span><span class="p">],</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">zf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">r</span><span class="p">,</span><span class="n">theta</span><span class="p">],</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1">#set up parameter ranges</span>
+<span class="n">rvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>  <span class="c1">#range of parameter r</span>
+<span class="n">thetavals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span> <span class="c1">#range of parameter theta</span>
+<span class="n">myr</span><span class="p">,</span> <span class="n">myt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">rvals</span><span class="p">,</span><span class="n">thetavals</span><span class="p">)</span> <span class="c1"># make a grid of values</span>
+
+<span class="c1"># calculate x,y,z arrays of positions based on r and theta</span>
+<span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="n">zvals</span> <span class="o">=</span> <span class="n">xf</span><span class="p">(</span><span class="n">myr</span><span class="p">,</span><span class="n">myt</span><span class="p">),</span> <span class="n">yf</span><span class="p">(</span><span class="n">myr</span><span class="p">,</span><span class="n">myt</span><span class="p">),</span> <span class="n">zf</span><span class="p">(</span><span class="n">myr</span><span class="p">,</span><span class="n">myt</span><span class="p">)</span>
+
+<span class="c1">#point on surface</span>
+<span class="n">xp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">r</span><span class="p">:</span><span class="n">r1</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span><span class="n">theta1</span><span class="p">}))</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">r</span><span class="p">:</span><span class="n">r1</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span><span class="n">theta1</span><span class="p">}))</span>
+<span class="n">zp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">r</span><span class="p">:</span><span class="n">r1</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span><span class="n">theta1</span><span class="p">}))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">zp</span><span class="p">]</span>
+
+<span class="c1"># unit normal to surface</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">r</span><span class="p">:</span> <span class="n">r1</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="n">theta1</span><span class="p">}))</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">r</span><span class="p">:</span> <span class="n">r1</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="n">theta1</span><span class="p">}))</span>
+<span class="n">nz</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">r</span><span class="p">:</span> <span class="n">r1</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="n">theta1</span><span class="p">}))</span>
+<span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1">#tangent plane</span>
+<span class="n">d</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">tpeqn</span> <span class="o">=</span> <span class="s2">&quot;tangent plane eqn: </span><span class="si">{:.2f}</span><span class="s2">x+</span><span class="si">{:.2f}</span><span class="s2">y+</span><span class="si">{:.2f}</span><span class="s2">z=</span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">d</span><span class="p">)</span>
+
+<span class="n">xlim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span>
+<span class="n">zlim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">*</span><span class="n">xlim</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">*</span><span class="n">ylim</span><span class="p">))</span>
+<span class="n">zz</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">xx</span> <span class="o">+</span> <span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">yy</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1">#zz[zz&gt;6] = np.nan</span>
+<span class="c1">#zz[zz&lt;-2] = np.nan</span>
+
+<span class="c1"># plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="s2">&quot;3d&quot;</span><span class="p">},</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="o">*</span><span class="n">zlim</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="n">zvals</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;parabolic bowl&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">zp</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
+<span class="n">arrow_prop_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">mutation_scale</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-|&gt;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">shrinkA</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">shrinkB</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Arrow3D</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span> <span class="n">xp</span><span class="o">-</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">yp</span><span class="p">,</span> <span class="n">yp</span><span class="o">-</span><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">zp</span><span class="p">,</span> <span class="n">zp</span><span class="o">-</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="o">**</span><span class="n">arrow_prop_dict</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;tangent plane&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="n">tpeqn</span><span class="p">)</span>
+<span class="c1">#ax.legend()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP505_curvsurf_18_0.png" src="../_images/CMP505_curvsurf_18_0.png" />
+</div>
+</div>
+<p>In the result you can see the bowl, with the tangent plane grazing the bowl at the chosen location.</p>
+<p><strong>Challenge: re-run this example for a different value of <span class="math notranslate nohighlight">\(r\)</span> or <span class="math notranslate nohighlight">\(\theta\)</span>, to see if the code successfully calculates the tangent plane and normal (confirm visually)</strong></p>
+<p>Thus, we have verified that Python carries out the same mathematical operations we learned in the lectures, if we want to calculate a normal to a surface or its tangent plane.</p>
+</div>
+<div class="section" id="over-to-you">
+<h2>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
+<p>What about some different surfaces? Can you use the calculation and plotting tools you have been given to examine spheres, or cones, or cylinders?</p>
+<p>What about importing the parametric expressions from the tutorial questions to examine what they look like visually, and if they return the correct normals and plane equations using Python as found by hand?</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./CMP505"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By James Threlfall<br/>
+    
+        &copy; Copyright 2025.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
