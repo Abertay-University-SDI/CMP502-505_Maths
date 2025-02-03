@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Partial Derivatives &#8212; CMP502-505 Mathematics with Python</title>
+    <title>1. Partial Derivatives &#8212; CMP502-505 Mathematics with Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,6 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Curves and Surfaces" href="CMP505_curvsurf.html" />
+    <link rel="prev" title="7. Quaternions (and rotations!)" href="../CMP502/CMP502_quats.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -152,10 +154,37 @@ const thebe_selector_output = ".output, .cell_output"
   CMP505
  </span>
 </p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. Partial Derivatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_curvsurf.html">
+   2. Curves and Surfaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_rays1.html">
+   3. Rays Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_rays2.html">
+   4. Rays 2D Boxes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_rays3.html">
+   5. Rays 3D Plane Segments
+  </a>
+ </li>
+</ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../outro.html">
-   Summary
+   1. Summary
   </a>
  </li>
 </ul>
@@ -269,32 +298,32 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recap-of-lecture-content">
-   Recap of lecture content
+   1.1. Recap of lecture content
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ordinary-differentiation">
-   Ordinary differentiation
+   1.2. Ordinary differentiation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#partial-differentiation">
-   Partial differentiation
+   1.3. Partial differentiation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#second-order-partial-derivatives">
-   Second Order Partial Derivatives
+   1.4. Second Order Partial Derivatives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#turning-points-and-their-nature">
-   Turning Points and Their Nature
+   1.5. Turning Points and Their Nature
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   Over to You
+   1.6. Over to You
   </a>
  </li>
 </ul>
@@ -319,32 +348,32 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recap-of-lecture-content">
-   Recap of lecture content
+   1.1. Recap of lecture content
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ordinary-differentiation">
-   Ordinary differentiation
+   1.2. Ordinary differentiation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#partial-differentiation">
-   Partial differentiation
+   1.3. Partial differentiation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#second-order-partial-derivatives">
-   Second Order Partial Derivatives
+   1.4. Second Order Partial Derivatives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#turning-points-and-their-nature">
-   Turning Points and Their Nature
+   1.5. Turning Points and Their Nature
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   Over to You
+   1.6. Over to You
   </a>
  </li>
 </ul>
@@ -357,7 +386,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="partial-derivatives">
-<h1>Partial Derivatives<a class="headerlink" href="#partial-derivatives" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>Partial Derivatives<a class="headerlink" href="#partial-derivatives" title="Permalink to this headline">¶</a></h1>
 <p>In lectures, we were introduced to the idea of a function of multiple variables. Surfaces of objects can be expressed as functions of multiple independent variables.</p>
 <p>Partial differentiation is our method to determine how the surface is changing with respect to one of these variables, and requires that we hold the other variable fixed as a constant. All of the rules of ordinary differentiation (often learned prior to University) still hold, including chain and quotient rules.</p>
 <p>By partial differentiation of a function of multiple variables representing a surface, we can determine the surface tangents and normal to that surface.</p>
@@ -373,7 +402,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="recap-of-lecture-content">
-<h2>Recap of lecture content<a class="headerlink" href="#recap-of-lecture-content" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.1. </span>Recap of lecture content<a class="headerlink" href="#recap-of-lecture-content" title="Permalink to this headline">¶</a></h2>
 <p>Partial differentiation states that we deal with one variable at a time, and <em>temporarily</em> treat the other variable as a constant (or just a number).</p>
 <p>In partial differentiation, we often used <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> as the independent varibles, and <span class="math notranslate nohighlight">\(z\)</span> or <span class="math notranslate nohighlight">\(f\)</span> as functions or dependent variables, <span class="math notranslate nohighlight">\(z(x,y)\)</span> or <span class="math notranslate nohighlight">\(f(x,y)\)</span>.</p>
 <div class="cell docutils container">
@@ -385,7 +414,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="ordinary-differentiation">
-<h2>Ordinary differentiation<a class="headerlink" href="#ordinary-differentiation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.2. </span>Ordinary differentiation<a class="headerlink" href="#ordinary-differentiation" title="Permalink to this headline">¶</a></h2>
 <p>Let us first consider an ordinary function of the type we have worked with for many years: <span class="math notranslate nohighlight">\(f(x)=5x^2+3\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -438,7 +467,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="partial-differentiation">
-<h2>Partial differentiation<a class="headerlink" href="#partial-differentiation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.3. </span>Partial differentiation<a class="headerlink" href="#partial-differentiation" title="Permalink to this headline">¶</a></h2>
 <p>Lets see what happens when we ask Python to handle functions of multiple variables, like the one seen in the lecture:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -488,7 +517,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We also spent some time in the lectures discussing <em>symmetric functions</em>, which are useful to identify: if you identify a function as symmetric, then the behaviour in one derivative will match the behaviour in the other derivative. This can save time on calculations, or setting up functions to describe behaviour.</p>
 </div>
 <div class="section" id="second-order-partial-derivatives">
-<h2>Second Order Partial Derivatives<a class="headerlink" href="#second-order-partial-derivatives" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4. </span>Second Order Partial Derivatives<a class="headerlink" href="#second-order-partial-derivatives" title="Permalink to this headline">¶</a></h2>
 <p>The rules that we know also roll over to higher order derivatives. In MAT201, it can be useful to know how to calculate derivatives upto and including second order. Python also does this with ease.</p>
 <p>Replicating the practical example from the lectures where <span class="math notranslate nohighlight">\(f(x,y)=x^2y+3y^2x-\frac{2x}{y}\)</span>, the second order derivative <span class="math notranslate nohighlight">\(\frac{\partial^2 f}{\partial x^2}\)</span> can be found as follows:</p>
 <div class="cell docutils container">
@@ -529,7 +558,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Subtracting one derivative from the other can only result in a zero if they are <em>the same</em>.</p>
 </div>
 <div class="section" id="turning-points-and-their-nature">
-<h2>Turning Points and Their Nature<a class="headerlink" href="#turning-points-and-their-nature" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5. </span>Turning Points and Their Nature<a class="headerlink" href="#turning-points-and-their-nature" title="Permalink to this headline">¶</a></h2>
 <p>The final part of the lecture showed us that we can use partial derivatives to evaluate turning points in a given function, to identify if they are maxima, minima or saddle-points (points which behave like maxima <em>and</em> minima at the same time.</p>
 <p>In the lectures we used the following example: <span class="math notranslate nohighlight">\(f(x,y)=(x^2-1)(y^2-4)\)</span>.
 We found the critical points by evaluating where <span class="math notranslate nohighlight">\(f_x=0\)</span> and <span class="math notranslate nohighlight">\(f_y=0\)</span>:</p>
@@ -649,7 +678,7 @@ I will use nested if statements to run the test on each critical point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x11b0e3fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x11ff6fcd0&gt;
 </pre></div>
 </div>
 <img alt="../_images/CMP505_partialderivs_41_1.png" src="../_images/CMP505_partialderivs_41_1.png" />
@@ -728,7 +757,7 @@ I will use nested if statements to run the test on each critical point:</p>
 <p>From the images, the four critical points all have the classic shape of a saddle point, with a local max in one direction and a local min in the other.</p>
 </div>
 <div class="section" id="over-to-you">
-<h2>Over to You<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.6. </span>Over to You<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
 <p>You have seen in this workbook that Python can help with the mathematics of partial differentiation.
 Use these tools to potentially visualise problems and help with some of the steps. Try these code snippets on some of the homework examples.
 Remember: In the exam you will not have access to Python help, so this should augment your learning only!</p>
@@ -759,7 +788,21 @@ Remember: In the exam you will not have access to Python help, so this should au
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../CMP502/CMP502_quats.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Quaternions (and rotations!)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="CMP505_curvsurf.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Curves and Surfaces</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
