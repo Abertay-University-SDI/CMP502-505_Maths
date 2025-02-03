@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Curves and Surfaces &#8212; CMP502-505 Mathematics with Python</title>
+    <title>2. Curves and Surfaces &#8212; CMP502-505 Mathematics with Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,6 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Ray Tracing" href="CMP505_rays1.html" />
+    <link rel="prev" title="1. Partial Derivatives" href="CMP505_partialderivs.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -152,10 +154,37 @@ const thebe_selector_output = ".output, .cell_output"
   CMP505
  </span>
 </p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_partialderivs.html">
+   1. Partial Derivatives
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Curves and Surfaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_rays1.html">
+   3. Rays Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_rays2.html">
+   4. Rays 2D Boxes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_rays3.html">
+   5. Rays 3D Plane Segments
+  </a>
+ </li>
+</ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../outro.html">
-   Summary
+   1. Summary
   </a>
  </li>
 </ul>
@@ -269,39 +298,39 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parameterisation">
-   Parameterisation
+   2.1. Parameterisation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-parameterising-a-circle">
-     Example: parameterising a circle
+     2.1.1. Example: parameterising a circle
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-tangent-and-normal-to-circle">
-     Example: tangent and normal to circle
+     2.1.2. Example: tangent and normal to circle
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-tangent-to-a-parabola">
-     Example: tangent to a parabola?
+     2.1.3. Example: tangent to a parabola?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#d-objects">
-   3D objects
+   2.2. 3D objects
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-parabolic-bowl">
-   Example: Parabolic bowl
+   2.3. Example: Parabolic bowl
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   Over to you
+   2.4. Over to you
   </a>
  </li>
 </ul>
@@ -326,39 +355,39 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parameterisation">
-   Parameterisation
+   2.1. Parameterisation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-parameterising-a-circle">
-     Example: parameterising a circle
+     2.1.1. Example: parameterising a circle
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-tangent-and-normal-to-circle">
-     Example: tangent and normal to circle
+     2.1.2. Example: tangent and normal to circle
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-tangent-to-a-parabola">
-     Example: tangent to a parabola?
+     2.1.3. Example: tangent to a parabola?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#d-objects">
-   3D objects
+   2.2. 3D objects
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-parabolic-bowl">
-   Example: Parabolic bowl
+   2.3. Example: Parabolic bowl
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   Over to you
+   2.4. Over to you
   </a>
  </li>
 </ul>
@@ -371,7 +400,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="curves-and-surfaces">
-<h1>Curves and Surfaces<a class="headerlink" href="#curves-and-surfaces" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2. </span>Curves and Surfaces<a class="headerlink" href="#curves-and-surfaces" title="Permalink to this headline">¶</a></h1>
 <p>Games programming typically includes many objects of various types in game environments.</p>
 <p>In this workbook, we will examine how to construct different types of curves and surfaces using mathematical expressions. We will use the ideas of parameterisation to calculate tangents to curves in 2D and tangent planes and normals to surfaces in 3D.</p>
 <div class="cell docutils container">
@@ -408,14 +437,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="parameterisation">
-<h2>Parameterisation<a class="headerlink" href="#parameterisation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1. </span>Parameterisation<a class="headerlink" href="#parameterisation" title="Permalink to this headline">¶</a></h2>
 <p>Parameterisation is a tool that we can use to simplify the expression of many curves and surfaces.</p>
 <p>Mapping curves in 2D requires us to store two positions in Cartesian space: <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <p>However, curves are continuous: often the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> positions are related, and are functions of one single parameter. By working with parameters, and knowing that we can convert these back to real space, we can often reduce the complexity of the problem.</p>
 <p>Computationally, this is equivalent to using a single function to generate a range of positions on a curve, rather than storing two (possibly large) arrays of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> positions.</p>
 <p>Parameterisation has another advantage: tangents to curves (in 2D) and tangent planes and normals (in 3D) can be easily calculated using the parameterised form of the curve or surface.</p>
 <div class="section" id="example-parameterising-a-circle">
-<h3>Example: parameterising a circle<a class="headerlink" href="#example-parameterising-a-circle" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.1. </span>Example: parameterising a circle<a class="headerlink" href="#example-parameterising-a-circle" title="Permalink to this headline">¶</a></h3>
 <p>Let’s say we want to plot the circle <span class="math notranslate nohighlight">\(x^2+y^2=4\)</span>.
 We need to create, store and plot every pair of positions <span class="math notranslate nohighlight">\((x,y)\)</span> which satisfy this equation.
 This will create two arrays of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> values as seen below:</p>
@@ -465,7 +494,7 @@ x = 2\cos{(t)},~~~ y = 2\sin{(t)}.
 <p>In the above plot, we have overlaid the parameterised versions of the curve onto a contour of the original equation, and they are identical.</p>
 </div>
 <div class="section" id="example-tangent-and-normal-to-circle">
-<h3>Example: tangent and normal to circle<a class="headerlink" href="#example-tangent-and-normal-to-circle" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.2. </span>Example: tangent and normal to circle<a class="headerlink" href="#example-tangent-and-normal-to-circle" title="Permalink to this headline">¶</a></h3>
 <p>What is even neater is that this parameterisation allows us to also calculate a tangent to the circle at any given position. From this we can also easily calculate the normal to the curve at any point.</p>
 <p>The tangent vector at a given point depends on the rate of change of the position vector with respect to the parameter. The normal takes the slope of the tangent and inverts it.</p>
 <div class="cell docutils container">
@@ -520,7 +549,7 @@ x = 2\cos{(t)},~~~ y = 2\sin{(t)}.
 Let’s prove this by making up a parameterised curve and attempting to evaluate the tangent to the curve at a specific point:</p>
 </div>
 <div class="section" id="example-tangent-to-a-parabola">
-<h3>Example: tangent to a parabola?<a class="headerlink" href="#example-tangent-to-a-parabola" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.3. </span>Example: tangent to a parabola?<a class="headerlink" href="#example-tangent-to-a-parabola" title="Permalink to this headline">¶</a></h3>
 <p><strong>Determine the tangent vector and normal vector for the curve <span class="math notranslate nohighlight">\(\vec{\mathbf{r}} = (1-u){\vec{\mathbf{i}}}+2u^2{\vec{\mathbf{j}}}\)</span> at the point <span class="math notranslate nohighlight">\(u=1\)</span>.</strong></p>
 <p>(note this example is inspired by Tutorial Q1(i) on Curves and Surfaces: Q1(i) is actually a straight line and hence its tangent is a bit boring to pick as an example - feel free to modify this example as you see fit, if you want to check the answer of Q1(i) for yourself!)</p>
 <div class="cell docutils container">
@@ -573,7 +602,7 @@ Let’s prove this by making up a parameterised curve and attempting to evaluate
 </div>
 </div>
 <div class="section" id="d-objects">
-<h2>3D objects<a class="headerlink" href="#d-objects" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2. </span>3D objects<a class="headerlink" href="#d-objects" title="Permalink to this headline">¶</a></h2>
 <p>In 2D, we have seen that a parameterised curve (which has a position vector as a function of a single parameter) can yield an expression which describes the tangent to the curve (by ordinary differentiation of the function with respect to the parameter).</p>
 <p>In 3D, surfaces are commonly described as a function of two parameters (commonly described using the letters <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>), and have the form:</p>
 <div class="math notranslate nohighlight">
@@ -616,7 +645,7 @@ d = ax(u_1,v_1)+by(u_1,v_1)+cz(u_1,v_1).
 \]</div>
 </div>
 <div class="section" id="example-parabolic-bowl">
-<h2>Example: Parabolic bowl<a class="headerlink" href="#example-parabolic-bowl" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3. </span>Example: Parabolic bowl<a class="headerlink" href="#example-parabolic-bowl" title="Permalink to this headline">¶</a></h2>
 <p>We will use the example from the lectures of the parabolic bowl, whose surface is governed by the equation:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -705,7 +734,7 @@ d = ax(u_1,v_1)+by(u_1,v_1)+cz(u_1,v_1).
 <p>Thus, we have verified that Python carries out the same mathematical operations we learned in the lectures, if we want to calculate a normal to a surface or its tangent plane.</p>
 </div>
 <div class="section" id="over-to-you">
-<h2>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4. </span>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
 <p>What about some different surfaces? Can you use the calculation and plotting tools you have been given to examine spheres, or cones, or cylinders?</p>
 <p>What about importing the parametric expressions from the tutorial questions to examine what they look like visually, and if they return the correct normals and plane equations using Python as found by hand?</p>
 </div>
@@ -735,7 +764,21 @@ d = ax(u_1,v_1)+by(u_1,v_1)+cz(u_1,v_1).
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="CMP505_partialderivs.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Partial Derivatives</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="CMP505_rays1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Ray Tracing</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>

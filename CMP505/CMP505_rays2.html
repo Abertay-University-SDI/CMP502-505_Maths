@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rays Intersecting with 2D boxes &#8212; CMP502-505 Mathematics with Python</title>
+    <title>4. Rays Intersecting with 2D boxes &#8212; CMP502-505 Mathematics with Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,6 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Rays Intersecting Planes" href="CMP505_rays3.html" />
+    <link rel="prev" title="3. Ray Tracing" href="CMP505_rays1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -152,10 +154,37 @@ const thebe_selector_output = ".output, .cell_output"
   CMP505
  </span>
 </p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_partialderivs.html">
+   1. Partial Derivatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_curvsurf.html">
+   2. Curves and Surfaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_rays1.html">
+   3. Rays Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Rays 2D Boxes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_rays3.html">
+   5. Rays 3D Plane Segments
+  </a>
+ </li>
+</ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../outro.html">
-   Summary
+   1. Summary
   </a>
  </li>
 </ul>
@@ -269,29 +298,29 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-1">
-   Lecture Example 1
+   4.1. Lecture Example 1
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#part-1-ray-1">
-     Part 1 (ray 1):
+     4.1.1. Part 1 (ray 1):
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#part-2-ray-2">
-     Part 2 (ray 2)
+     4.1.2. Part 2 (ray 2)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#part-3">
-     Part 3:
+     4.1.3. Part 3:
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   Over to you
+   4.2. Over to you
   </a>
  </li>
 </ul>
@@ -316,29 +345,29 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-1">
-   Lecture Example 1
+   4.1. Lecture Example 1
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#part-1-ray-1">
-     Part 1 (ray 1):
+     4.1.1. Part 1 (ray 1):
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#part-2-ray-2">
-     Part 2 (ray 2)
+     4.1.2. Part 2 (ray 2)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#part-3">
-     Part 3:
+     4.1.3. Part 3:
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   Over to you
+   4.2. Over to you
   </a>
  </li>
 </ul>
@@ -351,7 +380,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="rays-intersecting-with-2d-boxes">
-<h1>Rays Intersecting with 2D boxes<a class="headerlink" href="#rays-intersecting-with-2d-boxes" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>Rays Intersecting with 2D boxes<a class="headerlink" href="#rays-intersecting-with-2d-boxes" title="Permalink to this headline">¶</a></h1>
 <p>Having now been introduced to ray tracing, we will explore more complex objects. Up to now, we have considered objects which are entirely described by one single mathematical equation. These tend to be relatively simple shapes. More complex shapes can be constructed using multiple sets of these simple shapes. The downside to this is that we have to check for intersections with many different components of a single object. The simplest example of these is a 2D box.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -369,7 +398,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>We will make use of the example shown in lectures which contains several different rays which share a common origin. In particular, we want to illustrate what this configuration looks like, something not really covered in the lectures:</p>
 <div class="section" id="lecture-example-1">
-<h2>Lecture Example 1<a class="headerlink" href="#lecture-example-1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span>Lecture Example 1<a class="headerlink" href="#lecture-example-1" title="Permalink to this headline">¶</a></h2>
 <p><strong>Determine if the box with vertices <span class="math notranslate nohighlight">\(A(3,2)\)</span>, <span class="math notranslate nohighlight">\(B(9,2)\)</span>, <span class="math notranslate nohighlight">\(C(9,5)\)</span> and <span class="math notranslate nohighlight">\(D(3,5)\)</span> is intersected by the ray originating from <span class="math notranslate nohighlight">\((5,8)\)</span> and</strong></p>
 <ol class="simple">
 <li><p><strong>ending at <span class="math notranslate nohighlight">\((12,1)\)</span>.</strong></p></li>
@@ -411,7 +440,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>Now we need to equate each ray with each part of the box:</p>
 <div class="section" id="part-1-ray-1">
-<h3>Part 1 (ray 1):<a class="headerlink" href="#part-1-ray-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.1.1. </span>Part 1 (ray 1):<a class="headerlink" href="#part-1-ray-1" title="Permalink to this headline">¶</a></h3>
 <p>We need to solve four sets of simultaneous equations, just as we did in lectures (only this time Python takes care of this for us in one line per set of simultaneous equations!):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -496,7 +525,7 @@ BC intersection at (9.000,4.000) [EXIT]
 <p>This does appear to agree with our solutions from the lectures: an entry into the box at <span class="math notranslate nohighlight">\((8,5)\)</span> <span class="math notranslate nohighlight">\(\left(t=\frac{3}{7}\right)\)</span>, and exiting the box at <span class="math notranslate nohighlight">\((9,4)\)</span> <span class="math notranslate nohighlight">\(\left(t=\frac{4}{7}\right)\)</span>.</p>
 </div>
 <div class="section" id="part-2-ray-2">
-<h3>Part 2 (ray 2)<a class="headerlink" href="#part-2-ray-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.1.2. </span>Part 2 (ray 2)<a class="headerlink" href="#part-2-ray-2" title="Permalink to this headline">¶</a></h3>
 <p>Part 2 follows a similar procedure to Part 1:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -545,7 +574,7 @@ BC intersection at (9.000,4.000) [EXIT]
 </div>
 </div>
 <div class="section" id="part-3">
-<h3>Part 3:<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.1.3. </span>Part 3:<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s3AB</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">r3</span><span class="o">-</span><span class="n">AB</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
@@ -628,7 +657,7 @@ AD intersection at (3.000,4.000) [EXIT]
 </div>
 </div>
 <div class="section" id="over-to-you">
-<h2>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
 <p>Try some more examples from the lectures or the tutorial questions once you are satisfied with the mathematics</p>
 </div>
 </div>
@@ -657,7 +686,21 @@ AD intersection at (3.000,4.000) [EXIT]
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="CMP505_rays1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Ray Tracing</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="CMP505_rays3.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Rays Intersecting Planes</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
