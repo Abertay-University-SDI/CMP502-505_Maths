@@ -1,0 +1,675 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Bilinear Patches &#8212; CMP502-505 Mathematics with Python</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Ray Tracing" href="CMP505_rays1.html" />
+    <link rel="prev" title="2. Curves and Surfaces" href="CMP505_curvsurf.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/Abertay_Uni_Black.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CMP502-505 Mathematics with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502-505_pythonintro.html">
+   Python Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CMP502
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_2Dvt.html">
+   1. 2D Viewing Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_3Dvt1.html">
+   2. 3D Viewing Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_3Dvt2.html">
+   3. More 3D Viewing Transforms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_proj1.html">
+   4. Orthographic Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_proj2.html">
+   5. Perspective Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_complexnos.html">
+   6. Complex Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CMP502/CMP502_quats.html">
+   7. Quaternions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CMP505
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_partialderivs.html">
+   1. Partial Derivatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_curvsurf.html">
+   2. Curves and Surfaces
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Bilinear Surface Patches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_rays1.html">
+   4. Rays Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_rays2.html">
+   5. Rays 2D Boxes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_rays3.html">
+   6. Rays 3D Plane Segments
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Summary
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../outro.html">
+   1. Summary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/CMP505/CMP505_bilinearpatches.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Abertay-University-SDI/CMP502-505_Maths"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Abertay-University-SDI/CMP502-505_Maths/issues/new?title=Issue%20on%20page%20%2FCMP505/CMP505_bilinearpatches.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Abertay-University-SDI/CMP502-505_Maths/main?urlpath=lab/tree/CMP505/CMP505_bilinearpatches.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Abertay-University-SDI/CMP502-505_Maths/blob/main/CMP505/CMP505_bilinearpatches.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   3.1. Background
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-tutorial-q1">
+     3.1.1. Example: Tutorial Q1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normal-calculation">
+   3.2. Normal calculation?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#over-to-you">
+   3.3. Over to you
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Bilinear Patches</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   3.1. Background
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-tutorial-q1">
+     3.1.1. Example: Tutorial Q1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normal-calculation">
+   3.2. Normal calculation?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#over-to-you">
+   3.3. Over to you
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="bilinear-patches">
+<h1><span class="section-number">3. </span>Bilinear Patches<a class="headerlink" href="#bilinear-patches" title="Permalink to this headline">¶</a></h1>
+<p>Games programming typically includes many objects of various types in game environments.</p>
+<p>In the previous workbook, we examined the construction of parameterised mathematical surfaces. Now we will consider surfaces comprising of discrete datapoints, and how to construct surface patches between four such points. In doing so, we will examine how the tangent and normal calculations found last time extend to also work for surface patches.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Libraries</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">FancyArrowPatch</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span><span class="p">,</span> <span class="n">proj3d</span>
+<span class="kn">from</span> <span class="nn">sympy.utilities.lambdify</span> <span class="kn">import</span> <span class="n">lambdify</span><span class="p">,</span> <span class="n">implemented_function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#we&#39;ll need to draw arrows for the 3D bit:</span>
+<span class="k">class</span> <span class="nc">Arrow3D</span><span class="p">(</span><span class="n">FancyArrowPatch</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_verts3d</span> <span class="o">=</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span>
+
+    <span class="k">def</span> <span class="nf">do_3d_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">xs3d</span><span class="p">,</span> <span class="n">ys3d</span><span class="p">,</span> <span class="n">zs3d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verts3d</span>
+        <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span> <span class="o">=</span> <span class="n">proj3d</span><span class="o">.</span><span class="n">proj_transform</span><span class="p">(</span><span class="n">xs3d</span><span class="p">,</span> <span class="n">ys3d</span><span class="p">,</span> <span class="n">zs3d</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_positions</span><span class="p">((</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">]),(</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">ys</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="background">
+<h2><span class="section-number">3.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>Discrete datapoints provide a slightly more flexible way to sample a surface; however, these datapoints do not provide any information of what the surface may look like away from these datapoints.</p>
+<p>A bilinear surface patch can be constructed between four datapoints, taking a weighted average of each of the four corners (depending on the linear distance from each corner). In the below image taken from Wikimedia, the contribution of each corner can be visually represented by the area on the opposite side of the patch:</p>
+<p><img alt="Picture" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Bilinear_interpolation_visualisation.svg?raw=1" /></p>
+<p>Mathematically, we assign a parameter to a direction aligned with one of the edges of the patch. These parameters are typically labelled as <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>, and can vary between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>; at exactly <span class="math notranslate nohighlight">\(0\)</span> or exactly <span class="math notranslate nohighlight">\(1\)</span>, this indicates a position on the edge of the patch.</p>
+<p>Any/every location on the patch can be found using a specific set of values of <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>, with a position vector determined according to:</p>
+<div class="math notranslate nohighlight">
+\[
+{\mathbf{\vec{q}}}(u,v) = (1-v)(1-u){\mathbf{\vec{a}}}+(1-v)u{\mathbf{\vec{b}}}+v(1-u){\mathbf{\vec{c}}}+vu{\mathbf{\vec{d}}},
+\]</div>
+<p>for a patch with corners <span class="math notranslate nohighlight">\({\mathbf{\vec{a}}}={{\vec{0A}}}\)</span>, <span class="math notranslate nohighlight">\({\mathbf{\vec{b}}}={{\vec{0B}}}\)</span>, <span class="math notranslate nohighlight">\({\mathbf{\vec{c}}}={{\vec{0C}}}\)</span> and <span class="math notranslate nohighlight">\({{\vec{d}}}={\mathbf{\vec{0D}}}\)</span>, with <span class="math notranslate nohighlight">\(AB\)</span> and <span class="math notranslate nohighlight">\(CD\)</span> being opposite edges of the patch.</p>
+<div class="section" id="example-tutorial-q1">
+<h3><span class="section-number">3.1.1. </span>Example: Tutorial Q1<a class="headerlink" href="#example-tutorial-q1" title="Permalink to this headline">¶</a></h3>
+<p><strong>Contruct the vector equation for the bilinear patch based on the line segments joining <span class="math notranslate nohighlight">\(A(0,0,0)\)</span> with <span class="math notranslate nohighlight">\(B(1,0,0)\)</span>, and <span class="math notranslate nohighlight">\(C(0,1,1)\)</span> with <span class="math notranslate nohighlight">\(D(1,1,0)\)</span>. Also determine the equation of the curve joining <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(D\)</span> on the surface.</strong></p>
+<p>My aim here is to showcase how easily Python can be used to calculate and visualise the patch surface, and convert back from parameter space to Cartesian (real) space.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">u</span><span class="p">,</span> <span class="n">v</span>  <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">)</span> <span class="c1">#parameter</span>
+<span class="n">q</span>  <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+      <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">D</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+      <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">D</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+
+<span class="n">xf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">],</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">yf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">],</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">zf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">],</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">uvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>  <span class="c1">#range of parameter u</span>
+<span class="n">vvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span> <span class="c1">#range of parameter v</span>
+<span class="n">myu</span><span class="p">,</span> <span class="n">myv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">uvals</span><span class="p">,</span><span class="n">vvals</span><span class="p">)</span> <span class="c1"># make a grid of values</span>
+
+<span class="c1"># calculate x,y,z arrays of positions based on u and v</span>
+<span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="n">zvals</span> <span class="o">=</span> <span class="n">xf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myv</span><span class="p">),</span> <span class="n">yf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myv</span><span class="p">),</span> <span class="n">zf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myv</span><span class="p">)</span>
+<span class="c1"># calculate x,y,z arrays of line when v=u</span>
+<span class="n">xvals1</span><span class="p">,</span> <span class="n">yvals1</span><span class="p">,</span> <span class="n">zvals1</span> <span class="o">=</span> <span class="n">xf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myu</span><span class="p">),</span> <span class="n">yf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myu</span><span class="p">),</span> <span class="n">zf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myu</span><span class="p">)</span>
+<span class="c1"># calculate x,y,z arrays of line when v=1-u</span>
+<span class="n">xvals2</span><span class="p">,</span> <span class="n">yvals2</span><span class="p">,</span> <span class="n">zvals2</span> <span class="o">=</span> <span class="n">xf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">myu</span><span class="p">),</span> <span class="n">yf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">myu</span><span class="p">),</span> <span class="n">zf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">myu</span><span class="p">)</span>
+
+<span class="n">xlim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
+<span class="n">zlim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
+<span class="c1">#plotting</span>
+<span class="n">vfig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="s2">&quot;3d&quot;</span><span class="p">},</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="o">*</span><span class="n">zlim</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="n">zvals</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;patch&#39;</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">xvals1</span><span class="p">,</span> <span class="n">yvals1</span><span class="p">,</span> <span class="n">zvals1</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;line AD&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">)</span>
+<span class="c1">#surf = ax.plot_wireframe(xvals2, yvals2, zvals2, rstride=2, cstride=2, label=&#39;line BC&#39;, color=&#39;C2&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">C</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">C</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="mf">0.25</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">D</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">D</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">D</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">D</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="mf">0.25</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP505_bilinearpatches_5_0.png" src="../_images/CMP505_bilinearpatches_5_0.png" />
+</div>
+</div>
+<p>This image shows the patch gently curving to join all four points, and the curve in real space which is a straight line in parameter space, linking the points A and D.</p>
+<p>We’ve cheated a bit, as we haven’t actually stated the patch equation nor the equation of the line, so we’ll do that now:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;patch equation:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;and the equation of the line linking AD:&quot;</span><span class="p">)</span>
+<span class="n">lineAD</span> <span class="o">=</span> <span class="p">[</span><span class="n">sym</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">v</span><span class="p">})),</span><span class="n">sym</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">v</span><span class="p">})),</span><span class="n">sym</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">v</span><span class="p">}))]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lineAD</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>patch equation:
+[u*v + u*(1 - v), u*v + v*(1 - u), v*(1 - u)]
+
+and the equation of the line linking AD:
+[v, v, v*(1 - v)]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="normal-calculation">
+<h2><span class="section-number">3.2. </span>Normal calculation?<a class="headerlink" href="#normal-calculation" title="Permalink to this headline">¶</a></h2>
+<p>We’ve seen that we can construct and view the surface patch. What if we need a normal to be calculated at some point on the patch? (After all rays may interact with this surface).</p>
+<p>To do this, we’ll use one of the more challenging tutorial questions:
+<strong>Contruct a bilinear patch for a surface whose corner points are at <span class="math notranslate nohighlight">\(A(0,0,0)\)</span>, <span class="math notranslate nohighlight">\(B(0,0,-1)\)</span>, <span class="math notranslate nohighlight">\(C(-1,1,1)\)</span> and <span class="math notranslate nohighlight">\(D(1,1,2)\)</span> using <span class="math notranslate nohighlight">\(AD\)</span> and <span class="math notranslate nohighlight">\(BC\)</span> as opposite line segments. Write doen the vector equation of the surface and determine a unit normal at the point where <span class="math notranslate nohighlight">\(u=v=1/2\)</span>.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">u</span><span class="p">,</span> <span class="n">v</span>  <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">)</span> <span class="c1">#parameter</span>
+<span class="n">q</span>  <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+      <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">D</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+      <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">D</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+
+<span class="n">xf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">],</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">yf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">],</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">zf</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">],</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">uvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>  <span class="c1">#range of parameter u</span>
+<span class="n">vvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span> <span class="c1">#range of parameter v</span>
+<span class="n">myu</span><span class="p">,</span> <span class="n">myv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">uvals</span><span class="p">,</span><span class="n">vvals</span><span class="p">)</span> <span class="c1"># make a grid of values</span>
+
+<span class="c1"># calculate x,y,z arrays of positions based on u and v</span>
+<span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="n">zvals</span> <span class="o">=</span> <span class="n">xf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myv</span><span class="p">),</span> <span class="n">yf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myv</span><span class="p">),</span> <span class="n">zf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myv</span><span class="p">)</span>
+<span class="c1"># calculate x,y,z arrays of line when v=u</span>
+<span class="n">xvals1</span><span class="p">,</span> <span class="n">yvals1</span><span class="p">,</span> <span class="n">zvals1</span> <span class="o">=</span> <span class="n">xf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myu</span><span class="p">),</span> <span class="n">yf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myu</span><span class="p">),</span> <span class="n">zf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">myu</span><span class="p">)</span>
+<span class="c1"># calculate x,y,z arrays of line when v=1-u</span>
+<span class="n">xvals2</span><span class="p">,</span> <span class="n">yvals2</span><span class="p">,</span> <span class="n">zvals2</span> <span class="o">=</span> <span class="n">xf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">myu</span><span class="p">),</span> <span class="n">yf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">myu</span><span class="p">),</span> <span class="n">zf</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">myu</span><span class="p">)</span>
+
+<span class="n">dqdu</span> <span class="o">=</span> <span class="p">[</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">u</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">u</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">u</span><span class="p">)</span> <span class="p">]</span> <span class="c1">#tangent, ds/dr</span>
+<span class="n">dqdv</span> <span class="o">=</span> <span class="p">[</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">v</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">v</span><span class="p">)</span> <span class="p">]</span> <span class="c1">#tangent, ds/dtheta</span>
+
+<span class="n">v1</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">dqdu</span><span class="p">)</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">dqdv</span><span class="p">)</span>
+<span class="n">cp</span> <span class="o">=</span> <span class="n">v1</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
+
+<span class="c1"># normal location in parameter space</span>
+<span class="n">u1</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1">#position on surface in real space</span>
+<span class="n">xp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">u1</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span><span class="n">v1</span><span class="p">}))</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">u1</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span><span class="n">v1</span><span class="p">}))</span>
+<span class="n">zp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">u1</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span><span class="n">v1</span><span class="p">}))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">zp</span><span class="p">]</span>
+
+<span class="c1"># unit normal to surface</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">u1</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span><span class="n">v1</span><span class="p">}))</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">u1</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span><span class="n">v1</span><span class="p">}))</span>
+<span class="n">nz</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">u</span><span class="p">:</span><span class="n">u1</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span><span class="n">v1</span><span class="p">}))</span>
+<span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">xlim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span>
+<span class="n">zlim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span>
+
+<span class="c1">#plotting</span>
+<span class="n">vfig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="s2">&quot;3d&quot;</span><span class="p">},</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="n">elev</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">azim</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">roll</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="o">*</span><span class="n">zlim</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="n">zvals</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;patch&#39;</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">xvals1</span><span class="p">,</span> <span class="n">yvals1</span><span class="p">,</span> <span class="n">zvals1</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;line AD&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">xvals2</span><span class="p">,</span> <span class="n">yvals2</span><span class="p">,</span> <span class="n">zvals2</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;line BC&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">C</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">C</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="mf">0.25</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">D</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">D</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">D</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">D</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">zp</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="n">arrow_prop_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">mutation_scale</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-|&gt;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">shrinkA</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">shrinkB</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Arrow3D</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span> <span class="n">xp</span><span class="o">-</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">yp</span><span class="p">,</span> <span class="n">yp</span><span class="o">-</span><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">zp</span><span class="p">,</span> <span class="n">zp</span><span class="o">-</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="o">**</span><span class="n">arrow_prop_dict</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CMP505_bilinearpatches_9_0.png" src="../_images/CMP505_bilinearpatches_9_0.png" />
+</div>
+</div>
+<p>In the above 3D image, we can clearly see the patch as it twists to link the four points.</p>
+<p>The lines on the patch linking the opposite corners (<span class="math notranslate nohighlight">\(AC\)</span>, seen in orange, and <span class="math notranslate nohighlight">\(DB\)</span>, seen in green) loop through the patch, and meet at the point where <span class="math notranslate nohighlight">\(u=v=1/2\)</span> (which is a solution of both interior line equations <span class="math notranslate nohighlight">\(u=v\)</span> and <span class="math notranslate nohighlight">\(u=1-v\)</span>).</p>
+<p>The normal at the required location points perpendicular to the patch. We could also add a tangent plane to this plot (using the tools we learned in the <a class="reference external" href="https://abertay-university-sdi.github.io/CMP502-505_Maths/CMP505/CMP505_curvsurf.html">curves and surfaces workbook</a> but this would make the plot very busy and not particularly easy to interpret. The tangent plane is a true, flat plane; this image shows very clearly the slow variation required by the patch surface to link the points. Later in the course we will learn about parallelogram plane segments, which are significantly different to infinite planes, and surface patches.</p>
+</div>
+<div class="section" id="over-to-you">
+<h2><span class="section-number">3.3. </span>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
+<p>Why not test the other tutorial questions you have been given? For the equations where you have been asked to sketch the curves, can you verify the shapes of the lines or surfaces using the plotting tools shown here?</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./CMP505"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="CMP505_curvsurf.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Curves and Surfaces</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="CMP505_rays1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Ray Tracing</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By James Threlfall<br/>
+    
+        &copy; Copyright 2025.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

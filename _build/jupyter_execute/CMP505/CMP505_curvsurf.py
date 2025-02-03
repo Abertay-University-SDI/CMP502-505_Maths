@@ -216,11 +216,11 @@ plt.show()
 # {\vec{\mathbf{t}}}_v = \frac{\partial{\vec{\mathbf{S}}}}{\partial v}=\frac{\partial x}{\partial v}{\vec{\mathbf{i}}}+\frac{\partial y}{\partial v}{\vec{\mathbf{j}}}+\frac{\partial z}{\partial v}{\vec{\mathbf{k}}}.
 # $$
 # 
-# **For a refresher on calculation of partial derivatives, please view the [partial derivatives workbook](https://abertay-university-sdi.github.io/MAT201_Python/methods/MAT201M_PartialDerivs.html).**
+# **For a refresher on calculation of partial derivatives, please view the [partial derivatives workbook](https://abertay-university-sdi.github.io/CMP502-505_Maths/CMP505/CMP505_partialderivs.html).**
 # 
 # The tangent vectors ${\vec{\mathbf{t}}}_u$ and ${\vec{\mathbf{t}}}_v$ together define an entire plane:
 # 
-# ![Picture](https://github.com/Abertay-University-SDI/MAT201_Python/blob/main/methods/Tangent_plane.jpg?raw=1)
+# ![Picture](https://github.com/Abertay-University-SDI/CMP502-505_Maths/blob/main/CMP505/Tangent_plane.jpg?raw=1)
 
 # We know that 3D planes all have the same form of equation:
 # 
