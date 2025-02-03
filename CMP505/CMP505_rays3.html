@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5. Rays Intersecting Planes &#8212; CMP502-505 Mathematics with Python</title>
+    <title>6. Rays Intersecting Planes &#8212; CMP502-505 Mathematics with Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="1. Summary" href="../outro.html" />
-    <link rel="prev" title="4. Rays Intersecting with 2D boxes" href="CMP505_rays2.html" />
+    <link rel="prev" title="5. Rays Intersecting with 2D boxes" href="CMP505_rays2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -166,21 +166,31 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_bilinearpatches.html">
+   3. Bilinear Surface Patches
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="CMP505_rays1.html">
-   3. Rays Introduction
+   4. Rays Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="CMP505_rays2.html">
-   4. Rays 2D Boxes
+   5. Rays 2D Boxes
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5. Rays 3D Plane Segments
+   6. Rays 3D Plane Segments
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Summary
+ </span>
+</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../outro.html">
@@ -298,36 +308,36 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parallelogram-plane-segments">
-   5.1. Parallelogram plane segments
+   6.1. Parallelogram plane segments
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-1-can-we-construct-a-parallelogram-plane-segment">
-     5.1.1. Example 1: Can we construct a parallelogram plane segment?
+     6.1.1. Example 1: Can we construct a parallelogram plane segment?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-2-ray-and-parallelogram-intersection">
-     5.1.2. Example 2: Ray and parallelogram intersection?
+     6.1.2. Example 2: Ray and parallelogram intersection?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#triangular-plane-segments">
-   5.2. Triangular Plane Segments
+   6.2. Triangular Plane Segments
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lecture-example">
-     5.2.1. Lecture Example:
+     6.2.1. Lecture Example:
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   5.3. Over to you
+   6.3. Over to you
   </a>
  </li>
 </ul>
@@ -352,36 +362,36 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parallelogram-plane-segments">
-   5.1. Parallelogram plane segments
+   6.1. Parallelogram plane segments
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-1-can-we-construct-a-parallelogram-plane-segment">
-     5.1.1. Example 1: Can we construct a parallelogram plane segment?
+     6.1.1. Example 1: Can we construct a parallelogram plane segment?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-2-ray-and-parallelogram-intersection">
-     5.1.2. Example 2: Ray and parallelogram intersection?
+     6.1.2. Example 2: Ray and parallelogram intersection?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#triangular-plane-segments">
-   5.2. Triangular Plane Segments
+   6.2. Triangular Plane Segments
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lecture-example">
-     5.2.1. Lecture Example:
+     6.2.1. Lecture Example:
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   5.3. Over to you
+   6.3. Over to you
   </a>
  </li>
 </ul>
@@ -394,7 +404,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="rays-intersecting-planes">
-<h1><span class="section-number">5. </span>Rays Intersecting Planes<a class="headerlink" href="#rays-intersecting-planes" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6. </span>Rays Intersecting Planes<a class="headerlink" href="#rays-intersecting-planes" title="Permalink to this headline">¶</a></h1>
 <p>One of the most common ways to construct a complex (realistic) object to interact with a ray uses two types of 3D plane: <em>parallelogram plane segments</em> and <em>triangular plane segments</em>. Mathematically, these plane types require multiple parameters to define their entire surface, and hence require three simultaneous equations to solve. Here, we will put Python to work, showing how these simultaneous equation solutions underpin ray intersections with such objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -429,11 +439,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="parallelogram-plane-segments">
-<h2><span class="section-number">5.1. </span>Parallelogram plane segments<a class="headerlink" href="#parallelogram-plane-segments" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.1. </span>Parallelogram plane segments<a class="headerlink" href="#parallelogram-plane-segments" title="Permalink to this headline">¶</a></h2>
 <p>Our exploration of this topic begins with a parallelogram plane segment, formed between four coordinates. While not particularly commonly used, these are useful to illustrate the principles of how we can parameterise a surface, in order that every location on the plane can be identified quickly and easily.</p>
 <p>To start this journey, let’s repeat the example from the lectures to see how Python handles this type of problem:</p>
 <div class="section" id="example-1-can-we-construct-a-parallelogram-plane-segment">
-<h3><span class="section-number">5.1.1. </span>Example 1: Can we construct a parallelogram plane segment?<a class="headerlink" href="#example-1-can-we-construct-a-parallelogram-plane-segment" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.1.1. </span>Example 1: Can we construct a parallelogram plane segment?<a class="headerlink" href="#example-1-can-we-construct-a-parallelogram-plane-segment" title="Permalink to this headline">¶</a></h3>
 <p><strong>Determine the equation of the parallelogram plane segment with vertices at <span class="math notranslate nohighlight">\(A(0,0,0)\)</span>, <span class="math notranslate nohighlight">\(B(3,4,-2)\)</span>, <span class="math notranslate nohighlight">\(C(2,3,1)\)</span> and <span class="math notranslate nohighlight">\(D(-1,-1,3)\)</span>.</strong></p>
 <p>Let’s begin by setting up some parameters to work with, and storing the coordinates in matrices. We could use arrays in principle, but we’ll need to solve sets of simultaneous equations using sympy, and from experience the matrix datatype serves our purpose well here:</p>
 <div class="cell docutils container">
@@ -584,7 +594,7 @@ C-D: Matrix([[3, 4, -2]])
 <p>This allows us to visualise the parallelogram (blue) and its component vertices (red).</p>
 </div>
 <div class="section" id="example-2-ray-and-parallelogram-intersection">
-<h3><span class="section-number">5.1.2. </span>Example 2: Ray and parallelogram intersection?<a class="headerlink" href="#example-2-ray-and-parallelogram-intersection" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.1.2. </span>Example 2: Ray and parallelogram intersection?<a class="headerlink" href="#example-2-ray-and-parallelogram-intersection" title="Permalink to this headline">¶</a></h3>
 <p><strong>Determine whether the ray from <span class="math notranslate nohighlight">\((5,2,1)\)</span> to</strong></p>
 <ol class="simple">
 <li><p><strong><span class="math notranslate nohighlight">\((0,-3,4)\)</span></strong></p></li>
@@ -698,10 +708,10 @@ Python finds: Matrix([[1.39705882352941, 2, 0.0294117647058822]])
 </div>
 </div>
 <div class="section" id="triangular-plane-segments">
-<h2><span class="section-number">5.2. </span>Triangular Plane Segments<a class="headerlink" href="#triangular-plane-segments" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2. </span>Triangular Plane Segments<a class="headerlink" href="#triangular-plane-segments" title="Permalink to this headline">¶</a></h2>
 <p>Finally, we will explore how this process changes if we need to work with triangular plane segments. Triangular plane segments are more commonly used in graphics applications (with only three points in space required to map out a 3D surface, many triangular plane segments are often combined to create large, complex 3D objects). Let’s again see how Python handles these types of structures:</p>
 <div class="section" id="lecture-example">
-<h3><span class="section-number">5.2.1. </span>Lecture Example:<a class="headerlink" href="#lecture-example" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.1. </span>Lecture Example:<a class="headerlink" href="#lecture-example" title="Permalink to this headline">¶</a></h3>
 <p><strong>Determine if the ray from <span class="math notranslate nohighlight">\((2,1,2)\)</span> to <span class="math notranslate nohighlight">\((-1,-1,0)\)</span> cuts the triangular plane segment vertices at <span class="math notranslate nohighlight">\(A(5,0,0)\)</span>, <span class="math notranslate nohighlight">\(B(0,3,0)\)</span>, and <span class="math notranslate nohighlight">\(C(0,0,4)\)</span>.</strong></p>
 <hr class="docutils" />
 <p>In order to construct a parametric equation describing every point on the surface, we need to pick two sides of the triangle to act as vectors. However, unlike the parallelogram plane, we have to pick the second vector which begins when the first vector begins.</p>
@@ -789,7 +799,7 @@ Matrix([[85/53, 39/53, 92/53]])
 </div>
 </div>
 <div class="section" id="over-to-you">
-<h2><span class="section-number">5.3. </span>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3. </span>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
 <p>The aim of this course is to familiarise and become an expert in the mathematics underpinning several common standard games tools and techniques. You should carry out the questions in the tutorial booklet <strong>by hand</strong> to practice this mathematics and prepare for the exam. However, particularly in this topic, the mathematics is not easily visualised; having completed the maths exercises, try and visualise some of the solutions you have created to verify the ray behaviour.</p>
 </div>
 </div>
@@ -823,7 +833,7 @@ Matrix([[85/53, 39/53, 92/53]])
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4. </span>Rays Intersecting with 2D boxes</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Rays Intersecting with 2D boxes</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../outro.html" title="next page">

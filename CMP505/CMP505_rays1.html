@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Ray Tracing &#8212; CMP502-505 Mathematics with Python</title>
+    <title>4. Ray Tracing &#8212; CMP502-505 Mathematics with Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Rays Intersecting with 2D boxes" href="CMP505_rays2.html" />
-    <link rel="prev" title="2. Curves and Surfaces" href="CMP505_curvsurf.html" />
+    <link rel="next" title="5. Rays Intersecting with 2D boxes" href="CMP505_rays2.html" />
+    <link rel="prev" title="3. Bilinear Patches" href="CMP505_bilinearpatches.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -165,22 +165,32 @@ const thebe_selector_output = ".output, .cell_output"
    2. Curves and Surfaces
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_bilinearpatches.html">
+   3. Bilinear Surface Patches
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   3. Rays Introduction
+   4. Rays Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="CMP505_rays2.html">
-   4. Rays 2D Boxes
+   5. Rays 2D Boxes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="CMP505_rays3.html">
-   5. Rays 3D Plane Segments
+   6. Rays 3D Plane Segments
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Summary
+ </span>
+</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../outro.html">
@@ -298,22 +308,22 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-1-does-a-ray-intersect-a-sphere">
-   3.1. Lecture Example 1: Does a ray intersect a sphere?
+   4.1. Lecture Example 1: Does a ray intersect a sphere?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-2-multiple-intersections-and-normal-calculation">
-   3.2. Lecture Example 2: Multiple intersections and normal calculation
+   4.2. Lecture Example 2: Multiple intersections and normal calculation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-3-general-object">
-   3.3. Lecture Example 3: General object
+   4.3. Lecture Example 3: General object
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   3.4. Over to you
+   4.4. Over to you
   </a>
  </li>
 </ul>
@@ -338,22 +348,22 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-1-does-a-ray-intersect-a-sphere">
-   3.1. Lecture Example 1: Does a ray intersect a sphere?
+   4.1. Lecture Example 1: Does a ray intersect a sphere?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-2-multiple-intersections-and-normal-calculation">
-   3.2. Lecture Example 2: Multiple intersections and normal calculation
+   4.2. Lecture Example 2: Multiple intersections and normal calculation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-3-general-object">
-   3.3. Lecture Example 3: General object
+   4.3. Lecture Example 3: General object
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   3.4. Over to you
+   4.4. Over to you
   </a>
  </li>
 </ul>
@@ -366,7 +376,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="ray-tracing">
-<h1><span class="section-number">3. </span>Ray Tracing<a class="headerlink" href="#ray-tracing" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>Ray Tracing<a class="headerlink" href="#ray-tracing" title="Permalink to this headline">¶</a></h1>
 <p>Now that we are used to many of the tools and techniques to visualise objects, rotate and transform them, we can explore how mathematics allows us to check if/how some types of objects <em>interact</em> using Python: Ray Tracing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -419,7 +429,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="lecture-example-1-does-a-ray-intersect-a-sphere">
-<h2><span class="section-number">3.1. </span>Lecture Example 1: Does a ray intersect a sphere?<a class="headerlink" href="#lecture-example-1-does-a-ray-intersect-a-sphere" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span>Lecture Example 1: Does a ray intersect a sphere?<a class="headerlink" href="#lecture-example-1-does-a-ray-intersect-a-sphere" title="Permalink to this headline">¶</a></h2>
 <p><strong>Determine if the ray from <span class="math notranslate nohighlight">\((-1,0,3)\)</span> with direction <span class="math notranslate nohighlight">\(2\vec{i}-3\vec{j}+\vec{k}\)</span> intersects a sphere with centre <span class="math notranslate nohighlight">\((3,3,3)\)</span> and radius <span class="math notranslate nohighlight">\(2\)</span>.</strong></p>
 <p>First we will set up the ray, which must have an origin and direction. The distance along the ray is determined by a parameter, <span class="math notranslate nohighlight">\(t\)</span>, which varies <span class="math notranslate nohighlight">\(\in[0,1]\)</span> if the ray has a start and end position, or is simply <span class="math notranslate nohighlight">\(&gt;0\)</span> if the ray is infinitely long.</p>
 <p>In this implementation, Python can handle maths involving unknown values, so we will tell it to create a vector expression describing the ray in terms of the origin plus the vector direction times the symbolic expression “t”:</p>
@@ -510,7 +520,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>In this example, it is clear that the ray misses the sphere, as expected.</p>
 </div>
 <div class="section" id="lecture-example-2-multiple-intersections-and-normal-calculation">
-<h2><span class="section-number">3.2. </span>Lecture Example 2: Multiple intersections and normal calculation<a class="headerlink" href="#lecture-example-2-multiple-intersections-and-normal-calculation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>Lecture Example 2: Multiple intersections and normal calculation<a class="headerlink" href="#lecture-example-2-multiple-intersections-and-normal-calculation" title="Permalink to this headline">¶</a></h2>
 <p><strong>Determine the unit normal where the ray from <span class="math notranslate nohighlight">\((1,-2,-1)\)</span> with direction <span class="math notranslate nohighlight">\({\vec{i}}+2{\vec{j}}+4{\vec{k}}\)</span> first intersects the sphere with centre <span class="math notranslate nohighlight">\((3,0,5)\)</span> and radius <span class="math notranslate nohighlight">\(3\)</span>.</strong></p>
 <p>We will leave the unit normal calculation until after we have identified all intersections with the object. We’ll recycle the same process we used in Example 1, but changing the constants to match the Example 2 values:</p>
 <div class="cell docutils container">
@@ -627,7 +637,7 @@ intersection 2 found at t=2.04024917041263
 <p>We can repeat the same process for any object which is fully described by a mathematical equation. Commmon examples include cones and paraboloids. Some of these objects can be difficult to visualise.</p>
 </div>
 <div class="section" id="lecture-example-3-general-object">
-<h2><span class="section-number">3.3. </span>Lecture Example 3: General object<a class="headerlink" href="#lecture-example-3-general-object" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3. </span>Lecture Example 3: General object<a class="headerlink" href="#lecture-example-3-general-object" title="Permalink to this headline">¶</a></h2>
 <p><strong>Find the unit normal at the point where the ray from <span class="math notranslate nohighlight">\((-1,2,0)\)</span> to <span class="math notranslate nohighlight">\((3,1,4)\)</span> cuts the hyperbolic paraboloid <span class="math notranslate nohighlight">\(x^2-y^2+4z=0\)</span>.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -710,7 +720,7 @@ intersection 2 found at t=2.04024917041263
 <p>A note of caution: Python can handle some 3D images, but that isn’t really what it was made to do. There are other plotting libraries to play with (try “scikit-image” for example), but really you already know about graphics programming in other ways!</p>
 </div>
 <div class="section" id="over-to-you">
-<h2><span class="section-number">3.4. </span>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4. </span>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
 <p>Try some more examples from the lectures or the tutorial questions once you are satisfied with the mathematics.</p>
 </div>
 </div>
@@ -740,17 +750,17 @@ intersection 2 found at t=2.04024917041263
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="CMP505_curvsurf.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="CMP505_bilinearpatches.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>Curves and Surfaces</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Bilinear Patches</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="CMP505_rays2.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Rays Intersecting with 2D boxes</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Rays Intersecting with 2D boxes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

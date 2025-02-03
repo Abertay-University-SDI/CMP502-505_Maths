@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Ray Tracing" href="CMP505_rays1.html" />
+    <link rel="next" title="3. Bilinear Patches" href="CMP505_bilinearpatches.html" />
     <link rel="prev" title="1. Partial Derivatives" href="CMP505_partialderivs.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -166,21 +166,31 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_bilinearpatches.html">
+   3. Bilinear Surface Patches
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="CMP505_rays1.html">
-   3. Rays Introduction
+   4. Rays Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="CMP505_rays2.html">
-   4. Rays 2D Boxes
+   5. Rays 2D Boxes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="CMP505_rays3.html">
-   5. Rays 3D Plane Segments
+   6. Rays 3D Plane Segments
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Summary
+ </span>
+</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../outro.html">
@@ -615,9 +625,9 @@ Let’s prove this by making up a parameterised curve and attempting to evaluate
 {\vec{\mathbf{t}}}_u = \frac{\partial{\vec{\mathbf{S}}}}{\partial u}=\frac{\partial x}{\partial u}{\vec{\mathbf{i}}}+\frac{\partial y}{\partial u}{\vec{\mathbf{j}}}+\frac{\partial z}{\partial u}{\vec{\mathbf{k}}},\\
 {\vec{\mathbf{t}}}_v = \frac{\partial{\vec{\mathbf{S}}}}{\partial v}=\frac{\partial x}{\partial v}{\vec{\mathbf{i}}}+\frac{\partial y}{\partial v}{\vec{\mathbf{j}}}+\frac{\partial z}{\partial v}{\vec{\mathbf{k}}}.
 \end{split}\]</div>
-<p><strong>For a refresher on calculation of partial derivatives, please view the <a class="reference external" href="https://abertay-university-sdi.github.io/MAT201_Python/methods/MAT201M_PartialDerivs.html">partial derivatives workbook</a>.</strong></p>
+<p><strong>For a refresher on calculation of partial derivatives, please view the <a class="reference external" href="https://abertay-university-sdi.github.io/CMP502-505_Maths/CMP505/CMP505_partialderivs.html">partial derivatives workbook</a>.</strong></p>
 <p>The tangent vectors <span class="math notranslate nohighlight">\({\vec{\mathbf{t}}}_u\)</span> and <span class="math notranslate nohighlight">\({\vec{\mathbf{t}}}_v\)</span> together define an entire plane:</p>
-<p><img alt="Picture" src="https://github.com/Abertay-University-SDI/MAT201_Python/blob/main/methods/Tangent_plane.jpg?raw=1" /></p>
+<p><img alt="Picture" src="https://github.com/Abertay-University-SDI/CMP502-505_Maths/blob/main/CMP505/Tangent_plane.jpg?raw=1" /></p>
 <p>We know that 3D planes all have the same form of equation:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -772,10 +782,10 @@ d = ax(u_1,v_1)+by(u_1,v_1)+cz(u_1,v_1).
             <p class="prev-next-title"><span class="section-number">1. </span>Partial Derivatives</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="CMP505_rays1.html" title="next page">
+    <a class='right-next' id="next-link" href="CMP505_bilinearpatches.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Ray Tracing</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Bilinear Patches</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
