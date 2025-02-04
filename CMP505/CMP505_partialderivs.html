@@ -166,25 +166,35 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_bilinearpatches.html">
+   3. Bilinear Surface Patches
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="CMP505_rays1.html">
-   3. Rays Introduction
+   4. Rays Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="CMP505_rays2.html">
-   4. Rays 2D Boxes
+   5. Rays 2D Boxes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="CMP505_rays3.html">
-   5. Rays 3D Plane Segments
+   6. Rays 3D Plane Segments
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Summary
+ </span>
+</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../outro.html">
-   1. Summary
+   Summary
   </a>
  </li>
 </ul>
@@ -476,7 +486,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>To differentiate with respect to <span class="math notranslate nohighlight">\(x\)</span>, Python treats <span class="math notranslate nohighlight">\(y\)</span> as a constant; we can continue to use the diff command to calculate <span class="math notranslate nohighlight">\(\frac{\partial z}{\partial x}\)</span>:</p>
+<p>To differentiate with respect to <span class="math notranslate nohighlight">\(x\)</span>, Python treats <span class="math notranslate nohighlight">\(y\)</span> as a constant; we can continue to use the <code class="docutils literal notranslate"><span class="pre">sym.diff</span></code> command to calculate <span class="math notranslate nohighlight">\(\frac{\partial z}{\partial x}\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
@@ -518,7 +528,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="second-order-partial-derivatives">
 <h2><span class="section-number">1.4. </span>Second Order Partial Derivatives<a class="headerlink" href="#second-order-partial-derivatives" title="Permalink to this headline">¶</a></h2>
-<p>The rules that we know also roll over to higher order derivatives. In MAT201, it can be useful to know how to calculate derivatives upto and including second order. Python also does this with ease.</p>
+<p>The rules that we know also roll over to higher order derivatives. It can be useful to know how to calculate derivatives upto and including second order, for example for curve sketching, or evaluate how the rate of change changes. Python also does this with ease.</p>
 <p>Replicating the practical example from the lectures where <span class="math notranslate nohighlight">\(f(x,y)=x^2y+3y^2x-\frac{2x}{y}\)</span>, the second order derivative <span class="math notranslate nohighlight">\(\frac{\partial^2 f}{\partial x^2}\)</span> can be found as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -678,7 +688,7 @@ I will use nested if statements to run the test on each critical point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x11ff6fcd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x1158bbdf0&gt;
 </pre></div>
 </div>
 <img alt="../_images/CMP505_partialderivs_41_1.png" src="../_images/CMP505_partialderivs_41_1.png" />

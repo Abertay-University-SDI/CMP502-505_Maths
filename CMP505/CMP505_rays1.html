@@ -194,7 +194,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../outro.html">
-   1. Summary
+   Summary
   </a>
  </li>
 </ul>
@@ -482,7 +482,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We placed a restriction on the parameter t that it must be positive: this tells Python that t cannot be imaginary. If we remove the positive restriction on t, we can determine the complex solutions to this equation. However, complex values means that there are <em>no</em> intersections between this sphere and this ray.</p>
 <hr class="docutils" />
 <p>We should check this result visually with a plot.</p>
-<p>So far, we have saved coordinates using sympy’s “matrix” command, which has allowed us to create 3D vectors for our ray. Sadly, a lot of the plotting routines work with a different data structure, so we’ll have to convert important coordinates to the correct datatype in order to plot them:</p>
+<p>So far, we have saved coordinates as a <code class="docutils literal notranslate"><span class="pre">sym.Matrix</span></code>, which has allowed us to create 3D vectors for our ray. Sadly, a lot of the plotting routines work with a different data structure, so we’ll have to convert important coordinates to the correct datatype in order to plot them:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ro</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ray_o</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span> <span class="c1">#convert ray origin to numpy array</span>
@@ -536,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>We will again use the solve command to allow Python to find values of t when we substitute the parametric forms of the ray equation into the equation of the sphere.</p>
-<p>Unlike last time, the solution we saw in class implies that we should expect two intersections. The first intersection corresponds to entering the sphere, and the second is when the ray leaves the sphere. We therefore need to arrange the solutions in size order, which the Python “sort” function will take care of. We can then print them in order:</p>
+<p>Unlike last time, the solution we saw in class implies that we should expect two intersections. The first intersection corresponds to entering the sphere, and the second is when the ray leaves the sphere. We therefore need to arrange the solutions in size order, which the Python <code class="docutils literal notranslate"><span class="pre">sort</span></code> function will take care of. We can then print them in order:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sols</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">x</span><span class="p">,</span> <span class="n">ray2</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">ray2</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">ray2</span><span class="p">[</span><span class="mi">2</span><span class="p">])]),</span><span class="n">t</span><span class="p">)</span>
@@ -686,7 +686,7 @@ intersection 2 found at t=2.04024917041263
 </div>
 </div>
 </div>
-<p>In an ideal world we would visually check that the ray intersects this object: Python isn’t great for complex visualisation. One way to check what this object looks like is to use a special library that allows you to examine an isosurface of a 3D function like ours. To do this we may have to install a special library called “plotly”.</p>
+<p>In an ideal world we would visually check that the ray intersects this object: Python isn’t great for complex visualisation. One way to check what this object looks like is to use a special library that allows you to examine an isosurface of a 3D function like ours. To do this we may have to install a special library called <code class="docutils literal notranslate"><span class="pre">plotly</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
@@ -709,7 +709,7 @@ intersection 2 found at t=2.04024917041263
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x11f1fcb50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x1218a6eb0&gt;
 </pre></div>
 </div>
 <img alt="../_images/CMP505_rays1_37_1.png" src="../_images/CMP505_rays1_37_1.png" />
@@ -717,7 +717,7 @@ intersection 2 found at t=2.04024917041263
 </div>
 <p>This function looks like a saddle point: we encountered saddle points when looking at Partial Derivatives.</p>
 <p>Maybe, using your maths skills, you could check whether this is a true saddle point, <strong>using the second derivative test</strong>?</p>
-<p>A note of caution: Python can handle some 3D images, but that isn’t really what it was made to do. There are other plotting libraries to play with (try “scikit-image” for example), but really you already know about graphics programming in other ways!</p>
+<p>A note of caution: Python can handle some 3D images, but that isn’t really what it was made to do. There are other plotting libraries to play with (try <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> for example), but really you already know about graphics programming in other ways!</p>
 </div>
 <div class="section" id="over-to-you">
 <h2><span class="section-number">4.4. </span>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>

@@ -166,25 +166,35 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="CMP505/CMP505_bilinearpatches.html">
+   3. Bilinear Surface Patches
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="CMP505/CMP505_rays1.html">
-   3. Rays Introduction
+   4. Rays Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="CMP505/CMP505_rays2.html">
-   4. Rays 2D Boxes
+   5. Rays 2D Boxes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="CMP505/CMP505_rays3.html">
-   5. Rays 3D Plane Segments
+   6. Rays 3D Plane Segments
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Summary
+ </span>
+</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="outro.html">
-   1. Summary
+   Summary
   </a>
  </li>
 </ul>
@@ -408,7 +418,7 @@ Jupyter and python can be launched through the Anaconda data science platform on
 </div>
 </div>
 </div>
-<p>In this case, we have imported a library called “time” in order to run a command called “sleep”. This command runs for an amount of time given by its argument (in our case, 3 seconds) and produces no output. Note that when the code is running the symbol within the square brackets changes (indicating it is running).</p>
+<p>In this case, we have imported a library called <code class="docutils literal notranslate"><span class="pre">time</span></code> in order to run a command called <code class="docutils literal notranslate"><span class="pre">time.sleep</span></code>. This command runs for an amount of time given by its argument (in our case, 3 seconds) and produces no output. Note that when the code is running the symbol within the square brackets changes (indicating it is running).</p>
 <p>One thing to note is that some libraries have long names. When running a command from that library, we have so also write the name of the library out again:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># time.sleep()</span>
 </pre></div>
@@ -421,7 +431,7 @@ Jupyter and python can be launched through the Anaconda data science platform on
 <div class="section" id="applications-to-cmp502-and-cmp505-content">
 <h2>Applications to CMP502 and CMP505 content<a class="headerlink" href="#applications-to-cmp502-and-cmp505-content" title="Permalink to this headline">¶</a></h2>
 <p>In our courses, some of our focus will be on the mathematics used to create specific tools and techniques. The rest of this introduction will illustrate a Python library called <a class="reference external" href="https://www.sympy.org/en/index.html">Sympy</a>. Like other Python packages, it is well documented, and widely used. We can use it to solve many symbolic computation problems (solving systems of equations, calculus, etc).</p>
-<p>Let’s go ahead and load in the libraries we need: in this case, we’ll focus solely on <em>sympy</em> (which, for simplicity, when calling, we will refer to as “sym”):</p>
+<p>Let’s go ahead and load in the libraries we need: in this case, we’ll focus solely on <code class="docutils literal notranslate"><span class="pre">sympy</span></code> (which, for simplicity, when calling, we will refer to as <code class="docutils literal notranslate"><span class="pre">sym</span></code>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
@@ -429,7 +439,7 @@ Jupyter and python can be launched through the Anaconda data science platform on
 </div>
 </div>
 </div>
-<p>Let’s very briefly look at some capabilities of <em>sympy</em>. <em>Sympy</em> has three data types, Real Integer and Rational. Rational numbers are probably better known as fractions. If we wanted to work with the fraction of one half, for example, we could write this as a real number <span class="math notranslate nohighlight">\(0.5\)</span>, or as a fraction:</p>
+<p>Let’s very briefly look at some capabilities of <code class="docutils literal notranslate"><span class="pre">sympy</span></code>. <code class="docutils literal notranslate"><span class="pre">sympy</span></code> has three data types, Real Integer and Rational. Rational numbers are probably better known as fractions. If we wanted to work with the fraction of one half, for example, we could write this as a real number <span class="math notranslate nohighlight">\(0.5\)</span>, or as a fraction:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">onehalf</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -496,7 +506,7 @@ Jupyter and python can be launched through the Anaconda data science platform on
 \[\displaystyle x^{2} + x y + \frac{y^{2}}{4}\]</div>
 </div>
 </div>
-<p>Sympy has expanded this binomial, just like we would using pen and paper. It knows all the rules we do! It also knows lots about trigonometric functions. The <em>simplify</em> command can simplify expressions, using all of the maths knowledge in the library. We know that <span class="math notranslate nohighlight">\(\cos^2{(x)}+\sin^2{(x)}=1\)</span>; so does Sympy:</p>
+<p>Sympy has expanded this binomial, just like we would using pen and paper. It knows all the rules we do! It also knows lots about trigonometric functions. The <code class="docutils literal notranslate"><span class="pre">simplify</span></code> command can simplify expressions, using all of the maths knowledge in the library. We know that <span class="math notranslate nohighlight">\(\cos^2{(x)}+\sin^2{(x)}=1\)</span>; so does sympy:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">sym</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">sym</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">sym</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">sym</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -506,9 +516,7 @@ Jupyter and python can be launched through the Anaconda data science platform on
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sin(x)**2 + cos(x)**2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+1
 </pre></div>
 </div>
 </div>
@@ -559,7 +567,7 @@ Jupyter and python can be launched through the Anaconda data science platform on
 \[\displaystyle \log{\left(x \right)}\]</div>
 </div>
 </div>
-<p>(also noting that sympy refers to natural log (<span class="math notranslate nohighlight">\(ln\)</span>) as “log”). Sympy can also solve equations or sets of equations in one line:</p>
+<p>(also noting that sympy refers to natural log (<span class="math notranslate nohighlight">\(ln\)</span>) as <code class="docutils literal notranslate"><span class="pre">log</span></code>). Sympy can also solve equations or sets of equations in one line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solution</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
