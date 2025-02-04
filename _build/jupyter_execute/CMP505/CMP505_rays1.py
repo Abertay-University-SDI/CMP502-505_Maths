@@ -259,8 +259,8 @@ plt.show()
 # In[15]:
 
 
-r3_o = sym.Matrix([[1, -2, -1]])
-r3_e = sym.Matrix([[1, 2, 4]])
+r3_o = sym.Matrix([[-1, 2, 0]])
+r3_e = sym.Matrix([[3, 1, 4]])
 t = sym.Symbol('t', positive=True) 
 ray3 = r3_o + t * (r3_e - r3_o)
 hp = x**2 - y**2 + 4 * z
@@ -281,38 +281,66 @@ for i, val in enumerate(valid_sols) :
 
 
 is3  = (ray3.subs(t,valid_sols[0].evalf()))
+r3o  = np.array(r3_o.tolist()[0],dtype='float64')
 is3a = np.array(is3.tolist()[0],dtype='float64')
 print("intersection occurs at ({:0.3f},{:0.3f},{:0.3f})".format(is3a[0],is3a[1],is3a[2]))
 
 
-# In an ideal world we would visually check that the ray intersects this object: Python isn't great for complex visualisation. One way to check what this object looks like is to use a special library that allows you to examine an isosurface of a 3D function like ours. To do this we may have to install a special library called `plotly`.
+# Thanks to python, we've identified where the intersections between this ray and the hyperbolic paraboloid occur. However, that doesn't answer the question, which wants to know the unit normal at that point.
+# 
+# To that end, we'll define a function which returns a vector $\bf\vec{\nabla{\phi}}$, which is the normal vector. We'll then evaluate this at the location where we found the intersection to calculate the normal there:
 
 # In[18]:
 
 
-from matplotlib import cm
-fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(12,6))
+def grad(phi):
+    gradphi = [sym.diff(phi,x), sym.diff(phi,y), sym.diff(phi,z)]
+    return gradphi
 
-X = np.arange(-1, 1, 0.25)
-Y = np.arange(-1, 1, 0.25)
+gradhp = grad(hp)
+nx = float(gradhp[0].subs({x:is3a[0], y:is3a[1], z:is3a[2]}))
+ny = float(gradhp[1].subs({x:is3a[0], y:is3a[1], z:is3a[2]}))
+nz = float(gradhp[2].subs({x:is3a[0], y:is3a[1], z:is3a[2]}))
+n = [nx,ny,nz]
+n = n/np.linalg.norm(n)
+print("unit normal=", n)
+
+
+# We've answered the question, and obtained the same solution that we recovered mathematically in the lectures.
+# 
+# The final stage is to see if the solutions make sense visually. With mathematical surfaces given as a scalar function, we often have to create a grid of $x$ and $y$ values, before rearranging the scalar function to create a grid of $z$ values:
+
+# In[19]:
+
+
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(12,8))
+ax.view_init(elev=40, azim=-50, roll=0)
+X = np.arange(-3, 3, 0.25)
+Y = np.arange(-3, 3, 0.25)
 X, Y = np.meshgrid(X, Y)
 #rearranging the expression to make z the subject:
 Z = (X*X-Y*Y)/(-4)
-surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.coolwarm,
-                       linewidth=0, antialiased=False)
-ax.set_zlim(-0.51, 0.51)
+#surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, alpha=0.3)
+surf = ax.plot_wireframe(X, Y, Z, rstride=2, cstride=1, label='parabolic bowl')
+ax.scatter(is3a[0],is3a[1],is3a[2], c='r', marker='x', s=100) 
+arrow_prop_dict = dict(mutation_scale=20, arrowstyle='-|>', color='k', shrinkA=0, shrinkB=0, linewidth=2)
+a = Arrow3D([r3o[0], is3a[0]], [r3o[1], is3a[1]], [r3o[2], is3a[2]], **arrow_prop_dict)
+ax.add_artist(a)
+arrow_prop_dict = dict(mutation_scale=20, arrowstyle='-|>', color='r', shrinkA=0, shrinkB=0, linewidth=1)
+b = Arrow3D([is3a[0], is3a[0]-n[0]], [is3a[1], is3a[1]-n[1]], [is3a[2], is3a[2]-n[2]], **arrow_prop_dict)
+ax.add_artist(b)
+ax.set_zlim(-2, 2)
 ax.title.set_text('visualising x^2-y^2+4z=0')
-ax.set_xlabel("X Axis")
-ax.set_ylabel("Y Axis")
-ax.set_zlabel("Z Axis")
-fig.colorbar(surf, shrink=0.5, aspect=10)
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_zlabel("z")
 
 
+# Some points to note from this diagram: the ray does appear to intersect the surface at the location we found using maths. The normal at this location does appear to point away from surface. You can double check this by varying the viewing angle of the plot.
+# 
 # This function looks like a saddle point: we encountered saddle points when looking at Partial Derivatives. 
 # 
 # Maybe, using your maths skills, you could check whether this is a true saddle point, **using the second derivative test**?
-# 
-# A note of caution: Python can handle some 3D images, but that isn't really what it was made to do. There are other plotting libraries to play with (try `scikit-image` for example), but really you already know about graphics programming in other ways!
 
 # ## Over to you
 # Try some more examples from the lectures or the tutorial questions once you are satisfied with the mathematics.
