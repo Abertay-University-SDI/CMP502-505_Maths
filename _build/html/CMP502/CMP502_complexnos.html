@@ -166,25 +166,35 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../CMP505/CMP505_bilinearpatches.html">
+   3. Bilinear Surface Patches
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../CMP505/CMP505_rays1.html">
-   3. Rays Introduction
+   4. Rays Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../CMP505/CMP505_rays2.html">
-   4. Rays 2D Boxes
+   5. Rays 2D Boxes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../CMP505/CMP505_rays3.html">
-   5. Rays 3D Plane Segments
+   6. Rays 3D Plane Segments
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Summary
+ </span>
+</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../outro.html">
-   1. Summary
+   Summary
   </a>
  </li>
 </ul>
@@ -432,7 +442,7 @@ const thebe_selector_output = ".output, .cell_output"
 z = A+iB,
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(A\)</span> is the real part, <span class="math notranslate nohighlight">\(B\)</span> is the imaginary part and <span class="math notranslate nohighlight">\(i=\sqrt{-1}\)</span>.</p>
-<p>To represent complex numbers in Python, there are two approaches. Python will interpret a number as complex if we append the second value in a sum with the letter j (j is a more common letter in engineering to represent the square-root of -1; i is used, for example, to represent electric current in physics equations):</p>
+<p>To represent complex numbers in Python, there are two approaches. Python will interpret a number as complex if we append the second value in a sum with the letter <code class="docutils literal notranslate"><span class="pre">j</span></code> (j is a more common letter in engineering to represent the square-root of -1; i is used, for example, to represent electric current in physics equations):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="n">j</span>
@@ -494,7 +504,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 </div>
-<p>If we want to do some more advanced things with complex numbers in Python, we should use the “complex” datatype. This tells Python that we are serious about complex numbers and allows us access to more useful mathematical operations related to complex numbers. One example is the ability to immediately tell us what the conjugate of any given complex number is.</p>
+<p>If we want to do some more advanced things with complex numbers in Python, we should use the <code class="docutils literal notranslate"><span class="pre">complex</span></code> datatype. This tells Python that we are serious about complex numbers and allows us access to more useful mathematical operations related to complex numbers. One example is the ability to immediately tell us what the conjugate of any given complex number is.</p>
 <p>From the lectures, we learned that the conjugate of a complex number, <span class="math notranslate nohighlight">\(\bar{z}\)</span>, has an imaginary component of opposite sign:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -605,7 +615,7 @@ ans= (-8-4j) / (10+0j) = (-0.8-0.4j)
 \theta=\tan^{-1}{\left(\frac{|B|}{|A|}\right)},
 \]</div>
 <p>when located in the positive <span class="math notranslate nohighlight">\(x\)</span> and positive <span class="math notranslate nohighlight">\(y\)</span> part of the diagram. If either <span class="math notranslate nohighlight">\(B\)</span> or <span class="math notranslate nohighlight">\(A\)</span> is positive one must add/subtract in order to form the argument of the complex number relative to the positive real axis.</p>
-<p>Most of the angle calculation methods baked into Python already take account of this, using the <em>atan2</em> function, or the <em>angle</em> command from numpy:</p>
+<p>Most of the angle calculation methods baked into Python already take account of this, using the <code class="docutils literal notranslate"><span class="pre">np.atan2</span></code> function, or the <code class="docutils literal notranslate"><span class="pre">np.angle</span></code> command from numpy:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">argz3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">z3</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">z3</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
@@ -623,7 +633,7 @@ ans= (-8-4j) / (10+0j) = (-0.8-0.4j)
 </div>
 </div>
 </div>
-<p><em>atan2</em> is a fairly common function in several computer languages: you can find more information about it through e.g. Google and other search engines. The numpy command <em>angle</em> can handle complex datatypes as input, which can save use some effort compared to <em>atan2</em>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">atan2</span></code> is a fairly common function in several computer languages: you can find more information about it through e.g. Google and other search engines. The numpy command <code class="docutils literal notranslate"><span class="pre">angle</span></code> can handle complex datatypes as input, which can save use some effort compared to <code class="docutils literal notranslate"><span class="pre">atan2</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
@@ -639,7 +649,7 @@ ans= (-8-4j) / (10+0j) = (-0.8-0.4j)
 </div>
 <div class="section" id="cmath">
 <h2><span class="section-number">6.5. </span>Cmath<a class="headerlink" href="#cmath" title="Permalink to this headline">¶</a></h2>
-<p>Python has an explicit package solely for manipulating complex numbers, called <em>cmath</em>. It goes far beyond our needs (complex numbers are an entire interesting branch of mathematics with wide-ranging implications and applications). Some of the more basic functions can be useful however: <em>cmath</em> can quickly and directly convert to/from polar form, for example using the <em>polar</em> command:</p>
+<p>Python has an explicit package solely for manipulating complex numbers, called <code class="docutils literal notranslate"><span class="pre">cmath</span></code>. It goes far beyond our needs (complex numbers are an entire interesting branch of mathematics with wide-ranging implications and applications). Some of the more basic functions can be useful however: <code class="docutils literal notranslate"><span class="pre">cmath</span></code> can quickly and directly convert to/from polar form, for example using the <code class="docutils literal notranslate"><span class="pre">cmath.polar</span></code> command:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import cmath for complex number operations</span>
@@ -713,7 +723,10 @@ ans= (-8-4j) / (10+0j) = (-0.8-0.4j)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>achieved with matrix transforms:  (-3.83,3.37)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>achieved with matrix transforms: 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> (-3.83,3.37)
 lectures stated im=  (-3.83,3.37)
 </pre></div>
 </div>

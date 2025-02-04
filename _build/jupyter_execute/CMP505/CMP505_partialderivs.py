@@ -80,7 +80,7 @@ sym.diff(f*g,x)
 z = 2*x**3*y+x**2*y**4
 
 
-# To differentiate with respect to $x$, Python treats $y$ as a constant; we can continue to use the diff command to calculate $\frac{\partial z}{\partial x}$:
+# To differentiate with respect to $x$, Python treats $y$ as a constant; we can continue to use the `sym.diff` command to calculate $\frac{\partial z}{\partial x}$:
 
 # In[8]:
 
@@ -111,7 +111,7 @@ sym.diff(z, x)
 
 # ## Second Order Partial Derivatives ##
 # 
-# The rules that we know also roll over to higher order derivatives. In MAT201, it can be useful to know how to calculate derivatives upto and including second order. Python also does this with ease.
+# The rules that we know also roll over to higher order derivatives. It can be useful to know how to calculate derivatives upto and including second order, for example for curve sketching, or evaluate how the rate of change changes. Python also does this with ease.
 # 
 # Replicating the practical example from the lectures where $f(x,y)=x^2y+3y^2x-\frac{2x}{y}$, the second order derivative $\frac{\partial^2 f}{\partial x^2}$ can be found as follows:
 

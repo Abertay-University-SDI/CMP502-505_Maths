@@ -65,7 +65,7 @@ print(hp.transpose())
 # ## Rotation
 # 
 
-# In cases where rotation is needed, in the lectures we learned about the 2D rotation matrix, which takes the form seen in class (and in MAT102):
+# In cases where rotation is needed, in the lectures we learned about the 2D rotation matrix, which takes the form seen in class:
 # 
 # $$
 # R_{\theta_{z,{\underline{k}}}}=

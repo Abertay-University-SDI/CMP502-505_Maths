@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Summary" href="../outro.html" />
+    <link rel="next" title="Summary" href="../outro.html" />
     <link rel="prev" title="5. Rays Intersecting with 2D boxes" href="CMP505_rays2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -194,7 +194,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../outro.html">
-   1. Summary
+   Summary
   </a>
  </li>
 </ul>
@@ -445,7 +445,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="example-1-can-we-construct-a-parallelogram-plane-segment">
 <h3><span class="section-number">6.1.1. </span>Example 1: Can we construct a parallelogram plane segment?<a class="headerlink" href="#example-1-can-we-construct-a-parallelogram-plane-segment" title="Permalink to this headline">¶</a></h3>
 <p><strong>Determine the equation of the parallelogram plane segment with vertices at <span class="math notranslate nohighlight">\(A(0,0,0)\)</span>, <span class="math notranslate nohighlight">\(B(3,4,-2)\)</span>, <span class="math notranslate nohighlight">\(C(2,3,1)\)</span> and <span class="math notranslate nohighlight">\(D(-1,-1,3)\)</span>.</strong></p>
-<p>Let’s begin by setting up some parameters to work with, and storing the coordinates in matrices. We could use arrays in principle, but we’ll need to solve sets of simultaneous equations using sympy, and from experience the matrix datatype serves our purpose well here:</p>
+<p>Let’s begin by setting up some parameters to work with, and storing the coordinates in matrices. We could use arrays in principle, but we’ll need to solve sets of simultaneous equations using sympy, and from experience the <code class="docutils literal notranslate"><span class="pre">sym.Matrix</span></code> datatype serves our purpose well here:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -729,9 +729,6 @@ Python finds: Matrix([[1.39705882352941, 2, 0.0294117647058822]])
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix([[5 - 5*u, 3*u - 3*v, 4*v]])
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -839,7 +836,7 @@ Matrix([[85/53, 39/53, 92/53]])
     <a class='right-next' id="next-link" href="../outro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Summary</p>
+        <p class="prev-next-title">Summary</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

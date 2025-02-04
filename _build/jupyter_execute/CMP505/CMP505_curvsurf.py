@@ -221,6 +221,7 @@ plt.show()
 # The tangent vectors ${\vec{\mathbf{t}}}_u$ and ${\vec{\mathbf{t}}}_v$ together define an entire plane:
 # 
 # ![Picture](https://github.com/Abertay-University-SDI/CMP502-505_Maths/blob/main/CMP505/Tangent_plane.jpg?raw=1)
+# *https://mathresearch.utsa.edu/wiki/index.php?title=Tangent_Plane*
 
 # We know that 3D planes all have the same form of equation:
 # 

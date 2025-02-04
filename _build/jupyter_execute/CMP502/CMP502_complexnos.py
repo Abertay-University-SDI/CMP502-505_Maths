@@ -25,7 +25,7 @@ from matplotlib.patches import FancyArrowPatch
 # 
 # where $A$ is the real part, $B$ is the imaginary part and $i=\sqrt{-1}$. 
 # 
-# To represent complex numbers in Python, there are two approaches. Python will interpret a number as complex if we append the second value in a sum with the letter j (j is a more common letter in engineering to represent the square-root of -1; i is used, for example, to represent electric current in physics equations): 
+# To represent complex numbers in Python, there are two approaches. Python will interpret a number as complex if we append the second value in a sum with the letter `j` (j is a more common letter in engineering to represent the square-root of -1; i is used, for example, to represent electric current in physics equations): 
 
 # In[2]:
 
@@ -79,7 +79,7 @@ print("z1-z2=",z1-z2)
 print("z1*z2=",z1*z2)
 
 
-# If we want to do some more advanced things with complex numbers in Python, we should use the "complex" datatype. This tells Python that we are serious about complex numbers and allows us access to more useful mathematical operations related to complex numbers. One example is the ability to immediately tell us what the conjugate of any given complex number is. 
+# If we want to do some more advanced things with complex numbers in Python, we should use the `complex` datatype. This tells Python that we are serious about complex numbers and allows us access to more useful mathematical operations related to complex numbers. One example is the ability to immediately tell us what the conjugate of any given complex number is. 
 # 
 # From the lectures, we learned that the conjugate of a complex number, $\bar{z}$, has an imaginary component of opposite sign:
 # 
@@ -176,16 +176,7 @@ argand([z3])
 # 
 # when located in the positive $x$ and positive $y$ part of the diagram. If either $B$ or $A$ is positive one must add/subtract in order to form the argument of the complex number relative to the positive real axis.
 # 
-# Most of the angle calculation methods baked into Python already take account of this, using the *atan2* function, or the *angle* command from numpy:
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
+# Most of the angle calculation methods baked into Python already take account of this, using the `np.atan2` function, or the `np.angle` command from numpy:
 
 # In[10]:
 
@@ -196,7 +187,7 @@ print(np.angle(z3, deg=True))
 print(np.angle(complex(-1,2), deg=True))
 
 
-# *atan2* is a fairly common function in several computer languages: you can find more information about it through e.g. Google and other search engines. The numpy command *angle* can handle complex datatypes as input, which can save use some effort compared to *atan2*:
+# `atan2` is a fairly common function in several computer languages: you can find more information about it through e.g. Google and other search engines. The numpy command `angle` can handle complex datatypes as input, which can save use some effort compared to `atan2`:
 
 # In[11]:
 
@@ -205,7 +196,7 @@ print(np.angle(0+1j,deg=True))
 
 
 # ## Cmath
-# Python has an explicit package solely for manipulating complex numbers, called *cmath*. It goes far beyond our needs (complex numbers are an entire interesting branch of mathematics with wide-ranging implications and applications). Some of the more basic functions can be useful however: *cmath* can quickly and directly convert to/from polar form, for example using the *polar* command:
+# Python has an explicit package solely for manipulating complex numbers, called `cmath`. It goes far beyond our needs (complex numbers are an entire interesting branch of mathematics with wide-ranging implications and applications). Some of the more basic functions can be useful however: `cmath` can quickly and directly convert to/from polar form, for example using the `cmath.polar` command:
 
 # In[12]:
 

@@ -158,7 +158,7 @@ Tv = np.matrix([[1, 0, 0, 0],
 rp = hp.transpose()*Tw*R_thetaj*Tv
 
 
-# It very difficult to confirm that the rotation appears as we might expect in 3D. In the plotting commands below, play with the azimuth parameter in the "ax.view_init" command to view the plot at different angles to verify the behaviour is reasonable:
+# It very difficult to confirm that the rotation appears as we might expect in 3D. In the plotting commands below, play with the azimuth parameter in the `ax.view_init` command to view the plot at different angles to verify the behaviour is reasonable:
 
 # In[7]:
 
@@ -225,7 +225,7 @@ Sxyz = np.matrix([[1, 0, 0, 0],
 sp = hp.transpose()*Tw*Sxyz*Tv
 
 
-# Don't worry about this step: we'll use the "np.squeeze" command to make the arrays the correct shape for Python to handle properly..
+# Don't worry about this step: we'll use the `np.squeeze` command to make the arrays the correct shape for Python to handle properly..
 
 # In[10]:
 
@@ -260,7 +260,7 @@ ax.set_box_aspect([1,1,1])
 plt.show()
 
 
-# You can see that the object is now three times bigger in $y$, and has been squashed in $z$. Due to the viewing perspective in 3D, it is much more difficult to directly confirm exact sizes visually. Try modifying the azimuth and elevation in the plot (in the "ax.view_init()" command, first number is an angle relative to the z=0 plane, second is an angle relative to y=0 plane) to confirm the sizes in the $x$, $y$ and $z$ directions.
+# You can see that the object is now three times bigger in $y$, and has been squashed in $z$. Due to the viewing perspective in 3D, it is much more difficult to directly confirm exact sizes visually. Try modifying the azimuth and elevation in the plot (in the `ax.view_init()` command, first number is an angle relative to the z=0 plane, second is an angle relative to y=0 plane) to confirm the sizes in the $x$, $y$ and $z$ directions.
 
 # ## Combining operations
 # 

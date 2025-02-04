@@ -132,7 +132,7 @@ print(hp.transpose())
 # 
 # Note that in the lectures, we only require the numerator of the distance formula to evaluate distances. This is because we are not calculating true distances, but comparing relative distances. Because we are using it for a comparison, the denominators don't matter (they are identical for all points, and only depend on values associated with the plane). However, here, I will include the denominator in the calculation for completeness.
 # 
-# *Try for yourselves: comment out the denominator from the formula for $Dp$ and $Dc$ in the code below, and verify it does not affect whether the projection is possible.*
+# **Try for yourselves: comment out the denominator from the formula for $Dp$ and $Dc$ in the code below, and verify it does not affect whether the projection is possible.**
 # 
 
 # In[6]:
@@ -210,7 +210,7 @@ print(rph)
 print(np.isclose(a*rph[:,0]+b*rph[:,1]+c*rph[:,2]-d, 0.0))
 
 
-# The "np.isclose" function returns "true" if the difference between the two arguments is neglible. As you can see, Python is confident that these positions satisfy the plane equation, implying that we have likely carried out our projection successfully.
+# The `np.isclose` function returns `true` if the difference between the two arguments is neglible. As you can see, Python is confident that these positions satisfy the plane equation, implying that we have likely carried out our projection successfully.
 # 
 # ### Plotting
 # 

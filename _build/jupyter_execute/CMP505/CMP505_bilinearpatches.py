@@ -44,6 +44,7 @@ class Arrow3D(FancyArrowPatch):
 # A bilinear surface patch can be constructed between four datapoints, taking a weighted average of each of the four corners (depending on the linear distance from each corner). In the below image taken from Wikimedia, the contribution of each corner can be visually represented by the area on the opposite side of the patch: 
 # 
 # ![Picture](https://upload.wikimedia.org/wikipedia/commons/9/91/Bilinear_interpolation_visualisation.svg?raw=1)
+# *https://en.wikipedia.org/wiki/Bilinear_interpolation*
 # 
 # Mathematically, we assign a parameter to a direction aligned with one of the edges of the patch. These parameters are typically labelled as $u$ and $v$, and can vary between $0$ and $1$; at exactly $0$ or exactly $1$, this indicates a position on the edge of the patch.
 # 
@@ -77,8 +78,8 @@ xf = lambdify([u,v],q[0])
 yf = lambdify([u,v],q[1])
 zf = lambdify([u,v],q[2])
 
-uvals = np.linspace(0,1, 21)  #range of parameter u
-vvals = np.linspace(0,1, 21) #range of parameter v
+uvals = np.linspace(0, 1, 21)  #range of parameter u
+vvals = np.linspace(0, 1, 21) #range of parameter v
 myu, myv = np.meshgrid(uvals,vvals) # make a grid of values
 
 # calculate x,y,z arrays of positions based on u and v
@@ -127,13 +128,17 @@ lineAD = [sym.simplify(q[0].subs({u:v})),sym.simplify(q[1].subs({u:v})),sym.simp
 print(lineAD)
 
 
+# Note that the calculation of the line equation relies on the `subs()` command, which allows us to replace a quantity in a symbolic expression with a number or another quantity. In this example, we want the line $AD$, which in parameter space is the line $u=v$. For this reason we replace all the instances of $u$ in the patch expression with $v$.
+
 # ## Normal calculation?
 # 
-# We've seen that we can construct and view the surface patch. What if we need a normal to be calculated at some point on the patch? (After all rays may interact with this surface).
+# We've seen that we can construct and view the surface patch. What if we need a normal to be calculated at some point on the patch? (for context, rays may interact with any type of surface, and the normal is fundamental to the behaviour after the interaction, so a normal is useful thing to calculate).
 # 
-# To do this, we'll use one of the more challenging tutorial questions:
-# **Contruct a bilinear patch for a surface whose corner points are at $A(0,0,0)$, $B(0,0,-1)$, $C(-1,1,1)$ and $D(1,1,2)$ using $AD$ and $BC$ as opposite line segments. Write doen the vector equation of the surface and determine a unit normal at the point where $u=v=1/2$.**
+# To do this, we'll use one of the more challenging tutorial questions, Q5(iii):
 # 
+# **Contruct a bilinear patch for a surface whose corner points are at $A(0,0,0)$, $B(0,0,-1)$, $C(-1,1,1)$ and $D(1,1,2)$ using $AD$ and $BC$ as opposite line segments. Write down the vector equation of the surface and determine a unit normal at the point where $u=v=1/2$.**
+# 
+# We will follow the procedure created for the previous example, and use the cross product of tangent vectors (as seen in the [curves and surfaces workbook](https://abertay-university-sdi.github.io/CMP502-505_Maths/CMP505/CMP505_curvsurf.html)).
 
 # In[5]:
 
@@ -163,9 +168,11 @@ xvals1, yvals1, zvals1 = xf(myu,myu), yf(myu,myu), zf(myu,myu)
 # calculate x,y,z arrays of line when v=1-u
 xvals2, yvals2, zvals2 = xf(myu,1-myu), yf(myu,1-myu), zf(myu,1-myu)
 
+#tangent vectors
 dqdu = [ sym.diff(q[0],u), sym.diff(q[1],u), sym.diff(q[2],u) ] #tangent, ds/dr
 dqdv = [ sym.diff(q[0],v), sym.diff(q[1],v), sym.diff(q[2],v) ] #tangent, ds/dtheta
 
+#normal calculation by taking cross product of tangent vectors
 v1 = sym.Matrix(dqdu)
 v2 = sym.Matrix(dqdv)
 cp = v1.cross(v2)
@@ -220,7 +227,7 @@ plt.show()
 # 
 # The lines on the patch linking the opposite corners ($AC$, seen in orange, and $DB$, seen in green) loop through the patch, and meet at the point where $u=v=1/2$ (which is a solution of both interior line equations $u=v$ and $u=1-v$).
 # 
-# The normal at the required location points perpendicular to the patch. We could also add a tangent plane to this plot (using the tools we learned in the [curves and surfaces workbook](https://abertay-university-sdi.github.io/CMP502-505_Maths/CMP505/CMP505_curvsurf.html) but this would make the plot very busy and not particularly easy to interpret. The tangent plane is a true, flat plane; this image shows very clearly the slow variation required by the patch surface to link the points. Later in the course we will learn about parallelogram plane segments, which are significantly different to infinite planes, and surface patches.
+# The normal at the required location points perpendicular to the patch. We could also add a tangent plane to this plot (using the tools we learned in the [curves and surfaces workbook](https://abertay-university-sdi.github.io/CMP502-505_Maths/CMP505/CMP505_curvsurf.html)) but this would make the plot very busy and not particularly easy to interpret. The tangent plane is a true, flat plane; this image shows very clearly the slow variation required by the patch surface to link the points. Later in the course we will learn about parallelogram plane segments, which are significantly different to infinite planes, and surface patches.
 
 # ## Over to you
 # Why not test the other tutorial questions you have been given? For the equations where you have been asked to sketch the curves, can you verify the shapes of the lines or surfaces using the plotting tools shown here?

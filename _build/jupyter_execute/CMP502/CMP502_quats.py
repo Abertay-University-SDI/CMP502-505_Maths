@@ -32,7 +32,7 @@ import sympy as sym
 # 
 # Quaternions have various properties that make them fantastic at performing rotations, as discussed in lectures.
 # 
-# To play with quaternions in Python, we have to use a custom Python package that isn't commonly installed on Colab called "quaternion". We will ask Python to try loading it, and if it fails, force the local installation of the package and try again.
+# To play with quaternions in Python, we have to use a custom Python package that isn't commonly installed on Colab called `quaternion`. We will ask Python to try loading it, and if it fails, force the local installation of the package and try again.
 
 # In[2]:
 

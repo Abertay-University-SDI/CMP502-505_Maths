@@ -149,7 +149,7 @@ print(rph)
 print(np.isclose(a*rph[:,0]+b*rph[:,1]+c*rph[:,2]-d, 0.0))
 
 
-# The "np.isclose" function returns "true" if the difference between the two arguments is negligible. As you can see, Python is confident that these positions satisfy the plane equation, implying that we have likely carried out our projection successfully.
+# The `np.isclose` function returns "true" if the difference between the two arguments is negligible. As you can see, Python is confident that these positions satisfy the plane equation, implying that we have likely carried out our projection successfully.
 # 
 # ### Plotting
 # 

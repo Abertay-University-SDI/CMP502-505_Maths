@@ -66,7 +66,7 @@ import time
 time.sleep(3)
 
 
-# In this case, we have imported a library called "time" in order to run a command called "sleep". This command runs for an amount of time given by its argument (in our case, 3 seconds) and produces no output. Note that when the code is running the symbol within the square brackets changes (indicating it is running).
+# In this case, we have imported a library called `time` in order to run a command called `time.sleep`. This command runs for an amount of time given by its argument (in our case, 3 seconds) and produces no output. Note that when the code is running the symbol within the square brackets changes (indicating it is running).
 # 
 # One thing to note is that some libraries have long names. When running a command from that library, we have so also write the name of the library out again:  
 # 
@@ -89,7 +89,7 @@ time.sleep(3)
 # 
 # In our courses, some of our focus will be on the mathematics used to create specific tools and techniques. The rest of this introduction will illustrate a Python library called [Sympy](https://www.sympy.org/en/index.html). Like other Python packages, it is well documented, and widely used. We can use it to solve many symbolic computation problems (solving systems of equations, calculus, etc).
 # 
-# Let's go ahead and load in the libraries we need: in this case, we'll focus solely on *sympy* (which, for simplicity, when calling, we will refer to as "sym"):
+# Let's go ahead and load in the libraries we need: in this case, we'll focus solely on `sympy` (which, for simplicity, when calling, we will refer to as `sym`):
 # 
 
 # In[3]:
@@ -98,7 +98,7 @@ time.sleep(3)
 import sympy as sym
 
 
-# Let's very briefly look at some capabilities of *sympy*. *Sympy* has three data types, Real Integer and Rational. Rational numbers are probably better known as fractions. If we wanted to work with the fraction of one half, for example, we could write this as a real number $0.5$, or as a fraction:
+# Let's very briefly look at some capabilities of `sympy`. `sympy` has three data types, Real Integer and Rational. Rational numbers are probably better known as fractions. If we wanted to work with the fraction of one half, for example, we could write this as a real number $0.5$, or as a fraction:
 
 # In[4]:
 
@@ -141,7 +141,7 @@ print(x + 2 * x + onehalf)
 sym.expand( (x + onehalf * y)**2 )
 
 
-# Sympy has expanded this binomial, just like we would using pen and paper. It knows all the rules we do! It also knows lots about trigonometric functions. The *simplify* command can simplify expressions, using all of the maths knowledge in the library. We know that $\cos^2{(x)}+\sin^2{(x)}=1$; so does Sympy:
+# Sympy has expanded this binomial, just like we would using pen and paper. It knows all the rules we do! It also knows lots about trigonometric functions. The `simplify` command can simplify expressions, using all of the maths knowledge in the library. We know that $\cos^2{(x)}+\sin^2{(x)}=1$; so does sympy:
 
 # In[9]:
 
@@ -186,7 +186,7 @@ sym.diff(x ** 3 + y + onehalf * x * y , x)
 sym.integrate(1 / x, x)
 
 
-# (also noting that sympy refers to natural log ($ln$) as "log"). Sympy can also solve equations or sets of equations in one line:
+# (also noting that sympy refers to natural log ($ln$) as `log`). Sympy can also solve equations or sets of equations in one line:
 
 # In[13]:
 

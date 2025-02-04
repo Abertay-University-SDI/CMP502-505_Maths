@@ -44,7 +44,7 @@ class Arrow3D(FancyArrowPatch):
 # ### Example 1: Can we construct a parallelogram plane segment?
 # **Determine the equation of the parallelogram plane segment with vertices at $A(0,0,0)$, $B(3,4,-2)$, $C(2,3,1)$ and $D(-1,-1,3)$.**
 # 
-# Let's begin by setting up some parameters to work with, and storing the coordinates in matrices. We could use arrays in principle, but we'll need to solve sets of simultaneous equations using sympy, and from experience the matrix datatype serves our purpose well here:
+# Let's begin by setting up some parameters to work with, and storing the coordinates in matrices. We could use arrays in principle, but we'll need to solve sets of simultaneous equations using sympy, and from experience the `sym.Matrix` datatype serves our purpose well here:
 # 
 # 
 

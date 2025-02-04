@@ -107,7 +107,7 @@ print(sym.solve(sphere.subs([(x, ray[0]), (y, ray[1]), (z, ray[2])]),t))
 
 # We should check this result visually with a plot.
 # 
-# So far, we have saved coordinates using sympy's "matrix" command, which has allowed us to create 3D vectors for our ray. Sadly, a lot of the plotting routines work with a different data structure, so we'll have to convert important coordinates to the correct datatype in order to plot them:
+# So far, we have saved coordinates as a `sym.Matrix`, which has allowed us to create 3D vectors for our ray. Sadly, a lot of the plotting routines work with a different data structure, so we'll have to convert important coordinates to the correct datatype in order to plot them:
 
 # In[7]:
 
@@ -159,7 +159,7 @@ s2 = (x - s2_c[0])**2+(y - s2_c[1])**2+(z - s2_c[2])**2-s2_r**2
 
 # We will again use the solve command to allow Python to find values of t when we substitute the parametric forms of the ray equation into the equation of the sphere.
 # 
-# Unlike last time, the solution we saw in class implies that we should expect two intersections. The first intersection corresponds to entering the sphere, and the second is when the ray leaves the sphere. We therefore need to arrange the solutions in size order, which the Python "sort" function will take care of. We can then print them in order:
+# Unlike last time, the solution we saw in class implies that we should expect two intersections. The first intersection corresponds to entering the sphere, and the second is when the ray leaves the sphere. We therefore need to arrange the solutions in size order, which the Python `sort` function will take care of. We can then print them in order:
 
 # In[10]:
 
@@ -285,7 +285,7 @@ is3a = np.array(is3.tolist()[0],dtype='float64')
 print("intersection occurs at ({:0.3f},{:0.3f},{:0.3f})".format(is3a[0],is3a[1],is3a[2]))
 
 
-# In an ideal world we would visually check that the ray intersects this object: Python isn't great for complex visualisation. One way to check what this object looks like is to use a special library that allows you to examine an isosurface of a 3D function like ours. To do this we may have to install a special library called "plotly".
+# In an ideal world we would visually check that the ray intersects this object: Python isn't great for complex visualisation. One way to check what this object looks like is to use a special library that allows you to examine an isosurface of a 3D function like ours. To do this we may have to install a special library called `plotly`.
 
 # In[18]:
 
@@ -312,7 +312,7 @@ fig.colorbar(surf, shrink=0.5, aspect=10)
 # 
 # Maybe, using your maths skills, you could check whether this is a true saddle point, **using the second derivative test**?
 # 
-# A note of caution: Python can handle some 3D images, but that isn't really what it was made to do. There are other plotting libraries to play with (try "scikit-image" for example), but really you already know about graphics programming in other ways!
+# A note of caution: Python can handle some 3D images, but that isn't really what it was made to do. There are other plotting libraries to play with (try `scikit-image` for example), but really you already know about graphics programming in other ways!
 
 # ## Over to you
 # Try some more examples from the lectures or the tutorial questions once you are satisfied with the mathematics.
