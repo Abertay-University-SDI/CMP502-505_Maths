@@ -1,0 +1,100 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 1093, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/local/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/local/Cellar/python@3.9/3.9.21/Frameworks/Python.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 559, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 854, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 756, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+#define symbols and 3D parametric functions
+r, theta  = sym.Symbol('r'), sym.Symbol('theta') #parameters
+s  = [ r*sym.cos(theta), r*sym.sin(theta), r**2 ] #position r(t)
+dsdr = [ sym.diff(s[0],r), sym.diff(s[1],r), sym.diff(s[2],r) ] #tangent, ds/dr
+dsdtheta = [ sym.diff(s[0],theta), sym.diff(s[1],theta), sym.diff(s[2],theta) ] #tangent, ds/dtheta
+
+v1 = sym.Matrix(dsdr)
+v2 = sym.Matrix(dsdtheta)
+cp = v1.cross(v2)
+
+# tangent location in parameter space (degrees)
+r1 = 1.0
+theta1 = math.radians(200)
+
+#turn rx and ry into functions to plot them
+xf = lambdify([r,theta],s[0])
+yf = lambdify([r,theta],s[1])
+zf = lambdify([r,theta],s[2])
+
+#set up parameter ranges
+rvals = np.linspace(0,2, 21)  #range of parameter r
+thetavals = np.linspace(0, 2*np.pi, 21) #range of parameter theta
+myr, myt = np.meshgrid(rvals,thetavals) # make a grid of values
+
+# calculate x,y,z arrays of positions based on r and theta
+xvals, yvals, zvals = xf(myr,myt), yf(myr,myt), zf(myr,myt)
+
+#point on surface
+xp = float(s[0].subs({r:r1, theta:theta1}))
+yp = float(s[1].subs({r:r1, theta:theta1}))
+zp = float(s[2].subs({r:r1, theta:theta1}))
+p = [xp,yp,zp]
+
+# unit normal to surface
+nx = float(cp[0].subs({r: r1, theta: theta1}))
+ny = float(cp[1].subs({r: r1, theta: theta1}))
+nz = float(cp[2].subs({r: r1, theta: theta1}))
+n = [nx,ny,nz]
+n = n/np.linalg.norm(n)
+
+#tangent plane
+d = -np.sum(n * p)
+tpeqn = "tangent plane eqn: {:.2f}x+{:.2f}y+{:.2f}z={:.3f}".format(n[0],n[1],n[2],d)
+
+xlim = -4,4
+ylim = -4,4
+zlim = -2,6
+xx, yy = np.meshgrid(np.arange(*xlim), np.arange(*ylim))
+zz = -(n[0] * xx + n[1] * yy + d) / n[2]
+#zz[zz>6] = np.nan
+#zz[zz<-2] = np.nan
+
+# plot
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(12,6))
+ax.set_zlim(*zlim)
+surf = ax.plot_wireframe(xvals, yvals, zvals, rstride=2, cstride=2, label='parabolic bowl')
+ax.scatter(xp, yp, zp, color='r', s=50, label='location')
+arrow_prop_dict = dict(mutation_scale=20, arrowstyle='-|>', color='k', shrinkA=0, shrinkB=0, linewidth=1)
+b = Arrow3D([xp, xp-n[0]], [yp, yp-n[1]], [zp, zp-n[2]], **arrow_prop_dict)
+ax.add_artist(b)
+ax.plot_surface(xx, yy, zz, alpha=0.3, label='tangent plane')
+ax.title.set_text(tpeqn)
+#ax.legend()
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_zlabel("z")
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[5], line 13[0m
+[1;32m     11[0m [38;5;66;03m# tangent location in parameter space (degrees)[39;00m
+[1;32m     12[0m r1 [38;5;241m=[39m [38;5;241m1.0[39m
+[0;32m---> 13[0m theta1 [38;5;241m=[39m [43mmath[49m[38;5;241m.[39mradians([38;5;241m200[39m)
+[1;32m     15[0m [38;5;66;03m#turn rx and ry into functions to plot them[39;00m
+[1;32m     16[0m xf [38;5;241m=[39m lambdify([r,theta],s[[38;5;241m0[39m])
+
+[0;31mNameError[0m: name 'math' is not defined
+NameError: name 'math' is not defined
+
