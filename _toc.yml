@@ -40,6 +40,8 @@ parts:
     title: Rays 2D Boxes
   - file: CMP505/CMP505_rays3.ipynb
     title: Rays 3D Plane Segments
+  - file: CMP505/CMP505_reflection.ipynb
+    title: Reflection
 - caption: Summary
   numbered: false
   chapters:
