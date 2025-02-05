@@ -213,7 +213,7 @@ ax.set_zlabel("z");
 # 
 # Thus we've seen that we can reflect objects from a simple plane. What about if we try more complex objects?
 
-# ### Lecture Example 2
+# ## Lecture Example 2
 # **A ray is defined by its vector equation as $\vec{r}=2\vec{i}-\vec{j}+3\vec{k}+t\left(\vec{i}+\vec{j}+\vec{k}\right)$. Determine the point where it first intersects the surface of the cone $x^2+y^2=z^2$ and hence obtain the equation of the reflected ray from this surface.**
 # 
 # Lets begin by visualising the cone and the ray, using code recycled from the curves and surfaces workbook:
