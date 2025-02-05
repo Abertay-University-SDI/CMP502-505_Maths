@@ -68,7 +68,6 @@ def v(u,n):
 
 
 x, y, z  = sym.Symbol('x'), sym.Symbol('y'), sym.Symbol('z')  #coordinates
-
 def grad(phi):
     # gradient operator acting on scalar function phi(x,y,z)
     gradphi = [sym.diff(phi,x), sym.diff(phi,y), sym.diff(phi,z)]
@@ -320,7 +319,7 @@ ep2 = [float(rr2[0].subs({t:tep2})),float(rr2[1].subs({t:tep2})),float(rr2[2].su
 arrow_prop_dict = dict(mutation_scale=20, arrowstyle='-|>', color='g', shrinkA=0, shrinkB=0, linewidth=2)
 b = Arrow3D([is2a[0], ep2[0]], [is2a[1], ep2[1]], [is2a[2], ep2[2]], **arrow_prop_dict)
 ax.add_artist(b)
-ax.title.set_text('visualising ray intersecting x^2+y^2=z^2')
+ax.title.set_text('visualising ray reflecting from cone')
 ax.set_xlabel("x")
 ax.set_ylabel("y")
 ax.set_zlabel("z");
