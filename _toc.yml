@@ -42,6 +42,8 @@ parts:
     title: Rays 3D Plane Segments
   - file: CMP505/CMP505_reflection.ipynb
     title: Reflection
+  - file: CMP505/CMP505_refraction.ipynb
+    title: Refraction
 - caption: Summary
   numbered: false
   chapters:

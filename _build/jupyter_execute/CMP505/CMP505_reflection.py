@@ -104,7 +104,7 @@ def grad(phi):
 peqn = 2*x-3*y+1*z-4
 pn = np.array(grad(peqn),dtype=np.float32)
 d = -peqn.subs([(x, 0), (y, 0), (z, 0)])
-tpeqn = "tangent plane eqn: {:.2f}x+{:.2f}y+{:.2f}z={:.3f}".format(pn[0],pn[1],pn[2],float(d))
+tpeqn = "plane eqn: {:.2f}x+{:.2f}y+{:.2f}z={:.3f}".format(pn[0],pn[1],pn[2],float(d))
 
 xlim = -2,2
 ylim = -2,2
@@ -120,7 +120,7 @@ ax.view_init(elev=0, azim=250, roll=0)
 ax.set_xlim(*xlim)
 ax.set_ylim(*ylim)
 ax.set_zlim(*zlim)
-ax.plot_surface(xx, yy, zz, alpha=0.3, label='tangent plane')
+ax.plot_surface(xx, yy, zz, alpha=0.3, label='plane')
 ax.title.set_text(tpeqn)
 #ax.legend()
 ax.set_xlabel("x")
@@ -199,15 +199,15 @@ ax.add_artist(b)
 tep=1
 ep = [float(rr[0].subs({t:tep})),float(rr[1].subs({t:tep})),float(rr[2].subs({t:tep}))]
 arrow_prop_dict = dict(mutation_scale=20, arrowstyle='-|>', color='g', shrinkA=0, shrinkB=0, linewidth=2)
-b = Arrow3D([is1a[0], ep[0]], [is1a[1], ep[1]], [is1a[2], ep[2]], **arrow_prop_dict)
-ax.add_artist(b)
+c = Arrow3D([is1a[0], ep[0]], [is1a[1], ep[1]], [is1a[2], ep[2]], **arrow_prop_dict)
+ax.add_artist(c)
 ax.title.set_text('visualising ray reflecting from 2x-3y+z=4')
 ax.set_xlabel("x")
 ax.set_ylabel("y")
 ax.set_zlabel("z");
 
 
-# In the above figure, we can see that the incident ray (blue) arrives at the plane (blue) at the intersection point we found (red cross). The normal at the point of intersection (red arrow) does look perpendicular to the plane. The reflected ray (green) also appears to be a reflection of the incident ray in the plane.
+# In the above figure, we can see that the incident ray (black arrow) arrives at the plane (blue) at the intersection point we found (red cross). The normal at the point of intersection (red arrow) does look perpendicular to the plane. The reflected ray (green) also appears to be a reflection of the incident ray in the plane.
 # 
 # NB. be careful when plotting normals to planes using Python; subtle changes to minor quantities like plot axis ranges can make vectors appear to point in the wrong direction, which would solely be a plotting artefact and not a true error.
 # 
@@ -267,30 +267,32 @@ r2 = r2_o + t * r2v
 
 # equate ray with cone, look for intersections
 sols = sym.solve(cone.subs([(x, r2[0]), (y, r2[1]), (z, r2[2])]),t)
-valid_sols = [i for i in sols if i <= 1]
-valid_sols.sort()
-for i, val in enumerate(valid_sols) :
-    print("intersection {} found at t={}".format(i+1,val.evalf()))
+if not sols:
+    print("No intersections found")
+else:
+    valid_sols = [i for i in sols if i <= 1]
+    valid_sols.sort()
+    for i, val in enumerate(valid_sols) :
+        print("intersection {} found at t={}".format(i+1,val.evalf()))
+    #convert intersections to useful datatypes
+    is2  = (r2.subs(t,sols[0].evalf()))
+    r2o  = np.array(r2_o.tolist()[0],dtype='float64')
+    is2a = np.array(is2.tolist()[0],dtype='float64')
+    print("intersection occurs at ({:0.3f},{:0.3f},{:0.3f})".format(is2a[0],is2a[1],is2a[2]))
+    print("--")
+    #calculate grad(phi) for cone at point of intersection
+    gc = grad(cone)
+    nx = float(gc[0].subs({x:is2a[0], y:is2a[1], z:is2a[2]}))
+    ny = float(gc[1].subs({x:is2a[0], y:is2a[1], z:is2a[2]}))
+    nz = float(gc[2].subs({x:is2a[0], y:is2a[1], z:is2a[2]}))
+    cn = np.array([nx,ny,nz],dtype=np.float32)
     
-#convert intersections to useful datatypes
-is2  = (r2.subs(t,sols[0].evalf()))
-r2o  = np.array(r2_o.tolist()[0],dtype='float64')
-is2a = np.array(is2.tolist()[0],dtype='float64')
-print("intersection occurs at ({:0.3f},{:0.3f},{:0.3f})".format(is2a[0],is2a[1],is2a[2]))
-print("--")
-#calculate grad(phi) for cone at point of intersection
-gc = grad(cone)
-nx = float(gc[0].subs({x:is2a[0], y:is2a[1], z:is2a[2]}))
-ny = float(gc[1].subs({x:is2a[0], y:is2a[1], z:is2a[2]}))
-nz = float(gc[2].subs({x:is2a[0], y:is2a[1], z:is2a[2]}))
-cn = np.array([nx,ny,nz],dtype=np.float32)
-
-#set up ray equation for reflected ray
-r2vv  = np.array(r2v.tolist()[0],dtype='float64')
-rr2_o = sym.Matrix([is2a])
-rr2 = is2a + t * v(r2vv,cn)
-print("reflected ray eq:")
-print(rr2)
+    #set up ray equation for reflected ray
+    r2vv  = np.array(r2v.tolist()[0],dtype='float64')
+    rr2_o = sym.Matrix([is2a])
+    rr2 = is2a + t * v(r2vv,cn)
+    print("reflected ray eq:")
+    print(rr2)
 
 
 # This reflected ray equation matches the one obtained in lectures.
@@ -317,8 +319,8 @@ ax.add_artist(b)
 tep2=3
 ep2 = [float(rr2[0].subs({t:tep2})),float(rr2[1].subs({t:tep2})),float(rr2[2].subs({t:tep2}))]
 arrow_prop_dict = dict(mutation_scale=20, arrowstyle='-|>', color='g', shrinkA=0, shrinkB=0, linewidth=2)
-b = Arrow3D([is2a[0], ep2[0]], [is2a[1], ep2[1]], [is2a[2], ep2[2]], **arrow_prop_dict)
-ax.add_artist(b)
+c = Arrow3D([is2a[0], ep2[0]], [is2a[1], ep2[1]], [is2a[2], ep2[2]], **arrow_prop_dict)
+ax.add_artist(c)
 ax.title.set_text('visualising ray reflecting from cone')
 ax.set_xlabel("x")
 ax.set_ylabel("y")
