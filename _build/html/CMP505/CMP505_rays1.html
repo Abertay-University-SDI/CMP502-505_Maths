@@ -185,6 +185,16 @@ const thebe_selector_output = ".output, .cell_output"
    6. Rays 3D Plane Segments
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_reflection.html">
+   7. Reflection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CMP505_refraction.html">
+   8. Refraction
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -307,23 +317,45 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   4.1. Background
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rays-expressed-mathematically">
+     4.1.1. Rays expressed mathematically
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intersections-with-objects">
+     4.1.2. Intersections with objects
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normals">
+     4.1.3. Normals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-1-does-a-ray-intersect-a-sphere">
-   4.1. Lecture Example 1: Does a ray intersect a sphere?
+   4.2. Lecture Example 1: Does a ray intersect a sphere?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-2-multiple-intersections-and-normal-calculation">
-   4.2. Lecture Example 2: Multiple intersections and normal calculation
+   4.3. Lecture Example 2: Multiple intersections and normal calculation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-3-general-object">
-   4.3. Lecture Example 3: General object
+   4.4. Lecture Example 3: General object
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   4.4. Over to you
+   4.5. Over to you
   </a>
  </li>
 </ul>
@@ -347,23 +379,45 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   4.1. Background
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rays-expressed-mathematically">
+     4.1.1. Rays expressed mathematically
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intersections-with-objects">
+     4.1.2. Intersections with objects
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normals">
+     4.1.3. Normals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-1-does-a-ray-intersect-a-sphere">
-   4.1. Lecture Example 1: Does a ray intersect a sphere?
+   4.2. Lecture Example 1: Does a ray intersect a sphere?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-2-multiple-intersections-and-normal-calculation">
-   4.2. Lecture Example 2: Multiple intersections and normal calculation
+   4.3. Lecture Example 2: Multiple intersections and normal calculation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-example-3-general-object">
-   4.3. Lecture Example 3: General object
+   4.4. Lecture Example 3: General object
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#over-to-you">
-   4.4. Over to you
+   4.5. Over to you
   </a>
  </li>
 </ul>
@@ -410,6 +464,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p>This will just be used for plotting - we will create and use equations of spheres in this workbook, but this is just to save some lines when it comes to visulisation.</p>
 <p>We will also need to work with vectors, so lets create and use a custom arrow to represent each ray:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -428,21 +483,115 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p>Again, don’t worry about the details of this: this is just a couple of shortcuts to help speed things up later when we ask Python to draw some arrows.</p>
+<div class="section" id="background">
+<h2><span class="section-number">4.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>In the lectures we saw that rays are often called “directed line segment vectors”: they represent a beam of light starting at a particular position (the “origin” of the ray), and travelling in some 3D vector direction in space. The distance travelled along the vector is controlled by a parameter, often labelled “<span class="math notranslate nohighlight">\(t\)</span>”; just like we saw with curves several lectures ago, this parameter allows us to recover every single position which lies along the path of the ray.</p>
+<div class="section" id="rays-expressed-mathematically">
+<h3><span class="section-number">4.1.1. </span>Rays expressed mathematically<a class="headerlink" href="#rays-expressed-mathematically" title="Permalink to this headline">¶</a></h3>
+<p>There are several different ways to mathematically express this information. One common way is to express the origin and vector direction of the ray as column vectors (where the origin is converted into a vector by describing the distance from <span class="math notranslate nohighlight">\((0,0,0)\)</span> to the ray starting position). This looks like:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+    {\mathbf{\vec{r}}} &amp;=
+          \begin{pmatrix}
+           x_o \\           
+           y_o \\
+           z_o
+          \end{pmatrix} +t
+          \begin{pmatrix}
+           v_x \\
+           v_y \\
+           v_z
+         \end{pmatrix}.
+  \end{align}
+\end{split}\]</div>
+<p>The above expression describes a ray which starts at the point <span class="math notranslate nohighlight">\((x_o, y_o, z_o)\)</span>, and travels parallel to the vector <span class="math notranslate nohighlight">\(\vec{\bf{v}}=v_x{\vec{\bf{i}}}+v_y{\vec{\bf{j}}}+v_z{\vec{\bf{k}}}\)</span>.</p>
+<p>The parameter <span class="math notranslate nohighlight">\(t\)</span> must always greater than or equal to zero. If <span class="math notranslate nohighlight">\(t=0\)</span>, this expression recovers the start point of the ray i.e. <span class="math notranslate nohighlight">\(\vec{\bf{r}}=(x_o,y_o,z_o)\)</span>. If the ray has an end point, then we define <span class="math notranslate nohighlight">\(t\)</span> to be constrained to lie in between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>, so that when <span class="math notranslate nohighlight">\(t=1\)</span> the end point of the ray is recovered. Cases where the ray has an end point can sometimes be referred to as rays of “finite length”. If the ray has no defined end point, then they may be referred to as rays of “infinite length”, as there is nothing to stop the ray travelling off to infinity and beyond(!).</p>
+<p>One may construct the ray equation for a finite length ray as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+    {\mathbf{\vec{r}}} &amp;=
+          \begin{pmatrix}
+           x_o \\           
+           y_o \\
+           z_o
+          \end{pmatrix} +t
+          \begin{pmatrix}
+           x_e - x_o \\
+           y_e - y_o \\
+           z_e - z_o
+         \end{pmatrix},~~~ t\in\left[0,1\right].
+  \end{align}
+\end{split}\]</div>
+<p>This describes a ray which starts at <span class="math notranslate nohighlight">\((x_o,y_o,z_o)\)</span> and ends at <span class="math notranslate nohighlight">\((x_e,y_e,z_e)\)</span>. Subtracting the start point from the end point forms a vector direction which the ray must travel along. Note also that substituting <span class="math notranslate nohighlight">\(t=1\)</span> into this expression means that <span class="math notranslate nohighlight">\(\vec{\bf{r}}=(x_e,y_e,z_e)\)</span>, as it must.</p>
+<p>In this workbook, we will take advantage of Python’s ability to let us set up parameters, with constraints using the <code class="docutils literal notranslate"><span class="pre">sym</span></code> library. In this case, we’ll create the parameter <code class="docutils literal notranslate"><span class="pre">t</span></code> as a symbol which is unknown at present but must be positive. Later, when we use specific examples, we can have Python solve for specific values of this parameter, as we do by hand.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>(while we’re at it, lets define our Cartesian coordinates <span class="math notranslate nohighlight">\(x, y, z\)</span>, which we’ll need later)</p>
+</div>
+<div class="section" id="intersections-with-objects">
+<h3><span class="section-number">4.1.2. </span>Intersections with objects<a class="headerlink" href="#intersections-with-objects" title="Permalink to this headline">¶</a></h3>
+<p>Key idea: To test if a ray intersects an object, one must <strong>equate the ray equation with the equation describing (all/part of) the object</strong>.</p>
+<p>It’s that simple.</p>
+<p>This is easy to carry out for some simple mathematical objects which are entirely described by one equation. Objects like spheres are relatively common, and are perhaps the simplest type of object.</p>
+<p>We’ve also encountered ways in previous lectures to describe other types of object (cylinders, cones, parabolic bowls, toruses, etc.) using parameterisation to map out their entire surface. Even the dreaded bilinear surface patches (yes, even those!).</p>
+<p>We will see shortly that we can construct more complicated objects by combining simple mathematical surfaces together; the downside with this approach is that we have to then check every part of the object with the ray. If the object comprises thousands/millions of surfaces, then it can be more efficient to utilise a <strong>bounding box</strong> like a sphere to avoid unecessary, computationally intense intersection calculations.</p>
+<p>If the surface we are comparing is also parameterised, then we have to set up a set of <strong>simultaneous equations</strong> when we check for intersections. This is because we will have <em>two</em> (or sometimes even three) unknown parameters. We need at least as many equations as unknowns to solve this type of problem.</p>
+<p>We won’t worry about this for now, and look at intersections between rays and spheres.</p>
+</div>
+<div class="section" id="normals">
+<h3><span class="section-number">4.1.3. </span>Normals<a class="headerlink" href="#normals" title="Permalink to this headline">¶</a></h3>
+<p>We’ve also taken care in previous lectures to calculate surface normals.</p>
+<p>For parameterised surfaces, we have seen that partial differentiation can produce tangent vectors, and that the cross product of these tangent vectors can produce a normal.</p>
+<p>If the surface is not parameterised, for example in the case of a sphere, then we can use the gradient function, <span class="math notranslate nohighlight">\(\vec{\nabla}{\phi}\)</span> to calculate the normal. In the lectures I showed a formula to calculate the unit normal to a sphere: this formula comes directly from the gradient function, <span class="math notranslate nohighlight">\(\vec{\nabla}{\phi}\)</span>.</p>
+<p>The operator <span class="math notranslate nohighlight">\(\vec{\nabla}\)</span> is quite common in a wide range of areas of physics, maths and engineering. It evaluates the derivative of the scalar function fed to it, and pipes out the derivative in each Cartesian direction as part of a vector:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{\bf{\nabla}}{\phi}=\left[\frac{\partial \phi}{\partial x}{\vec{\bf{i}}}+\frac{\partial \phi}{\partial y}{\vec{\bf{j}}}+\frac{\partial \phi}{\partial z}{\vec{\bf{k}}}\right]
+\]</div>
+<p>A quick example; evaluate <span class="math notranslate nohighlight">\(\vec{\nabla}{F}\)</span> for <span class="math notranslate nohighlight">\(F(x,y,z)= x+y^2+z^3\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{\bf{\nabla}}{F(x,y,z)} = \left[\frac{\partial F}{\partial x}{\vec{\bf{i}}}+\frac{\partial F}{\partial y}{\vec{\bf{j}}}+\frac{\partial F}{\partial z}{\vec{\bf{k}}}\right] =
+1{\vec{\bf{i}}}+2y{\vec{\bf{j}}}+3z^2{\vec{\bf{k}}}
+\]</div>
+<p>We must also remember that the normal can vary over the surface, and is a function of position, so one must evaluate the surface normal at <em>specific coordinates</em>, for example those found when calculating an intersection point.</p>
+<p>For later use, I will create a subroutine that returns the gradient of a given scalar function <span class="math notranslate nohighlight">\(\phi(x,y,z)\)</span>, and take advantage of <code class="docutils literal notranslate"><span class="pre">sympy</span></code> which has the ability to differentiate expressions using <code class="docutils literal notranslate"><span class="pre">sympy.diff</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="n">phi</span><span class="p">):</span>
+    <span class="n">gradphi</span> <span class="o">=</span> <span class="p">[</span><span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span><span class="n">z</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">gradphi</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lets now see how this knowledge is put into practise in Python. We’ll tackle a few of the examples shown in the lectures, both to verify the mathematics we carried out by hand, and also to visualise the results of the calculation using 3D Python plotting commands.</p>
+<p>We’ll begin with Example 1 from the lectures, which saw a ray miss a sphere.</p>
+</div>
+</div>
 <div class="section" id="lecture-example-1-does-a-ray-intersect-a-sphere">
-<h2><span class="section-number">4.1. </span>Lecture Example 1: Does a ray intersect a sphere?<a class="headerlink" href="#lecture-example-1-does-a-ray-intersect-a-sphere" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>Lecture Example 1: Does a ray intersect a sphere?<a class="headerlink" href="#lecture-example-1-does-a-ray-intersect-a-sphere" title="Permalink to this headline">¶</a></h2>
 <p><strong>Determine if the ray from <span class="math notranslate nohighlight">\((-1,0,3)\)</span> with direction <span class="math notranslate nohighlight">\(2\vec{i}-3\vec{j}+\vec{k}\)</span> intersects a sphere with centre <span class="math notranslate nohighlight">\((3,3,3)\)</span> and radius <span class="math notranslate nohighlight">\(2\)</span>.</strong></p>
-<p>First we will set up the ray, which must have an origin and direction. The distance along the ray is determined by a parameter, <span class="math notranslate nohighlight">\(t\)</span>, which varies <span class="math notranslate nohighlight">\(\in[0,1]\)</span> if the ray has a start and end position, or is simply <span class="math notranslate nohighlight">\(&gt;0\)</span> if the ray is infinitely long.</p>
-<p>In this implementation, Python can handle maths involving unknown values, so we will tell it to create a vector expression describing the ray in terms of the origin plus the vector direction times the symbolic expression “t”:</p>
+<p>First we will set up the ray, combining an origin and the direction stated in the question. The ray is of infinite extent. We can therefore create two vectors in Python, and add them to form the ray equation, scaling the vector direction by the parameter we defined earlier, <code class="docutils literal notranslate"><span class="pre">t</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ray_o</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 <span class="n">ray_v</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ray</span> <span class="o">=</span> <span class="n">ray_o</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="n">ray_v</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>(note that we have defined these vectors using a <code class="docutils literal notranslate"><span class="pre">sym.Matrix</span></code> construct. There are many ways to store and organise arrays in Python, including lists, arrays, vectors, matrices to name but a few. I found this datatype easiest to work with, but I highly doubt this is the most efficient way to do this; if you know better ways to tackle the problem, go for it!)</p>
 <p>We want to explore if this ray interacts with the sphere given in the question. The equation of a sphere is, as we know,</p>
 <div class="math notranslate nohighlight">
 \[(x-a)^2+(y-b)^2+(z-c)^2 = r^2, 
@@ -453,7 +602,6 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sphere_c</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 <span class="n">sphere_r</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span> 
 <span class="n">sphere</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">sphere_c</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">sphere_c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">sphere_c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">sphere_r</span><span class="o">**</span><span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sphere</span><span class="p">)</span>
 </pre></div>
@@ -465,7 +613,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>In the lectures, we saw that we need to substitute the parametric form of the ray equation into the equation of the sphere, then solve for the value of parameter <span class="math notranslate nohighlight">\(t\)</span>. We can do this in one line in Python:</p>
+<p>Note that Python likes to work with equations where all the quantities occur on one side of the equals sign, which means everything <span class="math notranslate nohighlight">\(=0\)</span>. The expression <code class="docutils literal notranslate"><span class="pre">sphere</span></code> looks like <code class="docutils literal notranslate"><span class="pre">(x-3)**2+(y-3)**2+(z-3)**2-4</span></code> because that must now equal zero.</p>
+<p><strong>key step incoming!</strong></p>
+<p>In the lectures, we saw that we need to substitute the parametric form of the ray equation into the equation of the sphere, then solve for the value of parameter <span class="math notranslate nohighlight">\(t\)</span> by hand. We can do this in <strong>one line</strong> in Python:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sym</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">sphere</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">x</span><span class="p">,</span> <span class="n">ray</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">ray</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">ray</span><span class="p">[</span><span class="mi">2</span><span class="p">])]),</span><span class="n">t</span><span class="p">))</span>
@@ -478,7 +628,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>The result is Python’s way of saying that it could not find any solutions.</p>
+<p>The result is not a mistake; it is Python’s way of saying that it could not find any solutions.</p>
 <p>We placed a restriction on the parameter t that it must be positive: this tells Python that t cannot be imaginary. If we remove the positive restriction on t, we can determine the complex solutions to this equation. However, complex values means that there are <em>no</em> intersections between this sphere and this ray.</p>
 <hr class="docutils" />
 <p>We should check this result visually with a plot.</p>
@@ -514,13 +664,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/CMP505_rays1_16_0.png" src="../_images/CMP505_rays1_16_0.png" />
+<img alt="../_images/CMP505_rays1_24_0.png" src="../_images/CMP505_rays1_24_0.png" />
 </div>
 </div>
 <p>In this example, it is clear that the ray misses the sphere, as expected.</p>
 </div>
 <div class="section" id="lecture-example-2-multiple-intersections-and-normal-calculation">
-<h2><span class="section-number">4.2. </span>Lecture Example 2: Multiple intersections and normal calculation<a class="headerlink" href="#lecture-example-2-multiple-intersections-and-normal-calculation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3. </span>Lecture Example 2: Multiple intersections and normal calculation<a class="headerlink" href="#lecture-example-2-multiple-intersections-and-normal-calculation" title="Permalink to this headline">¶</a></h2>
 <p><strong>Determine the unit normal where the ray from <span class="math notranslate nohighlight">\((1,-2,-1)\)</span> with direction <span class="math notranslate nohighlight">\({\vec{i}}+2{\vec{j}}+4{\vec{k}}\)</span> first intersects the sphere with centre <span class="math notranslate nohighlight">\((3,0,5)\)</span> and radius <span class="math notranslate nohighlight">\(3\)</span>.</strong></p>
 <p>We will leave the unit normal calculation until after we have identified all intersections with the object. We’ll recycle the same process we used in Example 1, but changing the constants to match the Example 2 values:</p>
 <div class="cell docutils container">
@@ -568,7 +718,8 @@ intersection 2 found at t=2.04024917041263
 </div>
 </div>
 </div>
-<p>This example specifically asks for the normal to the sphere at the intersection location. Since we know a general expression for the normal of a sphere at a given point, we can create a custom function to return the normal at any point on the sphere (if provided the centre, radius and location where the normal is to be evaluated):</p>
+<p>This example specifically asks for the normal to the sphere at the intersection location.</p>
+<p>We can create a custom function to return the normal at any point on the sphere (if provided the centre, radius and location where the normal is to be evaluated), based on what we learned in lectures:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">spherenormal</span><span class="p">(</span><span class="n">o</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
@@ -597,7 +748,8 @@ intersection 2 found at t=2.04024917041263
 </div>
 </div>
 </div>
-<p>Once again, these values match the normal calculated in the lectures (to a much higher number of decimal places).</p>
+<p>**Challenge: can you recalculate the normal using the gradient function <code class="docutils literal notranslate"><span class="pre">grad(phi)</span></code> defined in the background section? Can you verify they produce the same normal (and unit normal)?!</p>
+<p>No matter which normal calculation subroutine is used, they recover the unit normal vector found in the lectures <span class="math notranslate nohighlight">\(\hat{\bf{n}}=-0.394{\vec{\bf{i}}}-0.122{\vec{\bf{j}}}-0.910{\vec{\bf{k}}}\)</span>.</p>
 <hr class="docutils" />
 <p>Our final step will be to plot the quantities we have calculated:</p>
 <div class="cell docutils container">
@@ -628,7 +780,7 @@ intersection 2 found at t=2.04024917041263
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/CMP505_rays1_30_0.png" src="../_images/CMP505_rays1_30_0.png" />
+<img alt="../_images/CMP505_rays1_39_0.png" src="../_images/CMP505_rays1_39_0.png" />
 </div>
 </div>
 <p>This 3D image illustrates the ray intersecting the sphere.</p>
@@ -637,13 +789,12 @@ intersection 2 found at t=2.04024917041263
 <p>We can repeat the same process for any object which is fully described by a mathematical equation. Commmon examples include cones and paraboloids. Some of these objects can be difficult to visualise.</p>
 </div>
 <div class="section" id="lecture-example-3-general-object">
-<h2><span class="section-number">4.3. </span>Lecture Example 3: General object<a class="headerlink" href="#lecture-example-3-general-object" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4. </span>Lecture Example 3: General object<a class="headerlink" href="#lecture-example-3-general-object" title="Permalink to this headline">¶</a></h2>
 <p><strong>Find the unit normal at the point where the ray from <span class="math notranslate nohighlight">\((-1,2,0)\)</span> to <span class="math notranslate nohighlight">\((3,1,4)\)</span> cuts the hyperbolic paraboloid <span class="math notranslate nohighlight">\(x^2-y^2+4z=0\)</span>.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r3_o</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 <span class="n">r3_e</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
 <span class="n">ray3</span> <span class="o">=</span> <span class="n">r3_o</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="p">(</span><span class="n">r3_e</span> <span class="o">-</span> <span class="n">r3_o</span><span class="p">)</span>
 <span class="n">hp</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">z</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">hp</span><span class="p">)</span>
@@ -688,14 +839,10 @@ intersection 2 found at t=2.04024917041263
 </div>
 </div>
 <p>Thanks to python, we’ve identified where the intersections between this ray and the hyperbolic paraboloid occur. However, that doesn’t answer the question, which wants to know the unit normal at that point.</p>
-<p>To that end, we’ll define a function which returns a vector <span class="math notranslate nohighlight">\(\bf\vec{\nabla{\phi}}\)</span>, which is the normal vector. We’ll then evaluate this at the location where we found the intersection to calculate the normal there:</p>
+<p>To that end, we’ll use the function which returns a vector <span class="math notranslate nohighlight">\(\bf\vec{\nabla{\phi}}\)</span>, evaluated at the location where we found the intersection to calculate the specific normal we need:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="n">phi</span><span class="p">):</span>
-    <span class="n">gradphi</span> <span class="o">=</span> <span class="p">[</span><span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span><span class="n">z</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="n">gradphi</span>
-
-<span class="n">gradhp</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">hp</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gradhp</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">hp</span><span class="p">)</span>
 <span class="n">nx</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">gradhp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="n">is3a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">:</span><span class="n">is3a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">z</span><span class="p">:</span><span class="n">is3a</span><span class="p">[</span><span class="mi">2</span><span class="p">]}))</span>
 <span class="n">ny</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">gradhp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="n">is3a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">:</span><span class="n">is3a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">z</span><span class="p">:</span><span class="n">is3a</span><span class="p">[</span><span class="mi">2</span><span class="p">]}))</span>
 <span class="n">nz</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">gradhp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="n">is3a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">:</span><span class="n">is3a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">z</span><span class="p">:</span><span class="n">is3a</span><span class="p">[</span><span class="mi">2</span><span class="p">]}))</span>
@@ -743,7 +890,7 @@ intersection 2 found at t=2.04024917041263
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;z&#39;)
 </pre></div>
 </div>
-<img alt="../_images/CMP505_rays1_39_1.png" src="../_images/CMP505_rays1_39_1.png" />
+<img alt="../_images/CMP505_rays1_48_1.png" src="../_images/CMP505_rays1_48_1.png" />
 </div>
 </div>
 <p>Some points to note from this diagram: the ray does appear to intersect the surface at the location we found using maths. The normal at this location does appear to point away from surface. You can double check this by varying the viewing angle of the plot.</p>
@@ -751,7 +898,7 @@ intersection 2 found at t=2.04024917041263
 <p>Maybe, using your maths skills, you could check whether this is a true saddle point, <strong>using the second derivative test</strong>?</p>
 </div>
 <div class="section" id="over-to-you">
-<h2><span class="section-number">4.4. </span>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.5. </span>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
 <p>Try some more examples from the lectures or the tutorial questions once you are satisfied with the mathematics.</p>
 </div>
 </div>

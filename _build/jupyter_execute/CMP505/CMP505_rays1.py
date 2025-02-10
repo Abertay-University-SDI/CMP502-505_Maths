@@ -36,6 +36,8 @@ def plt_sphere(center, radius):
   ax.plot_surface(x, y, z, color=np.random.choice(['g','b']), alpha=0.25)
 
 
+# This will just be used for plotting - we will create and use equations of spheres in this workbook, but this is just to save some lines when it comes to visulisation. 
+# 
 # We will also need to work with vectors, so lets create and use a custom arrow to represent each ray:
 
 # In[3]:
@@ -54,21 +56,135 @@ class Arrow3D(FancyArrowPatch):
         return np.min(zs)
 
 
-# ## Lecture Example 1: Does a ray intersect a sphere?
-# **Determine if the ray from $(-1,0,3)$ with direction $2\vec{i}-3\vec{j}+\vec{k}$ intersects a sphere with centre $(3,3,3)$ and radius $2$.**
+# Again, don't worry about the details of this: this is just a couple of shortcuts to help speed things up later when we ask Python to draw some arrows.
 # 
-# First we will set up the ray, which must have an origin and direction. The distance along the ray is determined by a parameter, $t$, which varies $\in[0,1]$ if the ray has a start and end position, or is simply $>0$ if the ray is infinitely long.
+# ## Background
 # 
-# In this implementation, Python can handle maths involving unknown values, so we will tell it to create a vector expression describing the ray in terms of the origin plus the vector direction times the symbolic expression "t":
+# In the lectures we saw that rays are often called "directed line segment vectors": they represent a beam of light starting at a particular position (the "origin" of the ray), and travelling in some 3D vector direction in space. The distance travelled along the vector is controlled by a parameter, often labelled "$t$"; just like we saw with curves several lectures ago, this parameter allows us to recover every single position which lies along the path of the ray.
+# 
+# ### Rays expressed mathematically
+# 
+# There are several different ways to mathematically express this information. One common way is to express the origin and vector direction of the ray as column vectors (where the origin is converted into a vector by describing the distance from $(0,0,0)$ to the ray starting position). This looks like:
+# 
+# $$
+# \begin{align}
+#     {\mathbf{\vec{r}}} &=
+#           \begin{pmatrix}
+#            x_o \\           
+#            y_o \\
+#            z_o
+#           \end{pmatrix} +t
+#           \begin{pmatrix}
+#            v_x \\
+#            v_y \\
+#            v_z
+#          \end{pmatrix}.
+#   \end{align}
+# $$
+# 
+# The above expression describes a ray which starts at the point $(x_o, y_o, z_o)$, and travels parallel to the vector $\vec{\bf{v}}=v_x{\vec{\bf{i}}}+v_y{\vec{\bf{j}}}+v_z{\vec{\bf{k}}}$. 
+# 
+# The parameter $t$ must always greater than or equal to zero. If $t=0$, this expression recovers the start point of the ray i.e. $\vec{\bf{r}}=(x_o,y_o,z_o)$. If the ray has an end point, then we define $t$ to be constrained to lie in between $0$ and $1$, so that when $t=1$ the end point of the ray is recovered. Cases where the ray has an end point can sometimes be referred to as rays of "finite length". If the ray has no defined end point, then they may be referred to as rays of "infinite length", as there is nothing to stop the ray travelling off to infinity and beyond(!).
+# 
+# One may construct the ray equation for a finite length ray as follows:
+# 
+# $$
+# \begin{align}
+#     {\mathbf{\vec{r}}} &=
+#           \begin{pmatrix}
+#            x_o \\           
+#            y_o \\
+#            z_o
+#           \end{pmatrix} +t
+#           \begin{pmatrix}
+#            x_e - x_o \\
+#            y_e - y_o \\
+#            z_e - z_o
+#          \end{pmatrix},~~~ t\in\left[0,1\right].
+#   \end{align}
+# $$
+# 
+# This describes a ray which starts at $(x_o,y_o,z_o)$ and ends at $(x_e,y_e,z_e)$. Subtracting the start point from the end point forms a vector direction which the ray must travel along. Note also that substituting $t=1$ into this expression means that $\vec{\bf{r}}=(x_e,y_e,z_e)$, as it must.
+# 
+# In this workbook, we will take advantage of Python's ability to let us set up parameters, with constraints using the ``sym`` library. In this case, we'll create the parameter ``t`` as a symbol which is unknown at present but must be positive. Later, when we use specific examples, we can have Python solve for specific values of this parameter, as we do by hand.
 
 # In[4]:
 
 
+t = sym.Symbol('t', positive=True)
+x, y, z = sym.Symbol('x'), sym.Symbol('y'), sym.Symbol('z') 
+
+
+# (while we're at it, lets define our Cartesian coordinates $x, y, z$, which we'll need later)
+
+# ### Intersections with objects
+# 
+# Key idea: To test if a ray intersects an object, one must **equate the ray equation with the equation describing (all/part of) the object**.
+# 
+# It's that simple.
+# 
+# This is easy to carry out for some simple mathematical objects which are entirely described by one equation. Objects like spheres are relatively common, and are perhaps the simplest type of object.
+# 
+# We've also encountered ways in previous lectures to describe other types of object (cylinders, cones, parabolic bowls, toruses, etc.) using parameterisation to map out their entire surface. Even the dreaded bilinear surface patches (yes, even those!).
+# 
+# We will see shortly that we can construct more complicated objects by combining simple mathematical surfaces together; the downside with this approach is that we have to then check every part of the object with the ray. If the object comprises thousands/millions of surfaces, then it can be more efficient to utilise a **bounding box** like a sphere to avoid unecessary, computationally intense intersection calculations.
+# 
+# If the surface we are comparing is also parameterised, then we have to set up a set of **simultaneous equations** when we check for intersections. This is because we will have *two* (or sometimes even three) unknown parameters. We need at least as many equations as unknowns to solve this type of problem.
+# 
+# We won't worry about this for now, and look at intersections between rays and spheres.
+# 
+# ### Normals
+# 
+# We've also taken care in previous lectures to calculate surface normals.
+# 
+# For parameterised surfaces, we have seen that partial differentiation can produce tangent vectors, and that the cross product of these tangent vectors can produce a normal.
+# 
+# If the surface is not parameterised, for example in the case of a sphere, then we can use the gradient function, $\vec{\nabla}{\phi}$ to calculate the normal. In the lectures I showed a formula to calculate the unit normal to a sphere: this formula comes directly from the gradient function, $\vec{\nabla}{\phi}$.
+# 
+# The operator $\vec{\nabla}$ is quite common in a wide range of areas of physics, maths and engineering. It evaluates the derivative of the scalar function fed to it, and pipes out the derivative in each Cartesian direction as part of a vector:
+# 
+# $$
+# \vec{\bf{\nabla}}{\phi}=\left[\frac{\partial \phi}{\partial x}{\vec{\bf{i}}}+\frac{\partial \phi}{\partial y}{\vec{\bf{j}}}+\frac{\partial \phi}{\partial z}{\vec{\bf{k}}}\right]
+# $$
+# 
+# A quick example; evaluate $\vec{\nabla}{F}$ for $F(x,y,z)= x+y^2+z^3$:
+# 
+# $$
+# \vec{\bf{\nabla}}{F(x,y,z)} = \left[\frac{\partial F}{\partial x}{\vec{\bf{i}}}+\frac{\partial F}{\partial y}{\vec{\bf{j}}}+\frac{\partial F}{\partial z}{\vec{\bf{k}}}\right] =
+# 1{\vec{\bf{i}}}+2y{\vec{\bf{j}}}+3z^2{\vec{\bf{k}}}
+# $$
+# 
+# We must also remember that the normal can vary over the surface, and is a function of position, so one must evaluate the surface normal at *specific coordinates*, for example those found when calculating an intersection point.
+# 
+# For later use, I will create a subroutine that returns the gradient of a given scalar function $\phi(x,y,z)$, and take advantage of ``sympy`` which has the ability to differentiate expressions using ``sympy.diff``.
+# 
+
+# In[5]:
+
+
+def grad(phi):
+    gradphi = [sym.diff(phi,x), sym.diff(phi,y), sym.diff(phi,z)]
+    return gradphi
+
+
+# Lets now see how this knowledge is put into practise in Python. We'll tackle a few of the examples shown in the lectures, both to verify the mathematics we carried out by hand, and also to visualise the results of the calculation using 3D Python plotting commands.
+# 
+# We'll begin with Example 1 from the lectures, which saw a ray miss a sphere.
+
+# ## Lecture Example 1: Does a ray intersect a sphere?
+# **Determine if the ray from $(-1,0,3)$ with direction $2\vec{i}-3\vec{j}+\vec{k}$ intersects a sphere with centre $(3,3,3)$ and radius $2$.**
+# 
+# First we will set up the ray, combining an origin and the direction stated in the question. The ray is of infinite extent. We can therefore create two vectors in Python, and add them to form the ray equation, scaling the vector direction by the parameter we defined earlier, ``t``:
+
+# In[6]:
+
+
 ray_o = sym.Matrix([[-1, 0, 3]])
 ray_v = sym.Matrix([[2, 3, 1]])
-t = sym.Symbol('t', positive=True)
 ray = ray_o + t * ray_v
 
+
+# (note that we have defined these vectors using a ``sym.Matrix`` construct. There are many ways to store and organise arrays in Python, including lists, arrays, vectors, matrices to name but a few. I found this datatype easiest to work with, but I highly doubt this is the most efficient way to do this; if you know better ways to tackle the problem, go for it!)
 
 # We want to explore if this ray interacts with the sphere given in the question. The equation of a sphere is, as we know, 
 # 
@@ -79,25 +195,28 @@ ray = ray_o + t * ray_v
 # 
 # We can replicate this in Python, again using symbols for variables $x$, $y$ and $z$. To confirm we have the correct expression, we'll create it and print it:
 
-# In[5]:
+# In[7]:
 
 
 sphere_c = sym.Matrix([[3, 3, 3]])
 sphere_r = 2
-x, y, z = sym.Symbol('x'), sym.Symbol('y'), sym.Symbol('z') 
 sphere = (x - sphere_c[0])**2+(y - sphere_c[1])**2+(z - sphere_c[2])**2-sphere_r**2
 print(sphere)
 
 
-# In the lectures, we saw that we need to substitute the parametric form of the ray equation into the equation of the sphere, then solve for the value of parameter $t$. We can do this in one line in Python:
+# Note that Python likes to work with equations where all the quantities occur on one side of the equals sign, which means everything $=0$. The expression ``sphere`` looks like ``(x-3)**2+(y-3)**2+(z-3)**2-4`` because that must now equal zero.
 
-# In[6]:
+# **key step incoming!**
+# 
+# In the lectures, we saw that we need to substitute the parametric form of the ray equation into the equation of the sphere, then solve for the value of parameter $t$ by hand. We can do this in **one line** in Python:
+
+# In[8]:
 
 
 print(sym.solve(sphere.subs([(x, ray[0]), (y, ray[1]), (z, ray[2])]),t))
 
 
-# The result is Python's way of saying that it could not find any solutions.
+# The result is not a mistake; it is Python's way of saying that it could not find any solutions.
 # 
 # We placed a restriction on the parameter t that it must be positive: this tells Python that t cannot be imaginary. If we remove the positive restriction on t, we can determine the complex solutions to this equation. However, complex values means that there are *no* intersections between this sphere and this ray.
 # 
@@ -109,7 +228,7 @@ print(sym.solve(sphere.subs([(x, ray[0]), (y, ray[1]), (z, ray[2])]),t))
 # 
 # So far, we have saved coordinates as a `sym.Matrix`, which has allowed us to create 3D vectors for our ray. Sadly, a lot of the plotting routines work with a different data structure, so we'll have to convert important coordinates to the correct datatype in order to plot them:
 
-# In[7]:
+# In[9]:
 
 
 ro = np.array(ray_o.tolist()[0],dtype='float64') #convert ray origin to numpy array
@@ -118,7 +237,7 @@ spc = np.array(sphere_c.tolist()[0],dtype='float64') #convert sphere centre to n
 
 # Finally, we can plot the sphere in the required location, the directed line segment (ray) and check visually if the objects appear to intersect:
 
-# In[8]:
+# In[10]:
 
 
 ax = plt.figure().add_subplot(projection='3d')
@@ -146,7 +265,7 @@ plt.show()
 
 # We will leave the unit normal calculation until after we have identified all intersections with the object. We'll recycle the same process we used in Example 1, but changing the constants to match the Example 2 values:
 
-# In[9]:
+# In[11]:
 
 
 r2_o = sym.Matrix([[1, -2, -1]])
@@ -161,7 +280,7 @@ s2 = (x - s2_c[0])**2+(y - s2_c[1])**2+(z - s2_c[2])**2-s2_r**2
 # 
 # Unlike last time, the solution we saw in class implies that we should expect two intersections. The first intersection corresponds to entering the sphere, and the second is when the ray leaves the sphere. We therefore need to arrange the solutions in size order, which the Python `sort` function will take care of. We can then print them in order:
 
-# In[10]:
+# In[12]:
 
 
 sols = sym.solve(s2.subs([(x, ray2[0]), (y, ray2[1]), (z, ray2[2])]),t)
@@ -172,7 +291,7 @@ for i, val in enumerate(sols):
 
 # Once again we will likely want to check out some plots to confirm our solutions. For later, we'll again convert the first intersection location and the ray origin to a plottable array. To help us, we'll also pick a much larger value of $t$ and convert the end of this ray to a plottable array: this is so that we can visualise where the ray *would* have ended up had it not intersected the object: 
 
-# In[11]:
+# In[13]:
 
 
 is1  = (ray2.subs(t,sols[0].evalf()))
@@ -185,9 +304,11 @@ end2 = np.array(end2.tolist()[0],dtype='float64')
 sc   = np.array(s2_c.tolist()[0],dtype='float64')
 
 
-# This example specifically asks for the normal to the sphere at the intersection location. Since we know a general expression for the normal of a sphere at a given point, we can create a custom function to return the normal at any point on the sphere (if provided the centre, radius and location where the normal is to be evaluated):
+# This example specifically asks for the normal to the sphere at the intersection location. 
+# 
+# We can create a custom function to return the normal at any point on the sphere (if provided the centre, radius and location where the normal is to be evaluated), based on what we learned in lectures:
 
-# In[12]:
+# In[14]:
 
 
 def spherenormal(o,r,p):
@@ -201,7 +322,7 @@ def spherenormal(o,r,p):
 
 # To test this routine, we can feed in the sphere centre and radius, together with the intercept location found earlier. 
 
-# In[13]:
+# In[15]:
 
 
 print(spherenormal(s2_c,s2_r,is1))
@@ -209,15 +330,16 @@ nhat = spherenormal(s2_c,s2_r,is1)
 nhat = np.array(nhat.tolist()[0],dtype='float64')
 
 
-# Once again, these values match the normal calculated in the lectures (to a much higher number of decimal places).
+# **Challenge: can you recalculate the normal using the gradient function ``grad(phi)`` defined in the background section? Can you verify they produce the same normal (and unit normal)?!
 # 
-# 
+# No matter which normal calculation subroutine is used, they recover the unit normal vector found in the lectures $\hat{\bf{n}}=-0.394{\vec{\bf{i}}}-0.122{\vec{\bf{j}}}-0.910{\vec{\bf{k}}}$.
+
 # ---
 # 
 # Our final step will be to plot the quantities we have calculated:
 # 
 
-# In[14]:
+# In[16]:
 
 
 ax = plt.figure().add_subplot(projection='3d')
@@ -256,18 +378,17 @@ plt.show()
 # ## Lecture Example 3: General object
 # **Find the unit normal at the point where the ray from $(-1,2,0)$ to $(3,1,4)$ cuts the hyperbolic paraboloid $x^2-y^2+4z=0$.**
 
-# In[15]:
+# In[17]:
 
 
 r3_o = sym.Matrix([[-1, 2, 0]])
 r3_e = sym.Matrix([[3, 1, 4]])
-t = sym.Symbol('t', positive=True) 
 ray3 = r3_o + t * (r3_e - r3_o)
 hp = x**2 - y**2 + 4 * z
 print(hp)
 
 
-# In[16]:
+# In[18]:
 
 
 sols = sym.solve(hp.subs([(x, ray3[0]), (y, ray3[1]), (z, ray3[2])]),t)
@@ -277,7 +398,7 @@ for i, val in enumerate(valid_sols) :
     print("intersection {} found at t={}".format(i+1,val.evalf()))
 
 
-# In[17]:
+# In[19]:
 
 
 is3  = (ray3.subs(t,valid_sols[0].evalf()))
@@ -288,14 +409,10 @@ print("intersection occurs at ({:0.3f},{:0.3f},{:0.3f})".format(is3a[0],is3a[1],
 
 # Thanks to python, we've identified where the intersections between this ray and the hyperbolic paraboloid occur. However, that doesn't answer the question, which wants to know the unit normal at that point.
 # 
-# To that end, we'll define a function which returns a vector $\bf\vec{\nabla{\phi}}$, which is the normal vector. We'll then evaluate this at the location where we found the intersection to calculate the normal there:
+# To that end, we'll use the function which returns a vector $\bf\vec{\nabla{\phi}}$, evaluated at the location where we found the intersection to calculate the specific normal we need:
 
-# In[18]:
+# In[20]:
 
-
-def grad(phi):
-    gradphi = [sym.diff(phi,x), sym.diff(phi,y), sym.diff(phi,z)]
-    return gradphi
 
 gradhp = grad(hp)
 nx = float(gradhp[0].subs({x:is3a[0], y:is3a[1], z:is3a[2]}))
@@ -310,7 +427,7 @@ print("unit normal=", n)
 # 
 # The final stage is to see if the solutions make sense visually. With mathematical surfaces given as a scalar function, we often have to create a grid of $x$ and $y$ values, before rearranging the scalar function to create a grid of $z$ values:
 
-# In[19]:
+# In[21]:
 
 
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(12,8))
