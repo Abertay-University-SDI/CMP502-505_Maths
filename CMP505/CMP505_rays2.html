@@ -322,13 +322,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-1-ray-1">
-     5.1.1. Part 1 (ray 1):
+    <a class="reference internal nav-link" href="#part-1">
+     5.1.1. Part 1:
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-ray-2">
-     5.1.2. Part 2 (ray 2)
+    <a class="reference internal nav-link" href="#part-2">
+     5.1.2. Part 2:
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -369,13 +369,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-1-ray-1">
-     5.1.1. Part 1 (ray 1):
+    <a class="reference internal nav-link" href="#part-1">
+     5.1.1. Part 1:
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-ray-2">
-     5.1.2. Part 2 (ray 2)
+    <a class="reference internal nav-link" href="#part-2">
+     5.1.2. Part 2:
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -451,16 +451,16 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">r1_e</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 <span class="n">r2_e</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="n">r3_v</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
-<span class="n">r1</span> <span class="o">=</span> <span class="n">r_o</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="p">(</span><span class="n">r1_e</span><span class="o">-</span><span class="n">r_o</span><span class="p">)</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="n">r_o</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="p">(</span><span class="n">r2_e</span><span class="o">-</span><span class="n">r_o</span><span class="p">)</span>
-<span class="n">r3</span> <span class="o">=</span> <span class="n">r_o</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="n">r3_v</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">r_o</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="p">(</span><span class="n">r1_e</span><span class="o">-</span><span class="n">r_o</span><span class="p">)</span> <span class="c1"># part 1</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r_o</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="p">(</span><span class="n">r2_e</span><span class="o">-</span><span class="n">r_o</span><span class="p">)</span> <span class="c1"># part 2</span>
+<span class="n">r3</span> <span class="o">=</span> <span class="n">r_o</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="n">r3_v</span> <span class="c1"># part 3</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>Now we need to equate each ray with each part of the box:</p>
-<div class="section" id="part-1-ray-1">
-<h3><span class="section-number">5.1.1. </span>Part 1 (ray 1):<a class="headerlink" href="#part-1-ray-1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="part-1">
+<h3><span class="section-number">5.1.1. </span>Part 1:<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h3>
 <p>We need to solve four sets of simultaneous equations, just as we did in lectures (only this time Python takes care of this for us in one line per set of simultaneous equations!):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -544,9 +544,9 @@ BC intersection at (9.000,4.000) [EXIT]
 </div>
 <p>This does appear to agree with our solutions from the lectures: an entry into the box at <span class="math notranslate nohighlight">\((8,5)\)</span> <span class="math notranslate nohighlight">\(\left(t=\frac{3}{7}\right)\)</span>, and exiting the box at <span class="math notranslate nohighlight">\((9,4)\)</span> <span class="math notranslate nohighlight">\(\left(t=\frac{4}{7}\right)\)</span>.</p>
 </div>
-<div class="section" id="part-2-ray-2">
-<h3><span class="section-number">5.1.2. </span>Part 2 (ray 2)<a class="headerlink" href="#part-2-ray-2" title="Permalink to this headline">¶</a></h3>
-<p>Part 2 follows a similar procedure to Part 1:</p>
+<div class="section" id="part-2">
+<h3><span class="section-number">5.1.2. </span>Part 2:<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h3>
+<p>We need to follow the same procedure we followed in part one, but this time for a ray which ends at a different location. As we have already defined expressions for all four edges of the box, and an expression for the second ray, we can launch straight into solving these systems of equations:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s2AB</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">r2</span><span class="o">-</span><span class="n">AB</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
@@ -678,7 +678,8 @@ AD intersection at (3.000,4.000) [EXIT]
 </div>
 <div class="section" id="over-to-you">
 <h2><span class="section-number">5.2. </span>Over to you<a class="headerlink" href="#over-to-you" title="Permalink to this headline">¶</a></h2>
-<p>Try some more examples from the lectures or the tutorial questions once you are satisfied with the mathematics</p>
+<p>As well as attempting more lecture, tutorial or past paper examples, you could explore some of the solutions more deeply.</p>
+<p>When a value of <span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(v\)</span> or <span class="math notranslate nohighlight">\(t\)</span> is returned which lies <em>outside</em> the required range for an intersection, this implies that an intersection would have taken place, had the ray or the box side been longer, or had been extended in a negative direction. Can you use the examples to prove this to yourself by manipulating the box sides to see what happens?</p>
 </div>
 </div>
 

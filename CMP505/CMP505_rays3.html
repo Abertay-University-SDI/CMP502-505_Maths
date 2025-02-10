@@ -559,18 +559,6 @@ C-D: Matrix([[3, 4, -2]])
 <p>This expression matches the solution we determined in class. Can we see what this looks like?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">((</span><span class="n">A</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Aa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
 <span class="n">Ba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
 <span class="n">Ca</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
@@ -598,7 +586,7 @@ C-D: Matrix([[3, 4, -2]])
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/CMP505_rays3_20_0.png" src="../_images/CMP505_rays3_20_0.png" />
+<img alt="../_images/CMP505_rays3_19_0.png" src="../_images/CMP505_rays3_19_0.png" />
 </div>
 </div>
 <p>This allows us to visualise the parallelogram (blue) and its component vertices (red).</p>
@@ -711,7 +699,7 @@ Python finds: Matrix([[1.39705882352941, 2, 0.0294117647058822]])
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/CMP505_rays3_31_0.png" src="../_images/CMP505_rays3_31_0.png" />
+<img alt="../_images/CMP505_rays3_30_0.png" src="../_images/CMP505_rays3_30_0.png" />
 </div>
 </div>
 <p>(noting that in this case the axis are no longer presented in Cartesian coordinates).</p>
@@ -799,7 +787,7 @@ Matrix([[85/53, 39/53, 92/53]])
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/CMP505_rays3_37_0.png" src="../_images/CMP505_rays3_37_0.png" />
+<img alt="../_images/CMP505_rays3_36_0.png" src="../_images/CMP505_rays3_36_0.png" />
 </div>
 </div>
 <p>As we can see from the image, we successfully formed a triangular plane segment between the three vertices, and indeed (as seen in the lectures) the chosen ray intersects the triangular plane segment at the location we have found.</p>
