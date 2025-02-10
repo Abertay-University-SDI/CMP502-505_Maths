@@ -460,7 +460,7 @@ ax.set_zlabel("z")
 # Maybe, using your maths skills, you could check whether this is a true saddle point, **using the second derivative test**?
 
 # ## Over to you
-# Try some more examples from the lectures or the tutorial questions once you are satisfied with the mathematics.
+# Can you visualise a few more examples from the tutorial questions or even re-examine the past paper questions on this topic?
 
 # In[ ]:
 

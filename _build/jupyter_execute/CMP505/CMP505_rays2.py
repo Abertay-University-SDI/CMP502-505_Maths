@@ -59,14 +59,14 @@ r_o = sym.Matrix([[5, 8]])
 r1_e = sym.Matrix([[12, 1]])
 r2_e = sym.Matrix([[13, 4]])
 r3_v = sym.Matrix([[-1, -2]])
-r1 = r_o + t * (r1_e-r_o)
-r2 = r_o + t * (r2_e-r_o)
-r3 = r_o + t * r3_v
+r1 = r_o + t * (r1_e-r_o) # part 1
+r2 = r_o + t * (r2_e-r_o) # part 2
+r3 = r_o + t * r3_v # part 3
 
 
 # Now we need to equate each ray with each part of the box:
 # 
-# ### Part 1 (ray 1):
+# ### Part 1:
 # We need to solve four sets of simultaneous equations, just as we did in lectures (only this time Python takes care of this for us in one line per set of simultaneous equations!):
 
 # In[4]:
@@ -138,8 +138,8 @@ plt.show()
 
 # This does appear to agree with our solutions from the lectures: an entry into the box at $(8,5)$ $\left(t=\frac{3}{7}\right)$, and exiting the box at $(9,4)$ $\left(t=\frac{4}{7}\right)$.
 
-# ### Part 2 (ray 2)
-# Part 2 follows a similar procedure to Part 1:
+# ### Part 2:
+# We need to follow the same procedure we followed in part one, but this time for a ray which ends at a different location. As we have already defined expressions for all four edges of the box, and an expression for the second ray, we can launch straight into solving these systems of equations:
 
 # In[7]:
 
@@ -246,7 +246,9 @@ plt.show()
 # As expected, the image of the three parts of this question confirms our solutions. The intercept locations align with the different parts of the box and the rays that pass through them, while the ray which does not intersect the box yields no viable intersection locations.
 
 # ## Over to you
-# Try some more examples from the lectures or the tutorial questions once you are satisfied with the mathematics
+# As well as attempting more lecture, tutorial or past paper examples, you could explore some of the solutions more deeply.
+# 
+# When a value of $u$, $v$ or $t$ is returned which lies *outside* the required range for an intersection, this implies that an intersection would have taken place, had the ray or the box side been longer, or had been extended in a negative direction. Can you use the examples to prove this to yourself by manipulating the box sides to see what happens?
 
 # In[ ]:
 

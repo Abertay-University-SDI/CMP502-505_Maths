@@ -127,12 +127,6 @@ print(rp)
 # In[10]:
 
 
-print((A.tolist()[0])[0])
-
-
-# In[11]:
-
-
 Aa = np.array(A.tolist()[0],dtype='float64')
 Ba = np.array(B.tolist()[0],dtype='float64')
 Ca = np.array(C.tolist()[0],dtype='float64')
@@ -175,7 +169,7 @@ plt.show()
 # We can hopefully reuse the structures we already created, and simply create two rays using the technique we already encountered:
 # 
 
-# In[12]:
+# In[11]:
 
 
 t = sym.Symbol('t', positive=True)
@@ -188,7 +182,7 @@ r2 = r_o + t * (r2_e-r_o)
 
 # For part 1, we need to solve the system of equations created by equating the ray and plane. Python can't solve equations like "ray = plane", unless we arrange the equations to read "ray - plane = 0". We then insert the LHS into the solver:
 
-# In[13]:
+# In[12]:
 
 
 sols1 = sym.solve(r1-rp,(u,v,t))
@@ -199,7 +193,7 @@ print(sols1)
 # 
 # For the ray in Part 2, we can repeat this process:
 
-# In[14]:
+# In[13]:
 
 
 sols2 = sym.solve(r2-rp,(u,v,t))
@@ -208,7 +202,7 @@ print(sols2)
 
 # These values exactly match those we calculated in class, and lie within the appropriate ranges to make this a true intersection point.
 
-# In[15]:
+# In[14]:
 
 
 r2t = list(sols2.values())[2].evalf()
@@ -222,7 +216,7 @@ print("Python finds:",rpi)
 # 
 # A final sanity check is to visually show the two rays and intersection location overlaid with the parallelogram plane segment:
 
-# In[16]:
+# In[15]:
 
 
 rpia = np.array(rpi.tolist()[0],dtype='float64')
@@ -272,7 +266,7 @@ plt.show()
 # In order to construct a parametric equation describing every point on the surface, we need to pick two sides of the triangle to act as vectors. However, unlike the parallelogram plane, we have to pick the second vector which begins when the first vector begins.
 # 
 
-# In[17]:
+# In[16]:
 
 
 A3 = sym.Matrix([[5, 0, 0]])
@@ -282,7 +276,7 @@ rpt = A3 + u * (B3-A3) + v * (C3-B3)
 print(rpt)
 
 
-# In[18]:
+# In[17]:
 
 
 r3_o = sym.Matrix([[2, 1, 2]])
@@ -300,7 +294,7 @@ if r3uvt[0] > r3uvt[1] :
 
 # Let's check what this physically looks like:
 
-# In[19]:
+# In[18]:
 
 
 Aa3 = np.array(A3.tolist()[0],dtype='float64')
